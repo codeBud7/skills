@@ -7,10 +7,10 @@ The core idea of the skills is following a strict order, using farming terminolo
 2. Harvest 🚜
 3. Cultivate 🌿
 
-## Seed
+## 🌱 Seed
 Human in the loop planning what to harvest.
 
-## Harvest
+## 🚜 Harvest
 Getting things done! 
 
 Consists of:
@@ -20,5 +20,5 @@ Consists of:
 - draft-pr
 - ci-green
 
-## Cultivate
+## 🌿 Cultivate
 Deslopping AI written code.
