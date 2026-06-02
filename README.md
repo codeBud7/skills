@@ -1,4 +1,4 @@
-# 🚜 Skills
+# 🧑‍🌾 Skills
 Personal collection of handcrafted skills to still be the human in the loop.
 
 The core idea of the skills is following a strict order, using farming terminology:
