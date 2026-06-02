@@ -13,12 +13,12 @@ Human in the loop planning what to harvest.
 ## Harvest
 Getting things done! 
 
-Consists of...
-...repo-safety
-...TDD
-...local-quality-gate
-...draft-pr
-...ci-green
+Consists of:
+- repo-safety
+- TDD
+- local-quality-gate
+- draft-pr
+- ci-green
 
 ## Cultivate
 Deslopping AI written code.
