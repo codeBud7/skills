@@ -1,5 +1,5 @@
 ---
-name: deslop
+name: cultivate
 description: >-
   Removes code bloat: trims redundant or AI-ish comments, aligns style with each
   file, prunes inner-layer defensive bloat and odd try/catch only when clearly
@@ -9,9 +9,9 @@ description: >-
 disable-model-invocation: true
 ---
 
-# Deslop
+# Cultivate
 
-**deslop** = leaner code, **same behavior** unless user says otherwise. **Minimal diff**; no unrelated modules or repo-wide style passes.
+**cultivate** = leaner code, **same behavior** unless user says otherwise. **Minimal diff**; no unrelated modules or repo-wide style passes.
 
 ## Workflow
 
