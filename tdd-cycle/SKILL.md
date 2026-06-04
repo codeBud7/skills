@@ -1,96 +1,31 @@
 ---
 name: tdd-cycle
-description: >
-  Implements fixed-scope changes using TDD: write failing tests first,
-  implement minimal code to pass, and refactor safely with tests green.
+description: Fixed-scope change via strict red → green → refactor TDD.
 disable-model-invocation: true
 ---
 
-# TDD workflow
+# TDD cycle
 
-Use strict red → green → refactor development.
+Referenced by `harvest`, `ci-green`.
 
-## Phase 1 — Understand behavior
+## Before red
 
-Before coding:
-1. identify expected behavior
-2. identify affected modules
-3. identify existing testing patterns
-4. identify existing fixtures/helpers/mocks
-5. determine appropriate test level:
-   - unit
-   - integration
-   - e2e
+Know: expected behavior, modules touched, test patterns/fixtures/mocks, level (unit | integration | e2e). Ambiguous → stop, clarify.
 
-If requirements are ambiguous, stop and clarify.
+## Red
 
----
+Add/modify tests → run → confirm fail for **right reason**. Meaningful failure; deterministic; no over-mock; keep coverage. Bugfix = repro test; feature = behavior test; refactor = characterization test first.
 
-# Phase 2 — Red
+No impl before failing tests — unless automation impossible (say why).
 
-Before implementation:
-1. add or modify tests
-2. run tests
-3. confirm tests fail for the expected reason
+## Green
 
-Requirements:
-- tests must validate intended behavior
-- failures must be meaningful
-- avoid over-mocking
-- prefer deterministic tests
-- preserve existing coverage
+Minimal code to pass. Smallest change; match repo patterns; no speculative abstraction. Rerun affected tests; no unrelated regressions.
 
-Examples:
-- bugfix → reproduce bug with failing test
-- feature → define expected behavior with tests first
-- refactor → add characterization tests first
+## Refactor
 
-Do not implement before seeing failing tests unless impossible to automate.
+Tests green → readability, dedupe, naming, structure. Rerun after each meaningful refactor. No coverage drop without reason.
 
----
+## Handoff
 
-# Phase 3 — Green
-
-Implement the minimal code required to make tests pass.
-
-Rules:
-- prefer smallest viable change
-- preserve backward compatibility unless instructed otherwise
-- match repository patterns and conventions
-- avoid speculative abstraction
-
-After implementation:
-- rerun affected tests
-- verify intended behavior
-- ensure no unrelated regressions
-
----
-
-# Phase 4 — Refactor
-
-With tests green:
-1. improve readability
-2. reduce duplication
-3. improve naming
-4. simplify structure
-5. improve maintainability
-
-After each meaningful refactor:
-- rerun tests
-- verify no behavioral drift
-
-Do not reduce coverage without justification.
-
----
-
-# Phase 5 — Final verification
-
-Before handing off:
-- confirm tests pass
-- confirm edge cases are covered
-- confirm regressions are protected
-- identify any intentionally uncovered cases
-
-If no automated tests were added:
-- explain why
-- document alternate verification performed
+Tests pass; edges covered; regressions protected. No tests added → explain why + alternate verification.

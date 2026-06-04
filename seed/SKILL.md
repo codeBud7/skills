@@ -1,32 +1,32 @@
 ---
 name: seed
-description: >
-  Produces a structured, high-quality implementation plan through tight collaboration
-  with the user (goals, constraints, trade-offs, risks, test and rollout). Use when
-  the user wants a sophisticated plan before coding, says "plan with me", "design
-  first", "interactive plan", or attaches this skill for a non-trivial feature or
-  refactor.
+description: User-in-the-loop plan before coding — goals, trade-offs, risks, test/rollout.
 disable-model-invocation: true
 ---
 
-# Collaborative plan (user-in-the-loop)
+# Seed (collaborative plan)
 
 ## Hard gate
 
-- **No implementation** (no feature code, no refactors beyond tiny spikes for discovery) until the user **explicitly approves** the final plan (e.g. "approved", "execute the plan", "LGTM on plan").
-- Spikes allowed only when user agrees they are needed to size unknowns; keep them read-only or throwaway branches.
+No impl until user approves plan ("approved", "execute", "LGTM on plan"). Spikes only if user agrees — read-only or throwaway.
 
 ## Cadence
 
-1. **Intake** — Restate goal in one short paragraph. List **known constraints** (time, stack, APIs, compliance, "must not change X").
-2. **One discovery pass** — Read repo entrypoints the task touches (`AGENTS.md`, README, package scripts, relevant modules). Summarize **facts** (what exists) vs **unknowns** (what needs a decision).
-3. **Structured questions** — Prefer **AskQuestion** (or one clear question per message). Never batch unrelated decisions. Order: goal → constraints → scope boundaries → quality bar (tests, migrations) → rollout.
-4. **Options** — For non-obvious choices, present **2–3 approaches** with trade-offs (complexity, risk, maintenance). **Recommend one**; say what would change the recommendation.
-5. **Plan document** — After answers, output a single plan with the sections below. Offer to revise any section the user wants before lock-in.
+1. **Intake** — goal one para; list constraints (time, stack, APIs, compliance, must-not-change).
+2. **Discovery** — facts vs unknowns for touched areas. **Delegate** parallel read-only subagents to map entrypoints (`AGENTS.md`, README, scripts, modules); main thread synthesizes.
+3. **Questions** — AskQuestion or one Q/msg. Order: goal → constraints → scope → quality bar → rollout. No unrelated batching.
+4. **Options** — 2–3 approaches + trade-offs; recommend one; say what flips choice.
+5. **Plan doc** — template below; user revises any section before lock-in.
 
-## Plan template (required sections)
+## Sophistication
 
-Use this structure so the plan stays scannable and mergeable with implementation later.
+Major todo → risk/invariant (auth, money, PII, idempotency, contracts). CI vs human review gaps explicit. Workspace plan-cost rule → follow if present.
+
+## Lock-in
+
+Approved → final plan = source of truth. New scope → amend + re-approve.
+
+## Plan template
 
 ```markdown
 # Plan: [short title]
@@ -58,16 +58,3 @@ Ordered todos with **clear done criteria** per item (small enough for one PR whe
 ## Rollout / follow-ups
 [Migrations, flags, docs, optional phase 2]
 ```
-
-## Sophistication bar
-
-- Tie each major todo to a **risk** or **invariant** (auth, money, PII, idempotency, API contracts).
-- Call out **CI vs human review** gaps: deterministic checks belong in CI later; plan should not rely on "someone remembers."
-- If the workspace has a **plan cost / token estimate** rule, follow it for this plan output.
-
-## Lock-in
-
-When the user approves:
-
-1. Paste or save the **final** plan as the single source of truth for execution.
-2. Do not silently expand scope; new scope → amend plan and re-approve.

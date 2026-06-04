@@ -1,121 +1,35 @@
 ---
 name: harvest
-description: >
-  End-to-end shipping workflow for fixed-scope work: TDD implementation,
-  local quality gates, draft PR creation, and CI green verification.
+description: Ship fixed-scope work end-to-end — TDD, local gates, draft PR, CI green.
 disable-model-invocation: true
 ---
 
-# Harvest orchestration workflow
+# Harvest
 
-Use this skill when the user says:
-- ship it
-- open a draft PR
-- get CI green
-- finalize implementation
-- prepare for review
+Triggers: ship it | open draft PR | get CI green | finalize | prepare for review.
 
-This skill orchestrates smaller reusable skills.
+Orchestrate sub-skills in order. **No merge** unless user says so.
 
----
+## Subagent rule
 
-# Execution order
+Read-only or independent stage → delegate subagent(s). Main thread: scope decisions, edits, gating.
 
-## 1. Apply repository safety
+## Pipeline
 
-Continuously apply:
-- repo-safety
+| # | Skill | Done gate |
+|---|-------|-----------|
+| 0 | `repo-safety` | continuous — see skill |
+| 1 | `tdd-cycle` | red → green → refactor |
+| 2 | `local-quality-gate` | lint/format/type/test/build green |
+| 3 | `draft-pr` | draft PR URL + scoped commits |
+| 4 | `ci-green` | required checks green or blocked |
 
-Key requirements:
-- no secrets
-- no unrelated staged files
-- no destructive git operations without approval
-- minimal scoped diffs
+Independent stages (1–4) may run delegated; orchestrator verifies gates before next step.
 
----
+## Stop
 
-# 2. Implement using TDD
+No force-push, no bypass required checks, no hide flaky/env failures — without approval.
 
-Run:
-- tdd-cycle
+## Done
 
-Requirements:
-- tests written or updated first
-- confirm failing tests before implementation
-- implement minimal fix
-- refactor safely with tests green
-
----
-
-# 3. Run local quality gates
-
-Run:
-- local-quality-gate
-
-Requirements:
-- lint green
-- format checks green
-- typecheck green
-- relevant tests green
-- build verification green if applicable
-
-Do not proceed with known local failures unless explicitly instructed.
-
----
-
-# 4. Create draft PR
-
-Run:
-- draft-pr
-
-Requirements:
-- scoped commits
-- proper PR summary
-- test plan included
-- TDD evidence included
-
-Report PR URL after creation.
-
----
-
-# 5. Drive CI to green
-
-Run:
-- ci-green
-
-Requirements:
-- monitor checks
-- inspect failures
-- reproduce locally
-- fix minimally
-- rerun verification
-- push updates
-
-Repeat until:
-- CI is green
-- blocked
-- user stops process
-
----
-
-# Stop before merge
-
-Do not merge unless explicitly instructed.
-
-Do not:
-- force-push without approval
-- bypass failing required checks
-- hide flaky or environmental failures
-
----
-
-# Definition of done
-
-Work is complete only when:
-- implementation is complete
-- tests were written first when feasible
-- local checks pass
-- CI is green
-- draft PR exists
-- diffs are clean and scoped
-- known limitations are documented
+Impl complete | tests-first when feasible | local green | CI green | draft PR | scoped diff | limits documented.

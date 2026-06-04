@@ -1,74 +1,33 @@
 ---
 name: local-quality-gate
-description: >
-  Discovers and runs repository lint, format, typecheck, build, and test
-  commands locally until green or blocked.
+description: Discover and run repo lint/format/typecheck/build/test until green or blocked.
 disable-model-invocation: true
 ---
 
 # Local quality gate
 
-## Discover commands
+## Discover
 
-Inspect:
-- `package.json`
-- CI workflow files
-- `AGENTS.md`
-- `README.md`
-- repository scripts
+From `package.json`, CI workflows, `AGENTS.md`, `README`, repo scripts — lint, format, typecheck, test, build. Prefer repo-native commands.
 
-Identify:
-- lint commands
-- format checks
-- typecheck commands
-- test commands
-- build commands
+## Order
 
-Prefer repository-native workflows.
-
----
-
-# Execution order
-
-Run in this order:
-
-1. targeted tests for changed behavior
-2. affected test suite
+1. targeted tests (changed behavior)
+2. affected suite
 3. lint
 4. format check
 5. typecheck
-6. build verification
-7. full test suite if feasible
+6. build (if applicable)
+7. full suite (if feasible)
 
-Examples:
-- `pnpm lint`
-- `pnpm test`
+## Parallel subagent
 
----
+Steps 3–6 independent of targeted tests → run parallel (terminals or subagent) while 1–2 run. Main thread merges results, fixes failures.
 
-# Failure handling
+## On fail
 
-On failure:
-1. inspect root cause
-2. implement minimal fix
-3. rerun affected checks
-4. rerun full impacted surface
+Root cause → minimal fix → rerun affected → rerun impacted surface. Don't ignore lint/typecheck/new flakiness.
 
-Do not ignore:
-- lint failures
-- typecheck failures
-- flaky tests introduced by changes
+## Done
 
----
-
-# Verification rules
-
-Before completion:
-- ensure all relevant checks pass
-- ensure new tests pass both isolated and in-suite
-- ensure formatting is correct
-- ensure builds succeed if applicable
-
-If checks are skipped:
-- explain why explicitly
-- document remaining risk
+All relevant checks pass; new tests pass isolated + in-suite. Skipped → say why + risk.

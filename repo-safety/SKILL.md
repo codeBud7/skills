@@ -1,79 +1,41 @@
 ---
 name: repo-safety
-description: >
-  Enforces repository and git safety rules during implementation, testing,
-  commits, and PR preparation. Use whenever modifying a repository.
+description: Git/secret/scope safety during impl, test, commit, PR prep.
 disable-model-invocation: true
 ---
 
-# Repository safety rules
+# Repo safety
 
-Apply these rules continuously throughout all work.
+Apply continuously. Referenced by `harvest`, `draft-pr`.
 
-## Scope control
+## Scope
 
-- Only modify files directly related to the approved scope.
-- If scope expands materially, stop and ask for confirmation.
-- Prefer minimal diffs and incremental commits.
+- Touch only approved-scope files.
+- Scope grows → stop, ask.
+- Minimal diff, incremental commits.
 
-## Git hygiene
+## Git
 
-Before every commit:
-- inspect `git status`
-- inspect `git diff`
-- confirm no unrelated files are staged
+Before commit: `git status` + `git diff` — no stray staged files.
 
-Never:
-- commit unrelated changes
-- rewrite history unless explicitly requested
-- force-push unless explicitly requested
-- delete branches without approval
+Never: unrelated commits | history rewrite | force-push | branch delete — unless user asks.
 
-## Secret handling
+## Secrets
 
-Never commit:
-- `.env`
-- API keys
-- tokens
-- credentials
-- customer secrets
-- production configs containing secrets
+Never commit: `.env`, keys, tokens, creds, customer secrets, prod configs with secrets.
 
-If secrets are discovered:
-1. stop immediately
-2. warn clearly
-3. recommend remediation
+Found secret → stop, warn, recommend remediation.
 
-## Safety checks
+## Hygiene
 
-Validate:
-- no debug artifacts
-- no temporary files
-- no accidental generated output
-- no sensitive logs
+No debug artifacts, temp files, accidental generated output, sensitive logs.
 
-## Commit discipline
+## Commits & PR
 
-- Keep commits scoped and reviewable.
-- Match repository commit conventions.
-- Prefer multiple small commits over large mixed commits.
+- Scoped, reviewable; match repo conventions.
+- PR honest: limits, deferred work, skipped coverage, flaky tests, env blockers.
+- Never claim tests passed if they didn't.
 
-## PR discipline
+## Stop & report
 
-- Be transparent about:
-  - known limitations
-  - deferred work
-  - skipped coverage
-  - flaky tests
-  - environmental blockers
-
-Never claim tests passed if they did not.
-
-## Stop conditions
-
-Stop and report clearly if:
-- credentials are required
-- CI infrastructure is broken
-- production access is required
-- behavior/specification is ambiguous
-- third-party outage blocks progress
+Creds required | CI infra broken | prod access needed | spec ambiguous | third-party outage.

@@ -1,87 +1,37 @@
 ---
 name: ci-green
-description: >
-  Watches PR CI checks, investigates failures, fixes reproducible issues,
-  reruns local verification, commits fixes, and repeats until CI is green
-  or blocked.
+description: Watch PR CI, triage failures, fix, push until green or blocked.
 disable-model-invocation: true
 ---
 
-# CI green loop
+# CI green
 
-## Monitor CI
+## Monitor
 
-Use:
 ```bash
 gh pr checks --watch
-```
-
-or:
-```bash
+# or
 gh pr view --json statusCheckRollup,url
 ```
 
-Continue until all required checks are green.
+Until required checks green.
 
----
+## On fail
 
-# Failure investigation
+1. inspect checks + logs
+2. **Delegate** read-only subagent: dig logs (`gh run view`, `gh run list`), return root cause + repro hints
+3. main thread: repro local if possible → minimal fix → local checks → commit → push → re-monitor
 
-On CI failure:
-1. inspect failing checks
-2. inspect logs
-3. identify root cause
-4. reproduce locally if possible
+Loop until green | blocked | user stops.
 
-Useful commands:
-- `gh run view`
-- `gh run list`
+## TDD gap
 
----
+Missing coverage from CI → see `tdd-cycle` (failing test first). No blind patch.
 
-# Repair workflow
+## Flaky
 
-After reproducing:
-1. implement minimal fix
-2. rerun local checks
-3. rerun affected tests
-4. commit fix
-5. push changes
-6. continue monitoring CI
+Gather evidence, selective rerun, document instability. Don't hide real failures.
 
-Repeat until:
-- CI is green
-- blocked by infrastructure or permissions
-- user stops process
+## Stop
 
----
-
-# TDD expectations
-
-If CI reveals missing behavior coverage:
-- add or improve automated tests
-- reproduce issue with failing test first when feasible
-- verify fix with passing tests
-
-Do not patch blindly without verification.
-
----
-
-# Flaky failures
-
-If failures appear flaky:
-1. gather evidence
-2. rerun selectively
-3. document instability clearly
-
-Do not hide legitimate failures.
-
----
-
-# Stop conditions
-
-Stop and report clearly if:
-- CI infrastructure is failing
-- required credentials are unavailable
-- third-party outage blocks progress
-- issue cannot be reproduced locally
+CI infra down | creds missing | third-party outage | can't repro local — report clear.

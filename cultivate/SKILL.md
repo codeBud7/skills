@@ -1,80 +1,77 @@
 ---
 name: cultivate
-description: >-
-  Removes code bloat: trims redundant or AI-ish comments, aligns style with each
-  file, prunes inner-layer defensive bloat and odd try/catch only when clearly
-  redundant, merges duplicate tests, simplifies TypeScript (no as-any; avoid cast
-  gymnastics). Prefers if/early return over nested ternary. Framework-agnostic.
-  Use when the user says or writes the command deslop.
+description: Deslop AI code — trim noise, match file style, honest TS, merge dup tests; same behavior.
 disable-model-invocation: true
 ---
 
 # Cultivate
 
-**cultivate** = leaner code, **same behavior** unless user says otherwise. **Minimal diff**; no unrelated modules or repo-wide style passes.
+Trigger: deslop. **Same behavior** unless user says else. Minimal diff; no repo-wide style pass.
+
+## Subagents
+
+- **Locate** — read-only subagent: smell map per file (comment | defense | test dup | TS | control flow | dead).
+- **Review** (optional) — subagent verify diff: behavior preserved, no stripped boundaries.
+
+Main thread: edits + project checks.
 
 ## Workflow
 
-1. Skim **whole target file** — set “normal” for comments, guards, errors, TS style in *this* file.
-2. Classify each smell: **comment noise** | **defense/error bloat** | **test duplication** | **TS slop** | **control flow** | **dead code**.
-3. Apply rules below; **default keep** when not obvious.
-4. Run **project checks** for touched code (tests/lint/typecheck if available); fix what breaks.
-5. **Summarize**: what removed/simplified + what skipped as risky.
+1. Skim whole target file — set local norm (comments, guards, errors, TS).
+2. Classify smells; **default keep** when not obvious.
+3. Apply rules; run tests/lint/typecheck for touched code.
+4. Summarize: removed/simplified + skipped (risky).
 
 ## Scope
 
-- **Framework-agnostic** — no stack assumptions unless files show them.
-- **Local consistency** — touched code matches **neighbors in the same file** (patterns, validation depth, error style).
+Framework-agnostic. Match **neighbors in same file**.
 
 ## Comments
 
-- **Delete**: restates code; section banners with no signal; **AI filler** or tone mismatched to file; duplicate doc above same code; mixed language without local precedent.
-- **Keep**: non-obvious **why**, invariants, security/perf, ticket/spec pointers with substance.
-- Prefer **delete whole block** over trimming word-by-word.
+Delete: restates code; empty banners; AI filler; duplicate doc; mixed language w/o precedent.
+Keep: non-obvious why, invariants, security/perf, substantive ticket/spec refs.
+Prefer delete whole block.
 
-## Defense and errors
+## Defense & errors
 
-- **Remove guards / broad catches** only when **evidence in this file** shows redundancy: e.g. same check repeated, impossible branch after typed narrow, inner private fn while **callers already validate** and siblings don’t re-validate. If caller proof **not** visible here → **keep**.
-- **Remove try/catch** (or **narrow catch**) when peers use simpler flow **and** catch only logs/rethrows generically without recovery; **keep** for I/O, parse, network, user/plugin boundaries.
-- **Never strip** user/network/fs/public API/plugin surfaces to “clean up”.
+Remove guards/catches only with **file evidence** (duplicate check, impossible branch, inner fn while callers validate). No caller proof here → keep.
+Remove try/catch when peers simpler and catch only logs/rethrows — no recovery. Keep: I/O, parse, network, user/plugin/API boundaries.
 
 ## Tests
 
-- **No new test sprawl**; when editing tests, **merge/delete** obvious duplicates (same branch/assert path). **Keep** unique regression/branch cover. **If unsure → keep.**
+Merge/delete obvious dupes (same branch/assert). Keep unique regression cover. Unsure → keep.
 
-## TypeScript (`.ts` / `.tsx`)
+## TypeScript
 
-- **Ban `as any`** (incl. chained) to silence errors — fix source types, **boundary type**, typed helper, or **type guard**.
-- **OK**: `unknown` in → **narrow** with guard, schema parse, or discriminant; single-hop assert only **right after** proven narrow (same fn).
-- **Avoid**: `as unknown as T`, long generic/cast pipelines, conditional types used once to “look clever”. **Keep** real safety types (exhaustive unions, branded ids); simplify only when easy.
+Ban `as any` — fix types, boundary type, guard, schema. OK: `unknown` + narrow; single-hop assert after proven narrow. Avoid `as unknown as T`, cast pipelines, one-off clever generics. Keep real safety types.
 
 ## Control flow
 
-- Prefer **`if` / `switch` / early return** over nested ternary. Prefer **named locals** over dense one-liners. Drop **dead code**, unused imports, debug leftovers in touched areas.
+`if` / `switch` / early return over nested ternary. Named locals over dense one-liners. Drop dead code, unused imports, debug in touched areas.
 
-## Micro-examples (calibration)
+## Micro-examples
 
-**Comments** — delete:
+Comments — delete:
 
 ```ts
 // This function adds a and b together
 return a + b;
 ```
 
-**Guards** — delete inner duplicate if file already ensures non-null above:
+Guards — delete inner duplicate if file already ensures non-null above:
 
 ```ts
 if (!items.length) return;
 if (!items) return; // redundant
 ```
 
-**TS** — delete `any` escape; replace with narrow:
+TS — delete `any` escape; narrow instead:
 
 ```ts
 // bad: (data as any).id
 // good: typed parse + guard, or schema validation → typed value
 ```
 
-## Done when
+## Done
 
-Noise down; behavior unchanged; types honest (**no `any` silencing**); tests still meaningful; **skipped items** named if risky.
+Noise down; behavior unchanged; no `any` silencing; tests meaningful; risky skips named.

@@ -1,24 +1,11 @@
-# 🧑‍🌾 Skills
-Personal collection of handcrafted skills to still be the human in the loop.
+# Skills
 
-The core idea of the skills is following a strict order, using farming terminology:
+Personal skills — human stays in loop.
 
-1. Seed 🌱
-2. Harvest 🚜
-3. Cultivate 🌿
+**Order:** Seed (plan) → Harvest (ship) → Cultivate (deslop).
 
-## 🌱 Seed
-Human in the loop planning what to harvest.
+- **Seed** — plan with user before code
+- **Harvest** — `repo-safety` → `tdd-cycle` → `local-quality-gate` → `draft-pr` → `ci-green`
+- **Cultivate** — lean AI-written code, same behavior
 
-## 🚜 Harvest
-Getting things done! 
-
-Consists of:
-- repo-safety
-- TDD
-- local-quality-gate
-- draft-pr
-- ci-green
-
-## 🌿 Cultivate
-Deslopping AI written code.
+**Subagents:** read-only discovery or independent parallel work → delegate subagent(s); main thread keeps decisions and edits.

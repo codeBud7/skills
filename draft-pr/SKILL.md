@@ -1,88 +1,44 @@
 ---
 name: draft-pr
-description: >
-  Reviews repository state, creates scoped commits, pushes the branch,
-  and opens a draft pull request with proper summary and test plan.
+description: Scoped commits, push branch, open draft PR with summary + test plan.
 disable-model-invocation: true
 ---
 
-# Draft PR workflow
+# Draft PR
 
-## Pre-commit inspection
+Pre-flight: apply `repo-safety` (scope, secrets, hygiene).
 
-Inspect:
-- `git status`
-- `git diff`
-- `git diff --cached`
-- `git log`
-- `git diff <base>...HEAD`
+## Inspect
 
-Validate:
-- only intended files changed
-- no secrets committed
-- no unrelated generated artifacts
+`git status` | `git diff` | `git diff --cached` | `git log` | `git diff <base>...HEAD`
 
----
+## Commit
 
-# Commit creation
+Repo conventions (Conventional Commits, ticket prefix, scoped msgs). Small logical commits; body when useful.
 
-Use repository commit conventions:
-- Conventional Commits
-- ticket prefixes
-- scoped commit messages
-
-Prefer:
-- small logical commits
-- descriptive messages
-- multi-line bodies when useful
-
----
-
-# Push branch
-
-Push branch to remote:
+## Push
 
 ```bash
 git push -u origin HEAD
 ```
 
----
+## Create
 
-# Create draft PR
-
-Open draft PR using:
 ```bash
 gh pr create --draft
 ```
 
-PR description should include:
-- summary
-- rationale
-- implementation notes
-- test plan
-- TDD evidence
-- risks or rollout notes
+Body: summary | rationale | impl notes | test plan | TDD evidence | risks/rollout.
 
----
+## Checklist
 
-# Required PR checklist
+- [ ] Tests added/updated first
+- [ ] New tests fail before impl
+- [ ] New tests pass after impl
+- [ ] Lint + typecheck + relevant tests pass
+- [ ] No unrelated files (`repo-safety`)
+- [ ] No secrets (`repo-safety`)
 
-- [ ] Tests added or updated first
-- [ ] New tests fail before implementation
-- [ ] New tests pass after implementation
-- [ ] Lint passes
-- [ ] Typecheck passes
-- [ ] Relevant tests pass
-- [ ] No unrelated file changes
-- [ ] No secrets committed
+## Report
 
----
-
-# Final reporting
-
-Report:
-- PR URL
-- uncommitted files if any
-- known limitations
-- deferred work
-- skipped coverage if applicable
+PR URL | uncommitted files | limits | deferred | skipped coverage.
