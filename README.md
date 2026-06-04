@@ -4,7 +4,7 @@ Personal skills — human stays in loop.
 
 **Order:** Seed (plan) → Harvest (ship) → Cultivate (deslop).
 
-- **Seed** — plan with user before code
+- **Seed** — plan before code (Cursor, Claude Code, or `plans/*.md`)
 - **Harvest** — `repo-safety` → `tdd-cycle` → `local-quality-gate` → `draft-pr` → `ci-green`
 - **Cultivate** — lean AI-written code, same behavior
 
