@@ -1,6 +1,6 @@
 ---
 name: cultivate
-description: Deslop AI code — trim noise, match file style, honest TS, merge dup tests; same behavior.
+description: Deslop AI code — trim noise, match file style, honest TS, merge dup tests; same behavior. Use when the user says deslop, or as the harvest post-impl cleanup step after code is complete and local checks are green.
 disable-model-invocation: true
 ---
 

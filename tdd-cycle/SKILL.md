@@ -1,6 +1,6 @@
 ---
 name: tdd-cycle
-description: Fixed-scope change via strict red → green → refactor TDD.
+description: Implement a fixed-scope change via strict red, green, refactor TDD. Use when adding a feature, fixing a bug, or refactoring test-first, or when CI reveals missing coverage. Referenced by harvest and ci-green.
 disable-model-invocation: true
 ---
 

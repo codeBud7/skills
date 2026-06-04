@@ -1,6 +1,6 @@
 ---
 name: local-quality-gate
-description: Discover and run repo lint/format/typecheck/build/test until green or blocked.
+description: Discover and run repo lint, format, typecheck, build, and test until green or blocked. Use before opening a PR, after code changes, or when verifying local checks pass. Referenced by harvest and docs-sync.
 disable-model-invocation: true
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: repo-safety
-description: Git/secret/scope safety during impl, test, commit, PR prep.
+description: Enforce git, secret, and scope safety during impl, test, commit, and PR prep. Use when committing, pushing, opening PRs, or any time scope/secrets/git history are at risk. Referenced by harvest and draft-pr.
 disable-model-invocation: true
 ---
 

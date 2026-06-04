@@ -1,6 +1,6 @@
 ---
 name: ci-green
-description: Watch PR CI, triage failures, fix, push until green or blocked.
+description: Watch PR CI, triage failures, fix, and push until checks are green or blocked. Use when getting CI green, when PR checks fail, or after pushing a branch with required checks. Referenced by harvest.
 disable-model-invocation: true
 ---
 
