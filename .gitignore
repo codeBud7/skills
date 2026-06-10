@@ -1,0 +1,26 @@
+# Flat install symlinks (when repo is also the tool home)
+/ci-green
+/cultivate
+/create-agent-docs
+/docs-sync
+/draft-pr
+/harvest
+/local-quality-gate
+/repo-safety
+/seed
+/tdd-cycle
+/1on1
+/hiring-feedback
+/home-os
+/review-prep
+/strategy-brief
+
+# Accidental private data
+**/directs/
+**/outputs/
+**/hiring/rubrics/
+context.md
+sources.md
+*-sensitive.md
+.env
+.DS_Store
