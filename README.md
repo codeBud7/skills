@@ -2,7 +2,7 @@
 
 ## What this is
 
-Personal Cursor/agent skills for shipping code and for engineering-manager workflows. This repo is the canonical copy; each skill is a folder with `SKILL.md` (and sometimes templates). This README is an index only — it does not define behavior.
+Personal agent skills for shipping code and for engineering-manager workflows. This repo is the canonical copy; each skill is a folder with `SKILL.md` (and sometimes templates). This README is an index only — it does not define behavior.
 
 **For behavior and gates, read each skill’s `SKILL.md`.**
 
