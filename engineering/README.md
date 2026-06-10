@@ -1,25 +1,28 @@
-# Engineering Skills
+# Engineering skills
 
-Plan → ship pipeline for fixed-scope work, plus standing agent-docs setup. Skills compose: `harvest` orchestrates the ship chain; others run standalone when you only need one step.
+## What this is
 
-## Quick Start
+Index for the plan → ship pipeline (`seed`, `harvest`) and related one-off skills, plus `create-agent-docs`. Use this README to pick a skill and a prompt shape; it does not replace per-skill procedures.
 
-**New feature or fix (full loop)**
+**For behavior and gates, read each skill’s `SKILL.md`.**
 
-1. `seed` — read-only planning, one plan file on disk, human approval before code.
-2. `harvest` — execute approved plan end-to-end through draft PR and green CI.
+## What you can do here
 
-**One-off step**
+- Run the default loop: plan with `seed`, then execute with `harvest`.
+- Call a single step (`tdd-cycle`, `local-quality-gate`, `ci-green`, …) without `harvest`.
+- Bootstrap `AGENTS.md` + `docs/` with `create-agent-docs`.
 
-Invoke the skill you need (`tdd-cycle`, `local-quality-gate`, `ci-green`, …) without `harvest`.
+## Do this next
 
-**Agent docs on a repo**
+1. New work: `seed` → human approves plan file → `harvest` with that plan.
+2. One step only: name the skill you need.
+3. New repo docs layout: `create-agent-docs` (not part of `harvest`).
 
-`create-agent-docs` — layout `AGENTS.md` + `docs/` (not part of harvest; use when bootstrapping or restructuring docs).
+Install symlinks from repo root: [../README.md](../README.md#install).
 
-## Ship Pipeline
+## Ship pipeline
 
-`harvest` runs sub-skills in order. `repo-safety` is continuous.
+`harvest` runs sub-skills in order. `repo-safety` applies throughout.
 
 ```text
 seed (plan, approve)
@@ -28,87 +31,55 @@ harvest
   repo-safety ─────────────────────────────┐
   tdd-cycle                                │
   local-quality-gate                       │ continuous
-  cultivate (deslop, re-green)             │
+  cultivate                                │
   docs-sync                                │
   draft-pr                                 │
   ci-green                                 ┘
 ```
 
-**Plan-driven build:** Approved plan file = runbook. Harvest reads todos, marks progress in the file, maps each todo through the pipeline (default: todos = slices).
-
-**Modes**
-
-| Mode | When | Behavior |
-|------|------|----------|
-| A (default) | Plan todos = slices | TDD + gates per todo; cultivate + docs + PR + CI once at end |
-| B | "One pass harvest" | Full pipeline once for whole plan |
-
-Triggers: `ship it` | `open draft PR` | `get CI green` | `execute plan` | `@harvest` + plan path.
+Approved plan file = runbook: harvest tracks todos in the file (default: each todo = one slice through TDD + gates; optional “one pass” runs the stack once for the whole plan). Triggers include: `ship it`, `open draft PR`, `get CI green`, `@harvest` + plan path.
 
 ## Skills
 
-| Skill | When to use | Standalone | In harvest |
-|-------|-------------|------------|------------|
-| [`seed`](seed/SKILL.md) | Before implementation; goals, trade-offs, risks | Yes | Before harvest |
-| [`harvest`](harvest/SKILL.md) | Execute approved plan through CI green | Yes | — |
-| [`repo-safety`](repo-safety/SKILL.md) | Commits, push, PR, scope, secrets | Yes | Continuous |
-| [`tdd-cycle`](tdd-cycle/SKILL.md) | Red → green → refactor for a slice | Yes | Step 1 |
-| [`local-quality-gate`](local-quality-gate/SKILL.md) | Lint, format, types, test, build green | Yes | Step 2 |
-| [`cultivate`](cultivate/SKILL.md) | Deslop AI code; same behavior, re-green | Yes | Step 3 |
-| [`docs-sync`](docs-sync/SKILL.md) | Align docs with diff or waive | Yes | Step 4 (hard gate before PR) |
-| [`draft-pr`](draft-pr/SKILL.md) | Scoped commits, push, draft PR | Yes | Step 5 |
-| [`ci-green`](ci-green/SKILL.md) | Triage and fix PR checks until green | Yes | Step 6 |
-| [`create-agent-docs`](create-agent-docs/SKILL.md) | Bootstrap `AGENTS.md` + `docs/` layout | Yes | No |
+- [`seed`](seed/SKILL.md) — Plan before code; goals, risks, todos.
+- [`harvest`](harvest/SKILL.md) — Execute approved plan through draft PR and green CI.
+- [`repo-safety`](repo-safety/SKILL.md) — Commits, push, PR scope, secrets hygiene.
+- [`tdd-cycle`](tdd-cycle/SKILL.md) — Red → green → refactor per slice.
+- [`local-quality-gate`](local-quality-gate/SKILL.md) — Lint, format, types, tests, build.
+- [`cultivate`](cultivate/SKILL.md) — Deslop / tighten AI-generated code; re-green.
+- [`docs-sync`](docs-sync/SKILL.md) — Docs match change (or waived); gate before PR.
+- [`draft-pr`](draft-pr/SKILL.md) — Scoped commits, push, draft PR.
+- [`ci-green`](ci-green/SKILL.md) — Fix PR checks until green.
+- [`create-agent-docs`](create-agent-docs/SKILL.md) — `AGENTS.md` + `docs/` scaffold.
 
-`seed`, `harvest`, and `create-agent-docs` use `disable-model-invocation` — mention them explicitly.
+`seed`, `harvest`, and `create-agent-docs` require explicit mention in the prompt.
 
-## Typical Prompts
+## Typical prompts
 
-**Planning**
-
-- "Seed a plan for adding rate limiting to the API"
-- "/seed — refactor auth middleware, TDD"
-
-**Shipping**
-
-- "Harvest the approved plan at `.cursor/plans/foo.md`"
-- "Ship it" / "Open draft PR" / "Get CI green"
-- "One pass harvest for this plan"
-
-**Single steps**
-
-- "Run local quality gate"
-- "Deslop this branch" / `cultivate`
-- "Sync docs with this diff"
-- "Fix CI on this PR"
-
-**Agent docs**
-
-- "Set up agent docs for this repo"
-- `@create-agent-docs`
+- **Plan:** “Seed a plan for …” / `/seed` + scope.
+- **Ship:** “Harvest the plan at `.cursor/plans/…`” / “Ship it” / “Get CI green” / “One pass harvest for this plan”.
+- **Single step:** “Run local quality gate” / “Deslop this branch” / “Sync docs with this diff” / “Fix CI on this PR”.
+- **Agent docs:** “Set up agent docs for this repo” / `@create-agent-docs`.
 
 ## Subagents
 
-Read-only discovery (repo layout, CI config, test patterns) or independent parallel stages → delegate subagent(s). Main thread: scope decisions, file edits, gate verification.
+Use subagents for read-only discovery (layout, CI, tests) or parallel work. Main thread: scope, edits, verifying gates.
 
-## Gates and Stop Rules
+## Gates (summary)
 
-Harvest **done** when: impl complete, tests-first where feasible, local green, cultivate applied, docs synced or waived, draft PR open, CI green, scoped diff.
+- **Done when:** Implementation complete, tests-first where it fits, local green, cultivate applied, docs synced or waived, draft PR open, CI green, scoped diff.
+- **Stops without approval for:** Force-push, skipping required checks, papering over env/flaky failures.
+- **`docs-sync`** must pass (or explicit waiver) before **`draft-pr`**. Details: [`harvest/SKILL.md`](harvest/SKILL.md).
 
-Harvest **stops** without approval for: force-push, bypassing required checks, hiding flaky/env failures.
+## Templates and references
 
-`docs-sync` must pass (or explicit waiver) before `draft-pr`. `cultivate` must not break behavior or checks.
+- [`create-agent-docs/templates/`](create-agent-docs/templates/) — blank `AGENTS.md`, `architecture.md`, `runbook.md`, `decisions.md`.
+- [`seed/reference.md`](seed/reference.md) — plan shape, todos, cost line.
 
-## Templates
-
-[`create-agent-docs/templates/`](create-agent-docs/templates/) — blank `AGENTS.md`, `architecture.md`, `runbook.md`, `decisions.md`.
-
-[`seed/reference.md`](seed/reference.md) — plan file shape, todos, cost rule.
-
-## Dependency Order
+## Dependency order
 
 ```text
 seed → harvest → (repo-safety + tdd-cycle + local-quality-gate + cultivate + docs-sync + draft-pr + ci-green)
 
-create-agent-docs — independent; use when standing doc structure is the goal
+create-agent-docs — standalone when doc structure is the goal
 ```
