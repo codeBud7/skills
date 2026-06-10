@@ -1,6 +1,6 @@
 ---
 name: home-os
-description: Set up or update a private management Home OS with EM context, source links, direct profiles, and optional sensitive notes. Use when the user wants to create manager/team context, add or update a direct profile, configure management source links, or prepare shared context for 1:1, review prep, hiring feedback, or strategy skills.
+description: Set up or update a private management Home OS with EM context, source links, and direct profiles. Use when the user wants to create manager/team context, add or update a direct profile, configure management source links, or prepare shared context for 1:1, review prep, hiring feedback, or strategy skills.
 ---
 
 # Home OS
@@ -31,7 +31,6 @@ Private layout:
 context.md
 sources.md
 directs/<slug>.md
-directs/private/<slug>-sensitive.md
 hiring/rubrics/<role-slug>.md
 outputs/YYYY-MM-DD-workflow-slug.md
 ```
@@ -52,9 +51,13 @@ Create or update:
 
 `sources.md`: shared MCP/source pointers for meeting notes, Linear, GitHub, hiring rubric paths, and strategy context. Rubric setup for open positions is owned by `hiring-feedback`, not `home-os`.
 
-`directs/<slug>.md`: one normal profile per direct.
+`directs/<slug>.md`: one profile per direct. Optional sensitive manager detail belongs in a clearly marked section of the same file, only after explicit consent.
 
-`directs/private/<slug>-sensitive.md`: optional sensitive manager notes, only after explicit consent.
+## Time-ordered lists
+
+Whenever a section holds multiple **time-stamped** or **time-sequenced** items (feedback log, dated 1:1 notes, project status history, career milestones the user gives as a timeline), order them **chronologically: earliest first** at the top, **latest last** at the bottom. New material from intake **appends** at the bottom. When merging new notes into an existing file, **re-sort** that section so the rule still holds.
+
+Sections that are not a timeline (single snapshot, priority order, identity fields) stay as-is.
 
 ## Required Direct Identity
 
@@ -64,11 +67,9 @@ Capture display name, slug, title, level, tenure, work email, GitHub username, L
 
 Source links are optional during setup. If a later artifact requires a missing source, that skill should pause and ask for it.
 
-## Sensitive Notes
+## Sensitive detail in profiles
 
-Sensitive notes are private and separate. Do not collect them unless the user explicitly asks or agrees.
-
-Sensitive notes must not be committed to git. If a generated artifact uses sensitive notes, display it only by default. Save only on explicit request.
+Do not collect sensitive manager notes unless the user explicitly asks or agrees. If a generated artifact uses that material, display it only by default. Save only on explicit request.
 
 ## Output Style
 

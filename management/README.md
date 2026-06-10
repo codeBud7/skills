@@ -21,7 +21,6 @@ Default root: `~/.agents/management/home-os`
   context.md
   sources.md
   directs/<slug>.md
-  directs/private/<slug>-sensitive.md
   hiring/rubrics/<role-slug>.md
   outputs/YYYY-MM-DD-workflow-slug.md
 ```
@@ -31,8 +30,7 @@ Default root: `~/.agents/management/home-os`
 | ------------------------------------- | -------------------------------------------------------------- |
 | `context.md`                          | Manager, team, org, priorities, norms, review cycle            |
 | `sources.md`                          | Shared MCP/source pointers (Notion, Linear, GitHub, HR rubric) |
-| `directs/<slug>.md`                   | Normal direct profile                                          |
-| `directs/private/<slug>-sensitive.md` | Sensitive manager notes (never in git)                         |
+| `directs/<slug>.md`                   | Direct profile (optional sensitive section, consent-gated)      |
 | `hiring/rubrics/<role-slug>.md`       | Filled interview rubric per open position                      |
 | `outputs/`                            | Saved briefs                                                   |
 
@@ -103,7 +101,6 @@ Blank templates live in skill folders. `home-os` copies context and direct templ
 | ---------------- | -------------------------------------------------------------------------------------------- |
 | EM context       | `[home-os/context.template.md](home-os/context.template.md)`                                 |
 | Direct profile   | `[home-os/direct.template.md](home-os/direct.template.md)`                                   |
-| Sensitive notes  | `[home-os/sensitive-direct.template.md](home-os/sensitive-direct.template.md)`               |
 | Source map       | `[home-os/sources.template.md](home-os/sources.template.md)`                                 |
 | 1:1 brief        | `[1on1/brief.template.md](1on1/brief.template.md)`                                           |
 | HR feedback      | `[hiring-feedback/hr-feedback.template.md](hiring-feedback/hr-feedback.template.md)`         |

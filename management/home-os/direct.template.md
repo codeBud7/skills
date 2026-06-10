@@ -51,4 +51,4 @@ Recurring themes:
 
 ## Feedback History
 
-[Date, topic, source if available.]
+Oldest entry first, newest last. Each line: date, topic, source if available.

@@ -49,7 +49,7 @@ If context is useful but incomplete, continue and add a short missing-context pa
 
 Do not read sensitive notes by default.
 
-Read `directs/private/<slug>-sensitive.md` only when the user explicitly asks for difficult or sensitive 1:1 prep.
+Read sensitive-marked sections in `directs/<slug>.md` only when the user explicitly asks for difficult or sensitive 1:1 prep.
 
 If sensitive notes are used, display the brief only by default. Save only on explicit request.
 

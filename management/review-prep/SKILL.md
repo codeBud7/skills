@@ -43,7 +43,7 @@ Prefer MCP. If no GitHub MCP is available, use explicit GitHub links or read-onl
 
 ## Sensitive Notes
 
-Ask before reading `directs/private/<slug>-sensitive.md`.
+Ask before reading sensitive-marked sections in `directs/<slug>.md`.
 
 If sensitive notes are used, display output only by default. Save only on explicit request.
 
