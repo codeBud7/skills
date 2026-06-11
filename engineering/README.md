@@ -1,6 +1,6 @@
 # 🛠️ Engineering skills
 
-Mid-sprint the PM widens the ticket. You (or the agent) generate a big diff fast — then lint noise, vague tests, and `AGENTS.md` drift show up right as CI goes red on the draft PR. This pipeline exists so you are not improvising “tighten, document, open PR, fix checks” from scratch every time: **approve a plan once**, then **walk the same path to green**.
+Mid-sprint the PM widens the ticket. You (or the agent) generate a big diff fast. Then lint noise, vague tests, and `AGENTS.md` drift show up right as CI goes red on the draft PR. This pipeline exists so you are not improvising “tighten, document, open PR, fix checks” from scratch every time: **approve a plan once**, then **walk the same path to green**.
 
 **For behavior and gates, read each skill’s `SKILL.md`.**
 
@@ -43,16 +43,16 @@ Approved plan file = runbook: harvest tracks todos in the file (default: each to
 
 ## 🧰 Skills (what changes on the job)
 
-- [`seed`](seed/SKILL.md) — **Before fingers hit keyboard:** goals, risks, todos; the approval gate catches bad assumptions early.
-- [`harvest`](harvest/SKILL.md) — **End-to-end ship:** from approved plan through draft PR and green CI without you micromanaging every sub-step.
-- [`repo-safety`](repo-safety/SKILL.md) — **Trust:** sensible commits, PR scope, no secrets in the diff narrative.
-- [`tdd-cycle`](tdd-cycle/SKILL.md) — **Proof:** red → green → refactor per slice so “it works” is not just a vibe.
-- [`local-quality-gate`](local-quality-gate/SKILL.md) — **Team bar:** lint, format, types, tests, build — catch what CI would have yelled about, earlier.
-- [`cultivate`](cultivate/SKILL.md) — **Reviewer respect:** trim AI slop; reviewers see intentional code, not noise.
-- [`docs-sync`](docs-sync/SKILL.md) — **Onboarding wins:** docs match the change (or you explicitly waive); fewer “where is this documented?” threads.
-- [`draft-pr`](draft-pr/SKILL.md) — **Visibility:** scoped commits, push, draft PR — stakeholders see progress without a messy branch story.
-- [`ci-green`](ci-green/SKILL.md) — **Unblock:** iterate checks until green instead of hand-waving flakes.
-- [`create-agent-docs`](create-agent-docs/SKILL.md) — **New repo smell:** scaffold `AGENTS.md` + `docs/` so the *next* agent session starts smarter.
+- [`seed`](seed/SKILL.md): **Before fingers hit keyboard:** goals, risks, todos; the approval gate catches bad assumptions early.
+- [`harvest`](harvest/SKILL.md): **End-to-end ship:** from approved plan through draft PR and green CI without you micromanaging every sub-step.
+- [`repo-safety`](repo-safety/SKILL.md): **Trust:** sensible commits, PR scope, no secrets in the diff narrative.
+- [`tdd-cycle`](tdd-cycle/SKILL.md): **Proof:** red → green → refactor per slice so “it works” is not just a vibe.
+- [`local-quality-gate`](local-quality-gate/SKILL.md): **Team bar:** lint, format, types, tests, and build. Catch what CI would have yelled about, earlier.
+- [`cultivate`](cultivate/SKILL.md): **Reviewer respect:** trim AI slop; reviewers see intentional code, not noise.
+- [`docs-sync`](docs-sync/SKILL.md): **Onboarding wins:** docs match the change (or you explicitly waive); fewer “where is this documented?” threads.
+- [`draft-pr`](draft-pr/SKILL.md): **Visibility:** scoped commits, push, draft PR. Stakeholders see progress without a messy branch story.
+- [`ci-green`](ci-green/SKILL.md): **Unblock:** iterate checks until green instead of hand-waving flakes.
+- [`create-agent-docs`](create-agent-docs/SKILL.md): **New repo smell:** scaffold `AGENTS.md` + `docs/` so the *next* agent session starts smarter.
 
 `seed`, `harvest`, and `create-agent-docs` require explicit mention in the prompt.
 
@@ -75,13 +75,13 @@ Use subagents for read-only discovery (layout, CI, tests) or parallel work. Main
 
 ## 📄 Templates and references
 
-- [`create-agent-docs/templates/`](create-agent-docs/templates/) — blank `AGENTS.md`, `architecture.md`, `runbook.md`, `decisions.md`.
-- [`seed/reference.md`](seed/reference.md) — plan shape, todos, cost line.
+- [`create-agent-docs/templates/`](create-agent-docs/templates/): blank `AGENTS.md`, `architecture.md`, `runbook.md`, `decisions.md`.
+- [`seed/reference.md`](seed/reference.md): plan shape, todos, cost line.
 
 ## 🔗 Dependency order
 
 ```text
 seed → harvest → (repo-safety + tdd-cycle + local-quality-gate + cultivate + docs-sync + draft-pr + ci-green)
 
-create-agent-docs — standalone when doc structure is the goal
+create-agent-docs: standalone when doc structure is the goal
 ```

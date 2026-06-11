@@ -10,13 +10,13 @@ One afternoon the ticket is fuzzy but the deadline is not. Another morning you n
 
 ## 🛤️ Pick your lane
 
-**IC or tech lead — shipping**
+**IC or tech lead: shipping**
 
 You are staring at an ambiguous scope change mid-sprint. Instead of coding straight into a wall, you **name `seed`**, get a plan file approved, then **`harvest`** so TDD, local gates, doc sync, draft PR, and CI green happen in order. Impact: fewer “wait, wrong direction” rewrites and a PR reviewers can actually reason about.
 
-**Manager or EM — people and planning**
+**Manager or EM: people and planning**
 
-Your notes live in five tools and your calendar says the 1:1 is tomorrow. You run **`home-os`** once, fill **`context.md`** and a **`directs/<slug>.md`**, link sources when you can — then **`1on1`** or **`review-prep`** can turn that into a short brief with tagged evidence instead of a Sunday-night re-read of everything. Impact: calmer prep, clearer follow-ups, feedback that cites reality.
+Your notes live in five tools and your calendar says the 1:1 is tomorrow. You run **`home-os`** once, fill **`context.md`** and a **`directs/<slug>.md`**, and link sources when you can. Then **`1on1`** or **`review-prep`** can turn that into a short brief with tagged evidence instead of a Sunday-night re-read of everything. Impact: calmer prep, clearer follow-ups, feedback that cites reality.
 
 ## 📌 What you can do here
 
@@ -68,7 +68,7 @@ If this repo is checked out at `~/.cursor/skills`, the `cursor` preset adds top-
 
 ## 🔒 Privacy
 
-Do not commit real people data, secrets, filled Home OS files, or generated briefs. Private EM data stays outside git — see [management/README.md](management/README.md).
+Do not commit real people data, secrets, filled Home OS files, or generated briefs. Private EM data stays outside git. See [management/README.md](management/README.md).
 
 ## ℹ️ More detail
 

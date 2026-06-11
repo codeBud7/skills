@@ -1,6 +1,6 @@
 # 👥 Management skills
 
-You context-switch all day — calendar blocks, Slack threads, “quick” escalations — and review season still shows up like a train. These skills do not replace judgment; they **reduce load** by turning scattered signal into short, sourced briefs once your private Home OS exists. **`1on1`** and **`review-prep`** default to **Radical Candor** (care personally + challenge directly) **with evidence** — see those `SKILL.md` files. **`strategy-brief`** and **`hiring-feedback`** follow their own rules (evidence-first roadmap; neutral HR-shaped output). This git repo holds **skills and blank templates only**. Filled profiles, source URLs, briefs, and HR text stay in private storage — never committed here.
+You context-switch all day (calendar blocks, Slack threads, “quick” escalations), and review season still shows up like a train. These skills do not replace judgment; they **reduce load** by turning scattered signal into short, sourced briefs once your private Home OS exists. **`1on1`** and **`review-prep`** default to **Radical Candor** (care personally + challenge directly) **with evidence**. Read those `SKILL.md` files for tone and gates. **`strategy-brief`** and **`hiring-feedback`** follow their own rules (evidence-first roadmap; neutral HR-shaped output). This git repo holds **skills and blank templates only**. Filled profiles, source URLs, briefs, and HR text stay in private storage and never belong in git.
 
 **For behavior and gates, read each skill’s `SKILL.md`.**
 
@@ -12,7 +12,7 @@ You context-switch all day — calendar blocks, Slack threads, “quick” escal
 
 ## 🚀 Do this next
 
-1. Run **`home-os`** once — default private root `~/.agents/management/home-os` (or it asks for a path).
+1. Run **`home-os`** once. Default private root is `~/.agents/management/home-os` (or it asks for a path).
 2. Fill **`context.md`**, add at least one **`directs/<slug>.md`**, optional **`sources.md`** / per-direct links.
 3. Use **`1on1`**, **`review-prep`**, **`hiring-feedback`**, or **`strategy-brief`** as needed.
 
@@ -20,22 +20,22 @@ Install symlinks: [../scripts/setup-skills.sh](../scripts/setup-skills.sh) into 
 
 ## 🧰 Skills (moment → outcome)
 
-- **[`home-os`](home-os/SKILL.md)** — **Moment:** a new direct joins or your team map changes. **Outcome:** one place for profile + pointers (meeting notes, Linear, GitHub, Slack) so downstream skills stop re-asking basics. No MCP inside the skill itself; linked sources let other skills pull context when MCP is configured.
+- **[`home-os`](home-os/SKILL.md)**: **Moment:** a new direct joins or your team map changes. **Outcome:** one place for profile + pointers (meeting notes, Linear, GitHub, Slack) so downstream skills stop re-asking basics. No MCP inside the skill itself; linked sources let other skills pull context when MCP is configured.
 
-- **[`1on1`](1on1/SKILL.md)** — **Moment:** the 1:1 is in twenty minutes and your brain is still in the last incident. **Outcome:** a tight brief — wins, blockers, follow-ups — grounded in `sources.md` / the direct profile when meeting notes, Linear, GitHub, or **Slack** are linked.
+- **[`1on1`](1on1/SKILL.md)**: **Moment:** the 1:1 is in twenty minutes and your brain is still in the last incident. **Outcome:** a tight brief (wins, blockers, follow-ups) grounded in `sources.md` / the direct profile when meeting notes, Linear, GitHub, or **Slack** are linked.
 
-- **[`review-prep`](review-prep/SKILL.md)** — **Moment:** you need to write growth feedback and not rely on “how I felt last week.” **Outcome:** evidence-style bullets with less recency bias when you add last review / growth docs plus the same sources as 1:1.
+- **[`review-prep`](review-prep/SKILL.md)**: **Moment:** you need to write growth feedback and not rely on “how I felt last week.” **Outcome:** evidence-style bullets with less recency bias when you add last review / growth docs plus the same sources as 1:1.
 
-- **[`hiring-feedback`](hiring-feedback/SKILL.md)** — **Moment:** the debrief ended and HR needs text tonight. **Outcome:** paste-ready HR-shaped feedback from panel notes aligned to the rubric for that role (private root + rubric per role; pasted notes unless **Source Rules** say otherwise).
+- **[`hiring-feedback`](hiring-feedback/SKILL.md)**: **Moment:** the debrief ended and HR needs text tonight. **Outcome:** paste-ready HR-shaped feedback from panel notes aligned to the rubric for that role (private root + rubric per role; pasted notes unless **Source Rules** say otherwise).
 
-- **[`strategy-brief`](strategy-brief/SKILL.md)** — **Moment:** leadership asks for “two pages on roadmap and bets.” **Outcome:** a bounded memo anchored in `context.md` priorities, Linear when linked, and pasted product/org context — no Slack MCP in this skill.
+- **[`strategy-brief`](strategy-brief/SKILL.md)**: **Moment:** leadership asks for “two pages on roadmap and bets.” **Outcome:** a bounded memo anchored in `context.md` priorities, Linear when linked, and pasted product/org context. No Slack MCP in this skill.
 
 Ambiguous person or source → agent should ask. Time windows, MCP use, and output headings: see each skill’s **`SKILL.md`**.
 
 ## 💬 Typical prompts
 
 - **Setup:** “Set up my management Home OS” / “Add a direct profile for …” / “Update source links for my team”.
-- **1:1:** “Prep my 1:1 with `<slug>`” — add “include sensitive context” only if you want sensitive notes read.
+- **1:1:** “Prep my 1:1 with `<slug>`”. Add “include sensitive context” only if you want sensitive notes read.
 - **Hiring:** “Turn these interview notes into HR feedback” (position clarified first) / “Set up hiring rubric for [role]” + paste JD.
 - **Review:** “Prep performance review for `<slug>`”.
 - **Strategy:** “Strategy brief: …” / “Roadmap brief for …”.
@@ -45,7 +45,7 @@ Ambiguous person or source → agent should ask. Time windows, MCP use, and outp
 - Private root path in `sources.md` if not default.
 - `context.md`: team, priorities, review cycle.
 - At least one `directs/<slug>.md`: role, goals, projects.
-- Optional: meeting / Linear / **GitHub / Slack** links in `sources.md` and on the direct — improves **`1on1`** / **`review-prep`** grounding. Slack needs MCP configured in the host; never put tokens in git.
+- Optional: meeting / Linear / **GitHub / Slack** links in `sources.md` and on the direct. That improves **`1on1`** / **`review-prep`** grounding. Slack needs MCP configured in the host; never put tokens in git.
 - Hiring: one filled rubric under `hiring/rubrics/` per open role (often created via `hiring-feedback`).
 
 If something required for the artifact is missing, the skill pauses and asks.
