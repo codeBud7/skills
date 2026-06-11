@@ -27,6 +27,14 @@ PR search pattern:
 Review/comment search pattern:
 Fallback command notes:
 
+## Slack
+
+Workspace name (human-readable):
+MCP server label in Cursor (if known, e.g. plugin-slack-slack):
+Team or project channels (names or IDs, read scope only):
+Default search hints (keywords, initiative names — optional):
+Policy: DMs off by default unless listed; no tokens or secrets here — auth lives in MCP host config.
+
 ## Hiring
 
 Active role slug:

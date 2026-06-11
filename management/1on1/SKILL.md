@@ -1,6 +1,6 @@
 ---
 name: 1on1
-description: Prepare a short manager-readable 1:1 brief from private Home OS context, meeting notes, Linear work, and GitHub activity. Use before one-on-ones, when the user asks to prep for a direct report, or when the user wants follow-ups, wins, career prompts, or feedback check-in questions for a 1:1.
+description: Prepare a short manager-readable 1:1 brief from private Home OS context, meeting notes, Linear work, GitHub activity, and Slack when linked. Use before one-on-ones, when the user asks to prep for a direct report, or when the user wants follow-ups, wins, career prompts, or feedback check-in questions for a 1:1.
 ---
 
 # 1on1
@@ -15,7 +15,7 @@ Private Home OS root.
 
 Direct profile at `directs/<slug>.md`.
 
-Optional source links for meeting notes, Linear, and GitHub.
+Optional source links for meeting notes, Linear, GitHub, and Slack (see `sources.md` and per-direct **Source Links**).
 
 ## Default Window
 
@@ -33,7 +33,9 @@ Fetch Linear project/team links plus assigned or owned issues when a Linear user
 
 Fetch GitHub authored PRs, reviews, and comments within linked repos and the time window.
 
-Prefer MCP. If no GitHub MCP is available, use explicit GitHub links or read-only `gh` commands as fallback.
+When `sources.md` or the direct profile lists **Slack scope** (channels, thread URLs, optional member id for attribution), pull Slack **within the same time window** as this brief. Prefer **channel or thread reads** over workspace-wide search. Use Slack MCP when configured; if Slack MCP is unavailable and the user did not paste an export, skip Slack and note the gap in `Missing context` or ask for a thread link. Do **not** expand Slack scope beyond configured links without an explicit user ask.
+
+Prefer MCP for each linked system. If no GitHub MCP is available, use explicit GitHub links or read-only `gh` commands as fallback.
 
 ## Missing Context
 
@@ -54,6 +56,13 @@ Read sensitive-marked sections in `directs/<slug>.md` only when the user explici
 If sensitive notes are used, display the brief only by default. Save only on explicit request.
 
 ## Output
+
+### Radical Candor (default stance)
+
+- **Care personally**: Tie warmth to specifics — praise and curiosity grounded in observable facts, not generic cheer.
+- **Challenge directly**: When evidence shows a pattern or gap, say it plainly with source tags; do not sandbag or bury the lead.
+- **Evidence binding**: Radical Candor is not bluntness without facts. Weak evidence → direct questions and labeled gaps, not performance claims or diagnoses.
+- **Avoid**: Ruinous empathy (kind but vague), obnoxious aggression (harsh without care), manipulative insincerity (spin or politics).
 
 Use short paragraphs under these headings:
 
@@ -79,7 +88,9 @@ Always include a specific feedback check-in question. If evidence is thin, groun
 
 Always include a specific appreciation question. If recent evidence is thin, ground it in profile strengths or goals instead of making an unverified claim.
 
-Use lightweight source tags like `[meeting]`, `[Linear]`, and `[GitHub]`. Keep links in `Sources checked`.
+In `Feedback to consider`, pair **specific appreciation** (when recent evidence supports it) with **specific challenge or growth nudge** when observable evidence supports it; if evidence is thin, use grounded questions only — never invent a critique to sound “candid.”
+
+Use lightweight source tags like `[meeting]`, `[Linear]`, `[GitHub]`, and `[Slack]` when Slack was checked. Keep links in `Sources checked`.
 
 ## Saving
 

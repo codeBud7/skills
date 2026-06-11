@@ -53,6 +53,8 @@ Use short paragraphs under these headings:
 
 Keep to one recommendation and three to five roadmap bets.
 
+In prose, use lightweight tags like `[Linear]` where a fact came from Linear. List concrete URLs or doc links under `Sources checked`.
+
 ## Rules
 
 Do not pretend uncertainty is alignment.

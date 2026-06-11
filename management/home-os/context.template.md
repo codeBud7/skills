@@ -32,7 +32,7 @@ Recent wins:
 ## My Management Style
 
 How I like to run 1:1s:
-Feedback style:
+Feedback style: (e.g. Radical Candor yes/no as default for agent briefs; boundaries — public praise vs private challenge, topics to handle delicately)
 Decision-making approach:
 What I am actively working on as a manager:
 

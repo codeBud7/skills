@@ -21,6 +21,7 @@
 **/hiring/rubrics/
 context.md
 sources.md
+feedback.md
 *-sensitive.md
 .env
 .DS_Store

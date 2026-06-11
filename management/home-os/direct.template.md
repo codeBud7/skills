@@ -42,6 +42,8 @@ Meeting notes:
 Career/growth docs:
 Linear projects:
 GitHub repos or searches:
+Slack member id (optional):
+Slack channels or thread URLs relevant to this direct (optional; DMs: off unless explicitly listed):
 
 ## 1:1 Notes
 

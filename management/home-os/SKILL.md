@@ -1,6 +1,6 @@
 ---
 name: home-os
-description: Set up or update a private management Home OS with EM context, source links, and direct profiles. Use when the user wants to create manager/team context, add or update a direct profile, configure management source links, or prepare shared context for 1:1, review prep, hiring feedback, or strategy skills.
+description: Set up or update a private management Home OS with EM context, source links (meeting notes, Linear, GitHub, Slack pointers), and direct profiles. Use when the user wants to create manager/team context, add or update a direct profile, configure management source links, or prepare shared context for 1:1, review prep, hiring feedback, or strategy skills.
 ---
 
 # Home OS
@@ -49,7 +49,7 @@ Create or update:
 
 `context.md`: manager, team, org, priorities, norms, review cycle, management style.
 
-`sources.md`: shared MCP/source pointers for meeting notes, Linear, GitHub, hiring rubric paths, and strategy context. Rubric setup for open positions is owned by `hiring-feedback`, not `home-os`.
+`sources.md`: shared MCP/source pointers for meeting notes, Linear, GitHub, Slack (channels, threads, MCP server label — no tokens in git), hiring rubric paths, and strategy context. Rubric setup for open positions is owned by `hiring-feedback`, not `home-os`.
 
 `directs/<slug>.md`: one profile per direct. Optional sensitive manager detail belongs in a clearly marked section of the same file, only after explicit consent.
 
@@ -63,7 +63,7 @@ Sections that are not a timeline (single snapshot, priority order, identity fiel
 
 Each direct needs a stable slug and explicit handles when available.
 
-Capture display name, slug, title, level, tenure, work email, GitHub username, Linear profile, meeting notes links, Linear links, GitHub repos/searches, current projects, goals, working style, feedback preference, strengths, and growth areas.
+Capture display name, slug, title, level, tenure, work email, GitHub username, Linear profile, meeting notes links, Linear links, GitHub repos/searches, optional Slack scope (member id, channels, thread URLs per template), current projects, goals, working style, feedback preference, strengths, and growth areas.
 
 Source links are optional during setup. If a later artifact requires a missing source, that skill should pause and ask for it.
 
@@ -80,6 +80,10 @@ Avoid tables.
 Avoid nested bullets.
 
 Prefer facts over interpretation. If evidence is thin, leave a blank, mark TODO, or write a question.
+
+### Feedback norms
+
+In `context.md` under **My Management Style** → **Feedback style**, capture whether **Radical Candor** (care personally + challenge directly) is the default for briefs downstream skills generate, plus any boundaries (e.g. praise in public vs challenge in private). Downstream skills treat RC as default when unset; explicit user preferences in `context.md` win.
 
 ## Done
 

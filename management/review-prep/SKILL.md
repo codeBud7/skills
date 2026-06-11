@@ -1,6 +1,6 @@
 ---
 name: review-prep
-description: Prepare performance review evidence briefs from private Home OS context, last review, growth docs, meeting notes, Linear work, and GitHub activity. Use when starting performance review prep, gathering review evidence, or creating a review outline for a direct report.
+description: Prepare performance review evidence briefs from private Home OS context, last review, growth docs, meeting notes, Linear work, GitHub activity, and Slack when linked. Use when starting performance review prep, gathering review evidence, or creating a review outline for a direct report.
 ---
 
 # Review Prep
@@ -17,7 +17,7 @@ Direct profile at `directs/<slug>.md`.
 
 Review cycle dates from `context.md`, or manual dates.
 
-Optional links to last review, career expectations, growth docs, meeting notes, Linear, and GitHub.
+Optional links to last review, career expectations, growth docs, meeting notes, Linear, GitHub, and Slack (see `sources.md` and per-direct **Source Links**).
 
 ## Default Window
 
@@ -39,7 +39,9 @@ Fetch Linear projects, initiatives, assigned or owned issues, and status signals
 
 Fetch GitHub authored PRs, reviews, and comments within linked repos and the review window.
 
-Prefer MCP. If no GitHub MCP is available, use explicit GitHub links or read-only `gh` commands as fallback.
+When `sources.md` or the direct profile lists **Slack scope**, pull Slack **inside the review window**. Prefer **channel or thread reads** over workspace-wide search. Use Slack MCP when configured; if Slack MCP is unavailable and the user did not paste an export, skip Slack and note the gap in `Missing context` or ask for a thread link. Do **not** expand Slack scope beyond configured links without an explicit user ask.
+
+Prefer MCP for each linked system. If no GitHub MCP is available, use explicit GitHub links or read-only `gh` commands as fallback.
 
 ## Sensitive Notes
 
@@ -73,11 +75,20 @@ Only include `Optional outline` when evidence is sufficient.
 
 ## Rules
 
+### Radical Candor (default stance)
+
+- **Care personally**: Acknowledge impact and context; keep praise specific and evidence-backed.
+- **Challenge directly**: Name gaps or risks the evidence supports; do not soften mixed evidence into false harmony.
+- **Evidence binding**: Candor without citations is opinion — state gaps and questions instead of evaluative claims when evidence is thin.
+- **Avoid**: Ruinous empathy (vague positivity), obnoxious aggression (harsh labels), manipulative insincerity (strategic ambiguity).
+
 Do not write final evaluative claims without cited evidence.
 
 If evidence is mixed or thin, state the gap.
 
-Use lightweight source tags like `[meeting]`, `[Linear]`, and `[GitHub]`.
+`Open questions` may include what to **challenge directly** next cycle when the evidence supports a clear growth or alignment gap; otherwise keep questions exploratory, not accusatory.
+
+Use lightweight source tags like `[meeting]`, `[Linear]`, `[GitHub]`, and `[Slack]` when Slack was checked.
 
 Keep links in `Sources checked`.
 
