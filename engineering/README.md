@@ -52,7 +52,7 @@ Approved plan file = runbook: harvest tracks todos in the file (default: each to
 - [`docs-sync`](docs-sync/SKILL.md): **Onboarding wins:** docs match the change (or you explicitly waive); fewer “where is this documented?” threads.
 - [`draft-pr`](draft-pr/SKILL.md): **Visibility:** scoped commits, push, draft PR. Stakeholders see progress without a messy branch story.
 - [`ci-green`](ci-green/SKILL.md): **Unblock:** iterate checks until green instead of hand-waving flakes.
-- [`create-agent-docs`](create-agent-docs/SKILL.md): **New repo smell:** scaffold `AGENTS.md` + `docs/` so the *next* agent session starts smarter.
+- [`create-agent-docs`](create-agent-docs/SKILL.md): **New repo smell:** scaffold `AGENTS.md` + `docs/` so the _next_ agent session starts smarter.
 
 `seed`, `harvest`, and `create-agent-docs` require explicit mention in the prompt.
 

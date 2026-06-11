@@ -22,15 +22,13 @@ Install symlinks: [../scripts/setup-skills.sh](../scripts/setup-skills.sh) into 
 
 - **[`home-os`](home-os/SKILL.md)**: **Moment:** a new direct joins or your team map changes. **Outcome:** one place for profile + pointers (meeting notes, Linear, GitHub, Slack) so downstream skills stop re-asking basics. No MCP inside the skill itself; linked sources let other skills pull context when MCP is configured.
 
-- **[`1on1`](1on1/SKILL.md)**: **Moment:** the 1:1 is in twenty minutes and your brain is still in the last incident. **Outcome:** a tight brief (wins, blockers, follow-ups) grounded in `sources.md` / the direct profile when meeting notes, Linear, GitHub, or **Slack** are linked.
+- **[`1on1`](1on1/SKILL.md)**: **Moment:** the 1:1 is in twenty minutes and your brain is still in the last incident. **Outcome:** a tight brief (wins, blockers, follow-ups) grounded in `sources.md` / the direct profile when meeting notes, Linear, GitHub, or Slack are linked.
 
 - **[`review-prep`](review-prep/SKILL.md)**: **Moment:** you need to write growth feedback and not rely on “how I felt last week.” **Outcome:** evidence-style bullets with less recency bias when you add last review / growth docs plus the same sources as 1:1.
 
 - **[`hiring-feedback`](hiring-feedback/SKILL.md)**: **Moment:** the debrief ended and HR needs text tonight. **Outcome:** paste-ready HR-shaped feedback from panel notes aligned to the rubric for that role (private root + rubric per role; pasted notes unless **Source Rules** say otherwise).
 
-- **[`strategy-brief`](strategy-brief/SKILL.md)**: **Moment:** leadership asks for “two pages on roadmap and bets.” **Outcome:** a bounded memo anchored in `context.md` priorities, Linear when linked, and pasted product/org context. No Slack MCP in this skill.
-
-Ambiguous person or source → agent should ask. Time windows, MCP use, and output headings: see each skill’s **`SKILL.md`**.
+- **[`strategy-brief`](strategy-brief/SKILL.md)**: **Moment:** leadership asks for “two pages on roadmap and bets.” **Outcome:** a bounded memo anchored in `context.md` priorities, Linear when linked, and pasted product/org context.
 
 ## 💬 Typical prompts
 
@@ -45,7 +43,7 @@ Ambiguous person or source → agent should ask. Time windows, MCP use, and outp
 - Private root path in `sources.md` if not default.
 - `context.md`: team, priorities, review cycle.
 - At least one `directs/<slug>.md`: role, goals, projects.
-- Optional: meeting / Linear / **GitHub / Slack** links in `sources.md` and on the direct. That improves **`1on1`** / **`review-prep`** grounding. Slack needs MCP configured in the host; never put tokens in git.
+- Optional: meeting / Linear / GitHub / Slack links in `sources.md` and on the direct. That improves `1on1` / `review-prep` grounding. Slack needs MCP configured in the host; never put tokens in git.
 - Hiring: one filled rubric under `hiring/rubrics/` per open role (often created via `hiring-feedback`).
 
 If something required for the artifact is missing, the skill pauses and asks.
@@ -74,7 +72,7 @@ outputs/YYYY-MM-DD-workflow-slug.md   # briefs; display-only if sensitive notes 
 
 ## 🔒 Output and privacy (short)
 
-Briefs: short paragraphs, facts over spin; tag sources in prose per each **`SKILL.md`** (e.g. `[meeting]`, `[Linear]`, `[GitHub]`, `[Slack]` where that skill pulls Slack). Never commit filled profiles, sensitive notes, outputs, HR feedback, or live source URLs. Sensitive notes: `1on1` skips unless asked; `review-prep` asks before reading.
+Briefs: short paragraphs, facts over spin; tag sources in prose per each `SKILL.md` (e.g. `[meeting]`, `[Linear]`, `[GitHub]`, `[Slack]` where that skill pulls Slack). Never commit filled profiles, sensitive notes, outputs, HR feedback, or live source URLs. Sensitive notes: `1on1` skips unless asked; `review-prep` asks before reading.
 
 ## 🔗 Dependency order
 

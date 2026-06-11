@@ -1,8 +1,6 @@
 # ✨ Skills
 
-You already context-switch between shipping and leading. These folders are **repeatable playbooks** for your agent: same week you might land a hotfix *and* walk into a 1:1 you did not have headspace to prep. The repo holds the skills and templates.
-
-**For behavior and gates, read each skill’s `SKILL.md`.**
+You already context-switch between shipping and leading. These folders are **repeatable playbooks** for your agent: same week you might land a hotfix _and_ walk into a 1:1 you did not have headspace to prep. The repo holds the skills and templates.
 
 ## 💡 Why this exists
 
