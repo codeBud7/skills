@@ -1,12 +1,21 @@
 ---
 name: cultivate
-description: Deslop AI code — trim noise, match file style, honest TS, merge dup tests; same behavior. Use when the user says deslop, or as the harvest post-impl cleanup step after code is complete and local checks are green.
-disable-model-invocation: true
+description: Deslop AI code — trim noise, match file style, honest TS, merge dup tests; same behavior. Use when deslopping code or as the harvest post-impl cleanup step after code is complete and local checks are green. Triggers: "deslop", "clean up this code", "remove the AI slop".
 ---
 
 # Cultivate
 
+## Fast path
+
+After code complete and local checks green: locate smells in touched files → minimal edits preserving behavior → re-run targeted tests/lint.
+
 Trigger: deslop. **Same behavior** unless user says else. Minimal diff; no repo-wide style pass.
+
+**You get:** Cleaner touched code with same behavior — noise down, style matched, no `any` silencing.
+
+**You need:** Code complete and local checks green on touched files.
+
+**Done when:** Noise down; behavior unchanged; no `any` silencing; tests meaningful; risky skips named.
 
 ## Subagents
 
@@ -71,7 +80,3 @@ TS — delete `any` escape; narrow instead:
 // bad: (data as any).id
 // good: typed parse + guard, or schema validation → typed value
 ```
-
-## Done
-
-Noise down; behavior unchanged; no `any` silencing; tests meaningful; risky skips named.

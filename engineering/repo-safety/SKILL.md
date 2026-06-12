@@ -1,12 +1,22 @@
 ---
 name: repo-safety
-description: Enforce git, secret, and scope safety during impl, test, commit, and PR prep. Use when committing, pushing, opening PRs, or any time scope/secrets/git history are at risk. Referenced by harvest and draft-pr.
+description: Enforce git, secret, and scope safety during impl, test, commit, and PR prep. Use when auditing scope, secrets, or git history before committing or pushing. Triggers: "@repo-safety". Applied continuously inside harvest and draft-pr.
 disable-model-invocation: true
 ---
 
 # Repo safety
 
-Apply continuously. Referenced by `harvest`, `draft-pr`.
+## Fast path
+
+Apply continuously during impl, test, commit, and PR prep; audit scope, secrets, or git history on demand.
+
+**You get:** Scope-safe commits and PRs with no secrets in the diff.
+
+**You need:** An approved scope for the current slice; git repo access.
+
+**Done when:** Scope and git hygiene rules were applied; no secrets in commits; no forbidden git operations without explicit user request.
+
+Referenced by `harvest`, `draft-pr`.
 
 ## Scope
 

@@ -5,6 +5,8 @@
 Slug:
 Title:
 Level:
+Current level: (track + level name; see expectations/ladder.md)
+Target level: (optional; next level they are growing toward)
 Tenure on team:
 Background:
 Work email:

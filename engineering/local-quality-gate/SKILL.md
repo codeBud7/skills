@@ -1,10 +1,19 @@
 ---
 name: local-quality-gate
-description: Discover and run repo lint, format, typecheck, build, and test until green or blocked. Use before opening a PR, after code changes, or when verifying local checks pass. Referenced by harvest and docs-sync.
-disable-model-invocation: true
+description: Discover and run repo lint, format, typecheck, build, and test until green or blocked. Use before opening a PR, after code changes, or when verifying local checks pass. Triggers: "run the quality gate", "run lint and tests", "check that this builds". Referenced by harvest and docs-sync.
 ---
 
 # Local quality gate
+
+## Fast path
+
+Discover repo checks from `package.json`, CI, `AGENTS.md` → run in order → green or blocked.
+
+**You get:** Lint, format, typecheck, test, and build checks run to green or a clear failure report.
+
+**You need:** A repo with discoverable check commands; code changes to verify.
+
+**Done when:** All relevant checks pass; new tests pass isolated + in-suite; skipped checks have reason + risk stated.
 
 ## Discover
 
@@ -27,7 +36,3 @@ Steps 3–6 independent of targeted tests → run parallel (terminals or subagen
 ## On fail
 
 Root cause → minimal fix → rerun affected → rerun impacted surface. Don't ignore lint/typecheck/new flakiness.
-
-## Done
-
-All relevant checks pass; new tests pass isolated + in-suite. Skipped → say why + risk.

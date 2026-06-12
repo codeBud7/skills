@@ -1,10 +1,19 @@
 ---
 name: docs-sync
-description: Align docs with diff or waive before draft PR. Hard gate for harvest.
-disable-model-invocation: true
+description: Align repo docs (README, docs/, API specs, AGENTS.md) with a code diff, or record an explicit waiver, before a draft PR. Use when syncing docs to a change, checking doc drift, or as the harvest gate before draft-pr. Triggers: "@docs-sync", "sync docs", "check doc drift", "update docs for this change".
 ---
 
 # Docs sync
+
+## Fast path
+
+Doc map → drift vs `git diff <base>...HEAD` → fix or waiver before `draft-pr`.
+
+**You get:** Docs aligned with the branch diff, or an explicit waiver recorded for the PR.
+
+**You need:** Code diff on branch; `local-quality-gate` green (or documented skip).
+
+**Done when:** Doc map for touched areas; every stale/missing item fixed or waived; repo doc CI pass (or skip + risk documented); PR summary ready with doc changes + waivers.
 
 Triggers: `@docs-sync` | harvest step before `draft-pr`.
 
@@ -39,9 +48,3 @@ Before `draft-pr`:
 On fail: minimal fix → re-run generators/checks → re-check. Don't waive public API/architecture drift without user OK.
 
 Main thread: edits. Subagent: doc map + drift report only.
-
-## Done
-
-- Doc map for touched areas; every stale/missing item fixed or waived
-- Repo doc CI pass (or skip + risk documented)
-- PR summary ready: doc changes + waivers

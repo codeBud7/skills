@@ -34,7 +34,7 @@ Options:
 Each skill is installed flat:
   <dest>/<skill-name> -> <repo>/<collection>/<skill-name>
 
-Only folders containing SKILL.md under engineering/ and management/ are installed.
+Only folders containing SKILL.md under engineering/, management/, and productivity/ are installed.
 EOF
 }
 
@@ -79,7 +79,7 @@ expected_target() {
 
 collect_skills() {
   local collection skill_dir skill_name
-  for collection in engineering management; do
+  for collection in engineering management productivity; do
     [[ -d "${REPO_ROOT}/${collection}" ]] || continue
     for skill_dir in "${REPO_ROOT}/${collection}"/*; do
       [[ -d "${skill_dir}" ]] || continue

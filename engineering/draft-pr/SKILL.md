@@ -1,12 +1,19 @@
 ---
 name: draft-pr
-description: Create scoped commits, push the branch, and open a draft PR with summary and test plan. Use when opening a draft PR, preparing changes for review, or finalizing a branch. Referenced by harvest.
-disable-model-invocation: true
+description: Create scoped commits, push the branch, and open a draft PR with summary and test plan. Use when opening a draft PR, preparing changes for review, or finalizing a branch. Triggers: "open a draft PR", "push and open a PR", "prep this for review". Referenced by harvest.
 ---
 
 # Draft PR
 
-Pre-flight: apply `repo-safety` (scope, secrets, hygiene).
+## Fast path
+
+Pre-flight `repo-safety` → inspect diff → scoped commits → push → `gh pr create --draft`.
+
+**You get:** A draft PR with honest summary, test plan, and scoped commits.
+
+**You need:** Changes ready to push; `docs-sync` gate passed (updates or waiver).
+
+**Done when:** Draft PR exists with honest body (summary, test plan, doc waiver if any); checklist satisfied; `repo-safety` and `docs-sync` gates respected.
 
 ## Inspect
 

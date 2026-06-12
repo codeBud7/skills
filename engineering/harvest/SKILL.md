@@ -1,14 +1,24 @@
 ---
 name: harvest
-description: Ship fixed-scope work end-to-end — TDD, local gates, draft PR, CI green.
+description: Ship fixed-scope work end-to-end — TDD, local gates, deslop, docs sync, draft PR, CI green — from an approved seed plan. Use when shipping an approved plan end-to-end. Triggers: "ship it", "build the plan", "execute the plan", "run the todos", "finalize", "prepare for review", "open a draft PR", "get CI green", "@harvest".
 disable-model-invocation: true
 ---
 
 # Harvest
 
+## Fast path
+
+Plan file approved per `seed` → read todos → mode A (per todo) or B (one pass) per [Subagent rule](#subagent-rule) below → update plan file at each boundary. Preconditions and mapping:
+
 Triggers: ship it | open draft PR | get CI green | finalize | prepare for review | build the plan | execute plan | run todos from … | `@harvest` + plan path.
 
 Orchestrate sub-skills in order. **No merge** unless user says so.
+
+**You get:** Fixed-scope work shipped end-to-end: tests, local green, deslop, docs, draft PR, CI green.
+
+**You need:** Approved plan file per `seed` (path or discoverable default).
+
+**Done when:** Impl complete; tests-first when feasible; local green; deslop applied (cultivate), behavior unchanged; docs synced or waived; draft PR; CI green; scoped diff; limits documented; all todos `done`; draft PR URL in plan body or final summary.
 
 ## From approved plan (Build)
 
@@ -31,7 +41,7 @@ Parity with Cursor **Build** / Agent after plan approval: same plan file on disk
 
 **Progress:** plan file is source of truth. Optional `TodoWrite` may mirror Cursor session UI; still update plan file at every todo boundary.
 
-**End:** harvest **Done** criteria met; all todos `done`; draft PR URL in plan body or final summary.
+**End:** **Done when** criteria met; all todos `done`; draft PR URL in plan body or final summary.
 
 ## Subagent rule
 
@@ -55,6 +65,11 @@ Independent stages (1–6) may run delegated; orchestrator verifies gates before
 
 No force-push, no bypass required checks, no hide flaky/env failures — without approval.
 
-## Done
+## Failure modes
 
-Impl complete | tests-first when feasible | local green | deslop applied (cultivate), behavior unchanged | docs synced or waived | draft PR | CI green | scoped diff | limits documented.
+| Situation | Action |
+|-----------|--------|
+| Plan path missing | Ask user or run `seed` first. |
+| Local gate fails | Fix or stop; do not skip to `draft-pr`. |
+| `docs-sync` blocked | Stop harvest until fixed or explicitly waived in plan. |
+| CI flaky | Document; do not silence without user agreement. |

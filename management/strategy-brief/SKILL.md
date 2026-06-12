@@ -1,9 +1,21 @@
 ---
 name: strategy-brief
-description: Create a concise combined tech strategy and roadmap brief from Home OS priorities, Linear context, pasted product/org context, constraints, risks, and deadlines. Use for strategy planning, roadmap planning, decision memos, or turning rough planning notes into a bounded management brief.
+description: Create a concise combined tech strategy and roadmap brief from Home OS priorities, Linear context, pasted product/org context, constraints, risks, and deadlines. Use for strategy planning, roadmap planning, or decision memos. Triggers: "draft a strategy brief", "two pages on roadmap and bets", "write a decision memo".
 ---
 
-# Strategy Brief
+# Strategy brief
+
+## Fast path
+
+Confirm **audience + decision + constraints** (not Linear-only). Read `context.md` + pasted context → Linear for status signals → bounded memo with one recommendation and 3–5 bets.
+
+**You get:** A bounded strategy + roadmap memo (problem, facts, options, one recommendation, three to five bets, risks).
+
+**You need:** Strategy question or audience; `context.md` priorities; pasted org/product constraints; linked Linear for status signals — not Linear alone.
+
+**Done when:** One clear recommendation (or explicit open decisions if facts are insufficient); three to five named roadmap bets tied to constraints; artifact within ~two pages equivalent with explicit `Sources checked`.
+
+**Templates:** [`strategy-roadmap.template.md`](strategy-roadmap.template.md)
 
 Create a combined tech strategy and roadmap brief. Keep it bounded: max two pages equivalent, one recommendation, three to five roadmap bets.
 
@@ -11,7 +23,7 @@ Create a combined tech strategy and roadmap brief. Keep it bounded: max two page
 
 Strategy question, audience, or decision needed.
 
-Private Home OS context for team mission, priorities, and constraints.
+Private Home OS files (`context.md`, `sources.md`, …) at the root resolved per **`home-os`** (**Path resolution order**) — team mission, priorities, constraints.
 
 Relevant Linear projects, initiatives, issues, or status links.
 
@@ -20,6 +32,8 @@ Pasted product/org context.
 Known team constraints, deadlines, risks, and dependencies.
 
 ## MCP Use
+
+**Shared conduct:** Private Home OS root and MCP preference — see **`home-os`** (**Path resolution order** and **MCP and source retrieval boundaries**). Do not infer roadmap or alignment from tools alone; see **Skill-specific deltas** there for `strategy-brief`.
 
 Read Home OS priorities and team mission first.
 
@@ -71,7 +85,7 @@ If saving is requested, write to `outputs/YYYY-MM-DD-strategy-brief.md` or `outp
 
 Include generated timestamp, time window if applicable, and sources checked.
 
-## Kill Criteria
+## Kill criteria
 
 If the problem is unclear, ask for the decision or audience before drafting.
 

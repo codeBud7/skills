@@ -1,10 +1,20 @@
 ---
 name: seed
-description: User-in-the-loop plan before coding — goals, trade-offs, risks, test/rollout. Use for /seed, plan before implementation, or plan mode in Cursor or Claude Code.
+description: User-in-the-loop plan before coding — goals, trade-offs, risks, test and rollout — written to one approved plan file. Use when planning before implementation. Triggers: "/seed", "plan before implementation", "scope a change", "design an approach", "weigh options before building", "plan mode".
 disable-model-invocation: true
 ---
 
 # Seed
+
+## Fast path
+
+Read-only planning → Cadence → one plan file on disk → user approval before impl.
+
+**You get:** An approved plan file with todos and acceptance criteria on disk.
+
+**You need:** A scoped task or design question; user available for approval gate.
+
+**Done when:** One plan file on disk with valid YAML todos and body per [reference.md](reference.md); no implementation started; user approval recorded per **Gate** below.
 
 ## Gate
 

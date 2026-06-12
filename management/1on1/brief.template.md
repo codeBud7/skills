@@ -7,6 +7,14 @@ Window:
 
 [Short paragraphs with source tags.]
 
+## Delivery pulse (metrics)
+
+[Merged PRs in window: count; median or typical open→merge duration. Closed GitHub issues assigned to direct: count; typical lead time open→close. Optional one line from Linear cycle/lead if MCP had data — tag `[Linear]`.]
+
+Sample: N (cap noted in skill)
+
+Method: [e.g. GitHub search / MCP, date window, author + assignee filters]
+
 ## Follow-ups
 
 [Open follow-ups from last meeting or prior outputs.]
@@ -33,4 +41,4 @@ Window:
 
 ## Sources checked
 
-[Meeting notes, Linear, GitHub, Home OS profile, and any fallbacks.]
+[Meeting notes, Linear, GitHub (including metrics snapshot if run), Home OS profile, and any fallbacks.]

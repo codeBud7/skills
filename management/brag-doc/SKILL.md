@@ -1,11 +1,22 @@
 ---
 name: brag-doc
-description: >-
-  Build a first-person weekly or on-demand brag document for the person invoking the skill only (not for directs). Summary-first artifact with numbered references: pulls evidence from sources.md Me-scoped links (Notion, Linear, GitHub, Slack, meetings when linked), optional private expectations.md; writes outputs/YYYY-MM-DD-brag-doc.md under the Home OS private root. Use for weekly brag doc, career wins, self performance review prep, or "update my brag document".
+description: Build a first-person weekly or on-demand brag document for the person invoking the skill only (not for directs). Summary-first artifact with numbered references from sources.md Me-scoped links (Notion, Linear, GitHub, Slack, meetings when linked), optional private expectations.md; writes outputs/YYYY-MM-DD-brag-doc.md under the Home OS private root. Use for weekly brag doc, career wins, or self performance review prep. Triggers: "weekly brag doc", "career wins", "update my brag document".
 disable-model-invocation: true
 ---
 
 # Brag doc
+
+## Fast path
+
+Private root resolved; `expectations.md` is real criteria **or** `## Status: declined`; user stated inclusive **time window**; pull only **`### Me`** scope per `sources.md`. Write `outputs/YYYY-MM-DD-brag-doc.md`. Full cite and heading rules: [reference.md](reference.md).
+
+**You get:** A first-person, summary-first brag doc for **you** (the operator) with numeric cites and a single `## References` list — suitable for reviews, promos, and resumes.
+
+**You need:** Stated **time window**; private Home OS with `sources.md` **`### Me`** pointers (or accept a sparse stub); `expectations.md` with real criteria **or** `## Status: declined` so the expectations gate does not block.
+
+**Done when:** `outputs/YYYY-MM-DD-brag-doc.md` exists with `Window`, `Week in brief`, other applicable sections, `## References` (if any `[n]` cites), and `Sources checked`; narrative has no inline evidence URLs; file matches [reference.md](reference.md) cite and URL rules.
+
+**Templates:** [`expectations.template.md`](expectations.template.md) (optional private file at Home OS root; not required in git)
 
 In the spirit of [Brag documents](https://jvns.ca/blog/brag-documents/)—first-person, evidence-backed, for reviews, promos, and resumes. The **artifact is summary-first**: a short **Week in brief** up front, then grouped detail; **claim-level URLs live only in `## References`**, not inline in the narrative (avoid activity-log link soup).
 
@@ -18,7 +29,7 @@ In the spirit of [Brag documents](https://jvns.ca/blog/brag-documents/)—first-
 
 ## Inputs (read order)
 
-1. **Private Home OS root** — same resolution as `home-os`: `Path:` under `## Private Root` in private `sources.md` → else default `~/.agents/management/home-os` if it exists → else ask before writing.
+1. **Private Home OS root** — resolve per **`home-os`** (**Path resolution order**); do not guess the path.
 2. **`sources.md`** — including **`### Me`** (or equivalent) subsections under Meeting notes, Linear, GitHub, Slack, and Notion blocks. Operational handles and read scope live here.
 3. **`expectations.md`** — optional private criteria file at the private root (see gate below).
 
@@ -55,17 +66,19 @@ If `sources.md` has **no usable `### Me` pointers** (no GitHub handle, Linear id
 
 ## MCP retrieval order
 
+**Shared conduct:** Default GitHub and Slack MCP behavior — see **`home-os`** (**MCP and source retrieval boundaries**). This skill adds **self-only / `### Me` scope**, Notion handling, caps, and ordering below.
+
 After both gates pass:
 
 1. **Notion** — Fetch pages/DBs linked under **Me** / Notion in `sources.md`. If Notion MCP supports attribution or “edited by me” in the window, run a **capped** in-window search (hard cap e.g. **30** items); merge with explicit links; dedupe. If MCP cannot attribute edits to the user, skip search and note in `Missing context`. Tag `[Notion]`.
 2. **Linear** — Assigned or owned issues with activity in the window (per `sources.md` Me notes). Tag `[Linear]`.
-3. **GitHub** — Authored PRs, reviews, and substantive comments in repos from `sources.md` Me scope. Prefer GitHub MCP; if unavailable, read-only `gh` as fallback. Tag `[GitHub]`.
-4. **Slack** — **Only** channels and threads listed under **Me** / Slack in `sources.md`. **DMs off** unless DMs are explicitly listed there. Prefer channel/thread reads over workspace-wide search. Tag `[Slack]`.
+3. **GitHub** — Authored PRs, reviews, and substantive comments in repos from `sources.md` Me scope. Tag `[GitHub]`.
+4. **Slack** — **Only** channels and threads listed under **Me** / Slack in `sources.md`. **DMs off** unless DMs are explicitly listed there. Tag `[Slack]`.
 5. **Meetings / Granola** — If `sources.md` lists meeting notes or Granola pointers, fetch **in-window**; tag `[meeting]`. If not linked, skip without asking.
 
-Do **not** expand Slack, Notion, or Linear scope beyond configured links and caps without an explicit user ask.
+Do **not** expand Me-linked Slack, Notion, or Linear scope beyond configured links and caps without an explicit user ask.
 
-While pulling data you may mentally tag by system (`[Notion]`, `[Linear]`, etc.). In the **written output**, put system on the **`## References`** rows (e.g. `1. [GitHub] …`)—do **not** paste inline evidence URLs or `[text](url)` in narrative sections; use numeric cite markers there instead (see **Output**).
+While pulling data you may mentally tag by system (`[Notion]`, `[Linear]`, etc.). In the **written output**, put system on the **`## References`** rows (e.g. `1. [GitHub] …`)—do **not** paste inline evidence URLs or `[text](url)` in narrative sections; use numeric cite markers there instead (see [reference.md](reference.md)).
 
 ## Dedup
 
@@ -73,74 +86,7 @@ When the same work appears in multiple systems with **high confidence** (shared 
 
 ## Output
 
-Use **first person**, short paragraphs, facts over spin. **Prose-first** in every section: group related work (same theme, same epic, same incident) into fewer bullets instead of one bullet per raw event.
-
-### Optional preface (above `Window`)
-
-You may include a **short** optional block before `## Window` (canonical path, run date, one-line provenance). **No** cite numbers there. **No** claim-evidence URLs unless the user explicitly wants them in preface (default: none).
-
-### Cites and references (required pattern)
-
-- In **narrative sections** (everything from `Week in brief` through `Addendum` when present): **no** raw `https://…` strings and **no** markdown links `[label](url)` for claim evidence. **Exception:** file paths, command examples (e.g. `gh search prs --merged-at …`), and hostnames mentioned as plain words are fine when they are not hotlinks.
-- Use **numeric markers** only for evidence: `[1]`, `[2]`, … immediately after the claim they support. **Reuse** the same number when the same URL appears again anywhere in the file (including across sections).
-- Put **all** claim-evidence URLs in a single **`## References`** section: numbered list `1.` … `n.`; each line = optional source kind in brackets + short human-readable label (repo, PR number, issue key, Slack thread/channel + date) + full URL. **Assign numbers in first-appearance order** through the whole file (including **Addendum**).
-- Slack: use plain text `#channel-name` + date in the narrative; put the archive/thread URL **once** per distinct thread in `References`.
-- Linear/GitHub: plain issue keys (`CRM-1234`) and PR numbers in prose are encouraged; URLs only under `References`.
-
-### `Missing context` vs `References`
-
-- **`## References`**: URLs (and labels) that **prove** narrative claims (PRs, issues, Slack threads, Notion pages cited).
-- **`## Missing context`**: operational gaps (skipped MCPs, caps hit, declined criteria). Use **paths and tool names**; do **not** duplicate long Slack/Linear/GitHub URLs already listed in `References`—point to `References` or `sources.md` instead. Claim-evidence URLs **do not** belong here.
-
-### Headings (in order)
-
-`Window`  
-Inclusive dates and **UTC** (or user-specified TZ). Slack/query date quirks one line if material.
-
-`Week in brief` (**always**)  
-**3–6 bullets** or one short paragraph: what mattered this week—outcomes, themes, leadership highlights. **No URLs, no `[n]` cite markers, no link-style evidence**—pure summary. If the week was light, say so honestly.
-
-`Shipped and impact`  
-Grouped outcomes; cite with `[n]` only. **Cheap metrics** (counts, `gh` one-liners as **command text**, small LOC if trivial) welcome—still no hotlinked evidence URLs in prose.
-
-`Against my stated expectations`  
-**Only** if `expectations.md` contains real criteria (not declined sentinel). Tie bullets to criteria with `[n]` cites. For criteria with **no** tagged activity this window, add **neutral** lines: no tagged activity — validate if still a priority (**not** scored as failure).
-
-`Leadership and collaboration`  
-Reviews, pairing, cross-team—only with evidence via `[n]`.
-
-`Learning and craft`  
-Tools, incidents, postmortems—evidence-backed with `[n]`; **reuse** refs from `Shipped` when pointing at the same URL.
-
-`Visibility`  
-Talks, demos, blog—only if evidenced (`[n]`).
-
-`Possible improvements`  
-Evidence-grounded gaps, friction, slipped dates. Plain issue keys in prose + `[n]` where a URL exists. If evidence is thin, use **questions to validate**, not harsh self-labels. No invented performance judgments.
-
-`Carry into next week`  
-Open threads; plain keys + `[n]`, no inline URLs.
-
-`Missing context`  
-Per **Missing context vs `References`** above.
-
-`Addendum` (optional)  
-Extra date range or same-day refresh—**same cite rules** as the main body. Cite indices **continue** the global numbering; **do not** reset at 1. If no addendum, omit the heading.
-
-`## References`  
-Single numbered list for the **entire** file (main + addendum). Every `[n]` in the doc appears here exactly once per distinct URL.
-
-`Sources checked`  
-**Methodology only**: private root path, which MCPs/commands, handles, date brackets, repo lists—**not** a second dump of PR/issue/Slack **claim** URLs (those belong only in `## References`).
-
-### `Themes for my narrative` (default: omit)
-
-**Do not** include this heading by default—synthesis belongs in **`Week in brief`**.  
-**Only** if the user **explicitly** asks in the run prompt for a separate “themes / narrative” section: add a **short** `Themes for my narrative` section that **must not repeat** `Week in brief`; label it as synthesis, not primary evidence.
-
-**Names:** keep collaborator names as they appear in evidence (private file). Add one line: sanitize before external paste.
-
-**Tone:** Evidence binding—if the week was light, say so. Optional “so what” only where `[n]` citations exist.
+Section order, cite rules, golden shape, and optional headings: **[reference.md](reference.md)**.
 
 ## Saving
 

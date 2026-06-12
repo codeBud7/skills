@@ -1,9 +1,21 @@
 ---
 name: review-prep
-description: Prepare performance review evidence briefs from private Home OS context, last review, growth docs, meeting notes, Linear work, GitHub activity, and Slack when linked. Use when starting performance review prep, gathering review evidence, or creating a review outline for a direct report.
+description: Prepare performance review evidence briefs from private Home OS context, last review, growth docs, meeting notes, Linear work, GitHub activity, and Slack when linked. Use when starting performance review prep, gathering review evidence, or creating a review outline for a direct report. Triggers: "performance review prep", "gather review evidence", "review outline for".
 ---
 
-# Review Prep
+# Review prep
+
+## Fast path
+
+Direct slug + review window → read profile + last review/growth links if any → MCP per `home-os` → evidence brief first. Heading text and RC rules: [reference.md](reference.md).
+
+**You get:** An evidence-first review packet (frame, summaries, growth/collaboration signals, optional outline) with source tags — not final evaluative prose unless explicitly requested later.
+
+**You need:** Direct slug; private Home OS with `directs/<slug>.md`; review cycle or dates; optional last review / growth doc links.
+
+**Done when:** Evidence sections cite observable work; `Open questions` and `Missing context` are honest where data is thin; no final ratings prose without an explicit separate ask; packet matches [reference.md](reference.md).
+
+**Templates:** [`evidence-brief.template.md`](evidence-brief.template.md)
 
 Prepare a factual performance review packet. Evidence brief first. Optional outline second. Do not write final review prose by default.
 
@@ -11,13 +23,15 @@ Prepare a factual performance review packet. Evidence brief first. Optional outl
 
 Direct name or slug.
 
-Private Home OS root.
+Private Home OS root (resolve per **`home-os`**, **Path resolution order**).
 
 Direct profile at `directs/<slug>.md`.
 
 Review cycle dates from `context.md`, or manual dates.
 
 Optional links to last review, career expectations, growth docs, meeting notes, Linear, GitHub, and Slack (see `sources.md` and per-direct **Source Links**).
+
+Leveling rubric at `expectations/ladder.md` — read criteria for the direct's **Current level** from Identity when present.
 
 ## Default Window
 
@@ -29,9 +43,13 @@ Treat last review as separate context, not part of the same evidence bucket.
 
 ## MCP Use
 
+**Shared conduct:** Private root, Slack, GitHub, and MCP usage — see **`home-os`** (**Path resolution order** and **MCP and source retrieval boundaries**).
+
 Fetch last review if linked.
 
 Fetch career expectations and growth docs if linked.
+
+Read `expectations/ladder.md` for the direct's current level criteria when the file exists and **Current level** is set in the profile.
 
 Fetch meeting notes inside the review window.
 
@@ -39,9 +57,7 @@ Fetch Linear projects, initiatives, assigned or owned issues, and status signals
 
 Fetch GitHub authored PRs, reviews, and comments within linked repos and the review window.
 
-When `sources.md` or the direct profile lists **Slack scope**, pull Slack **inside the review window**. Prefer **channel or thread reads** over workspace-wide search. Use Slack MCP when configured; if Slack MCP is unavailable and the user did not paste an export, skip Slack and note the gap in `Missing context` or ask for a thread link. Do **not** expand Slack scope beyond configured links without an explicit user ask.
-
-Prefer MCP for each linked system. If no GitHub MCP is available, use explicit GitHub links or read-only `gh` commands as fallback.
+Fetch Slack inside the review window when `sources.md` or the direct profile lists **Slack scope**.
 
 ## Sensitive Notes
 
@@ -51,46 +67,7 @@ If sensitive notes are used, display output only by default. Save only on explic
 
 ## Output
 
-Use short paragraphs under these headings:
-
-`Review frame`
-
-`Evidence summary`
-
-`Impact evidence`
-
-`Growth evidence`
-
-`Collaboration evidence`
-
-`Open questions`
-
-`Optional outline`
-
-`Missing context`
-
-`Sources checked`
-
-Only include `Optional outline` when evidence is sufficient.
-
-## Rules
-
-### Radical Candor (default stance)
-
-- **Care personally**: Acknowledge impact and context; keep praise specific and evidence-backed.
-- **Challenge directly**: Name gaps or risks the evidence supports; do not soften mixed evidence into false harmony.
-- **Evidence binding**: Candor without citations is opinion — state gaps and questions instead of evaluative claims when evidence is thin.
-- **Avoid**: Ruinous empathy (vague positivity), obnoxious aggression (harsh labels), manipulative insincerity (strategic ambiguity).
-
-Do not write final evaluative claims without cited evidence.
-
-If evidence is mixed or thin, state the gap.
-
-`Open questions` may include what to **challenge directly** next cycle when the evidence supports a clear growth or alignment gap; otherwise keep questions exploratory, not accusatory.
-
-Use lightweight source tags like `[meeting]`, `[Linear]`, `[GitHub]`, and `[Slack]` when Slack was checked.
-
-Keep links in `Sources checked`.
+Headings and RC rules: **[reference.md](reference.md)**.
 
 ## Saving
 
@@ -98,7 +75,7 @@ If saving is requested and no sensitive notes were used, write to `outputs/YYYY-
 
 Include generated timestamp, time window, and sources checked.
 
-## Kill Criteria
+## Kill criteria
 
 If the direct cannot be identified, ask before fetching context.
 
