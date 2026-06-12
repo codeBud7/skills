@@ -35,7 +35,7 @@ You context-switch all day (calendar blocks, Slack threads, “quick” escalati
 - **Growth:** “Write a growth plan for `<slug>`” / “What should `<slug>` work on next”.
 - **Brag (self):** “Run my weekly brag doc for `2026-06-02..2026-06-08` (UTC)” / “Update my brag document”. Put an explicit **date range** in the prompt
 
-## 🗂️ Private Home OS layout (default)
+## 🗂️ Private Home OS layout
 
 Root: `~/.agents/management/home-os`
 
@@ -49,6 +49,6 @@ hiring/rubrics/<role>.md
 outputs/YYYY-MM-DD-workflow-slug.md   # briefs and brag-doc; never commit filled files
 ```
 
-## 🔒 Output and privacy (short)
+## 🔒 Output and privacy
 
 Briefs: short paragraphs, facts over spin; tag sources per each `SKILL.md`. Never commit filled profiles, sensitive notes, outputs, HR feedback, or live source URLs. Sensitive notes: `1on1` skips unless asked; `review-prep` asks before reading. Full rules: [`home-os/SKILL.md`](home-os/SKILL.md) and each skill's `SKILL.md`.
