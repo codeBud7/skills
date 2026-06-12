@@ -1,6 +1,6 @@
 ---
 name: home-os
-description: Set up or update a private management Home OS with EM context, source links (meeting notes, Linear, GitHub, Slack pointers), and direct profiles. Use when the user wants to create manager/team context, add or update a direct profile, configure management source links, or prepare shared context for 1:1, review prep, hiring feedback, or strategy skills.
+description: Set up or update a private management Home OS with EM context, source links (meeting notes, Linear, GitHub, Slack pointers), and direct profiles. Use when the user wants to create manager/team context, add or update a direct profile, configure management source links, or prepare shared context for 1:1, review prep, hiring feedback, strategy skills, or brag-doc (Me subsections in sources.md and optional expectations.md).
 ---
 
 # Home OS
@@ -30,12 +30,13 @@ Private layout:
 ```text
 context.md
 sources.md
+expectations.md
 directs/<slug>.md
 hiring/rubrics/<role-slug>.md
 outputs/YYYY-MM-DD-workflow-slug.md
 ```
 
-`hiring/rubrics/` is created on first write; `hiring-feedback` owns rubric content. `home-os` seeds context, sources, and direct profiles only.
+`expectations.md` is optional; create it when using `brag-doc` (criteria or `## Status: declined`). `hiring/rubrics/` is created on first write; `hiring-feedback` owns rubric content. `home-os` seeds context, sources, and direct profiles only.
 
 Never write filled direct profiles, sensitive notes, generated prep briefs, HR feedback, or source links into git.
 
@@ -49,7 +50,7 @@ Create or update:
 
 `context.md`: manager, team, org, priorities, norms, review cycle, management style.
 
-`sources.md`: shared MCP/source pointers for meeting notes, Linear, GitHub, Slack (channels, threads, MCP server label — no tokens in git), hiring rubric paths, and strategy context. Rubric setup for open positions is owned by `hiring-feedback`, not `home-os`.
+`sources.md`: shared MCP/source pointers for meeting notes, Linear, GitHub, Slack (channels, threads, MCP server label — no tokens in git), hiring rubric paths, strategy context, and **`### Me` subsections** for `brag-doc` (see `sources.template.md`). Optional private `expectations.md` at the same root is owned by `brag-doc` for job criteria or a declined sentinel. Rubric setup for open positions is owned by `hiring-feedback`, not `home-os`.
 
 `directs/<slug>.md`: one profile per direct. Optional sensitive manager detail belongs in a clearly marked section of the same file, only after explicit consent.
 

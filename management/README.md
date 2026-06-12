@@ -1,6 +1,6 @@
 # 👥 Management skills
 
-You context-switch all day (calendar blocks, Slack threads, “quick” escalations), and review season still shows up like a train. These skills do not replace judgment; they **reduce load** by turning scattered signal into short, sourced briefs once your private Home OS exists. **`1on1`** and **`review-prep`** default to **Radical Candor** (care personally + challenge directly) **with evidence**. Read those `SKILL.md` files for tone and gates. **`strategy-brief`** and **`hiring-feedback`** follow their own rules (evidence-first roadmap; neutral HR-shaped output). This git repo holds **skills and blank templates only**. Filled profiles, source URLs, briefs, and HR text stay in private storage and never belong in git.
+You context-switch all day (calendar blocks, Slack threads, “quick” escalations), and review season still shows up like a train. These skills do not replace judgment; they **reduce load** by turning scattered signal into short, sourced briefs once your private Home OS exists. **`1on1`** and **`review-prep`** default to **Radical Candor** (care personally + challenge directly) **with evidence**. Read those `SKILL.md` files for tone and gates. **`brag-doc`** is **self-only**: a dated **summary + numbered references** (see its `SKILL.md`). **`strategy-brief`** and **`hiring-feedback`** follow their own rules (evidence-first roadmap; neutral HR-shaped output). This git repo holds **skills and blank templates only**. Filled profiles, source URLs, briefs, and HR text stay in private storage and never belong in git.
 
 **For behavior and gates, read each skill’s `SKILL.md`.**
 
@@ -14,7 +14,7 @@ You context-switch all day (calendar blocks, Slack threads, “quick” escalati
 
 1. Run **`home-os`** once. Default private root is `~/.agents/management/home-os` (or it asks for a path).
 2. Fill **`context.md`**, add at least one **`directs/<slug>.md`**, optional **`sources.md`** / per-direct links.
-3. Use **`1on1`**, **`review-prep`**, **`hiring-feedback`**, or **`strategy-brief`** as needed.
+3. Use **`1on1`**, **`review-prep`**, **`hiring-feedback`**, **`strategy-brief`**, or **`brag-doc`** as needed.
 
 Install symlinks: [../scripts/setup-skills.sh](../scripts/setup-skills.sh) into `~/.cursor/skills`, `~/.claude/skills`, or `~/.agents/skills`. Private data lives under `~/.agents/` by default.
 
@@ -30,13 +30,15 @@ Install symlinks: [../scripts/setup-skills.sh](../scripts/setup-skills.sh) into 
 
 - **[`strategy-brief`](strategy-brief/SKILL.md)**: **Moment:** leadership asks for “two pages on roadmap and bets.” **Outcome:** a bounded memo anchored in `context.md` priorities, Linear when linked, and pasted product/org context.
 
+- **[`brag-doc`](brag-doc/SKILL.md)**: **Moment:** you want a dated, first-person **summary with footnoted sources** for **yourself** (not directs)—weekly wins, review prep, or promo narrative. **Outcome:** `outputs/YYYY-MM-DD-brag-doc.md` from `sources.md` **`### Me`** links (Notion, Linear, GitHub, Slack, meetings when linked) plus optional private `expectations.md` for alignment and possible improvements. **Self-only:** never use `directs/<slug>.md` as the subject; if wording sounds like someone else’s packet, use `review-prep` / `1on1` instead.
+
 ## 💬 Typical prompts
 
 - **Setup:** “Set up my management Home OS” / “Add a direct profile for …” / “Update source links for my team”.
 - **1:1:** “Prep my 1:1 with `<slug>`”. Add “include sensitive context” only if you want sensitive notes read.
 - **Hiring:** “Turn these interview notes into HR feedback” (position clarified first) / “Set up hiring rubric for [role]” + paste JD.
 - **Review:** “Prep performance review for `<slug>`”.
-- **Strategy:** “Strategy brief: …” / “Roadmap brief for …”.
+- **Brag (self):** “Run my weekly brag doc for `2026-06-02..2026-06-08` (UTC)” / “Update my brag document” — add `### Me` under Linear/GitHub/Slack/Notion in `sources.md` first; optional `expectations.md` for criteria or `## Status: declined`.
 
 ## ✅ Setup checklist (before 1:1 / review-prep feel good)
 
@@ -44,6 +46,7 @@ Install symlinks: [../scripts/setup-skills.sh](../scripts/setup-skills.sh) into 
 - `context.md`: team, priorities, review cycle.
 - At least one `directs/<slug>.md`: role, goals, projects.
 - Optional: meeting / Linear / GitHub / Slack links in `sources.md` and on the direct. That improves `1on1` / `review-prep` grounding. Slack needs MCP configured in the host; never put tokens in git.
+- **Brag-doc (self):** under `sources.md`, fill **`### Me`** in Meeting notes, Linear, GitHub, Slack, and **## Notion** as in [sources.template.md](home-os/sources.template.md). Add private `expectations.md` (criteria) or let `brag-doc` write `## Status: declined` so weekly automation does not stall. Automation prompts must include an explicit **date range** (UTC unless overridden).
 - Hiring: one filled rubric under `hiring/rubrics/` per open role (often created via `hiring-feedback`).
 
 If something required for the artifact is missing, the skill pauses and asks.
@@ -54,10 +57,11 @@ Root: `~/.agents/management/home-os`
 
 ```text
 context.md              # team, priorities, review cycle
-sources.md              # pointers: meeting notes, Linear, GitHub, Slack scope, HR (no secrets in git)
+sources.md              # pointers + ### Me for brag-doc; meeting notes, Linear, GitHub, Slack scope, HR (no secrets in git)
+expectations.md         # optional; private job criteria or ## Status: declined for brag-doc
 directs/<slug>.md       # direct profile; sensitive block: see 1on1 / review-prep SKILL
 hiring/rubrics/<role>.md
-outputs/YYYY-MM-DD-workflow-slug.md   # briefs; display-only if sensitive notes used unless you ask to save
+outputs/YYYY-MM-DD-workflow-slug.md   # briefs and brag-doc; never commit filled files
 ```
 
 ## 📄 Templates (in this repo)
@@ -69,14 +73,15 @@ outputs/YYYY-MM-DD-workflow-slug.md   # briefs; display-only if sensitive notes 
 - [hiring-feedback/hr-feedback.template.md](hiring-feedback/hr-feedback.template.md), [rubric.template.md](hiring-feedback/rubric.template.md)
 - [review-prep/evidence-brief.template.md](review-prep/evidence-brief.template.md)
 - [strategy-brief/strategy-roadmap.template.md](strategy-brief/strategy-roadmap.template.md)
+- [brag-doc/expectations.template.md](brag-doc/expectations.template.md) (copy to private root as `expectations.md` when using criteria; `brag-doc` may create declined sentinel)
 
 ## 🔒 Output and privacy (short)
 
-Briefs: short paragraphs, facts over spin; tag sources in prose per each `SKILL.md` (e.g. `[meeting]`, `[Linear]`, `[GitHub]`, `[Slack]` where that skill pulls Slack). Never commit filled profiles, sensitive notes, outputs, HR feedback, or live source URLs. Sensitive notes: `1on1` skips unless asked; `review-prep` asks before reading.
+Briefs: short paragraphs, facts over spin; tag sources in prose per each `SKILL.md` (e.g. `[meeting]`, `[Linear]`, `[GitHub]`, `[Slack]` where that skill pulls Slack). **`brag-doc`** instead uses **`Week in brief`** plus numeric cites and a single **`## References`** list (see [`brag-doc/SKILL.md`](brag-doc/SKILL.md)). `brag-doc` does not read `context.md`; it uses `sources.md` Me scopes and optional `expectations.md` only. Never commit filled profiles, sensitive notes, outputs, HR feedback, or live source URLs. Sensitive notes: `1on1` skips unless asked; `review-prep` asks before reading.
 
 ## 🔗 Dependency order
 
 ```text
-home-os → 1on1 / review-prep / strategy-brief
+home-os → 1on1 / review-prep / strategy-brief / brag-doc
 home-os (private root) → hiring-feedback
 ```
