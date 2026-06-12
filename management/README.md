@@ -12,11 +12,11 @@ You context-switch all day (calendar blocks, Slack threads, “quick” escalati
 
 - **[`review-prep`](review-prep/SKILL.md)**: **Moment:** you need to write growth feedback and not rely on “how I felt last week.” **Outcome:** evidence-style bullets with less recency bias when you add last review / growth docs plus the same sources as 1:1.
 
-- **[`hiring-feedback`](hiring-feedback/SKILL.md)**: **Moment:** the debrief ended and HR needs text tonight. **Outcome:** paste-ready HR-shaped feedback from panel notes aligned to the rubric for that role (private root + rubric per role; pasted notes unless **Source Rules** say otherwise).
+- **[`hiring-feedback`](hiring-feedback/SKILL.md)**: **Moment:** the debrief ended and HR needs text tonight. **Outcome:** paste-ready HR-shaped feedback from panel notes aligned to the rubric for that role (private root + rubric per role; pasted notes unless Source Rules say otherwise).
 
 - **[`strategy-brief`](strategy-brief/SKILL.md)**: **Moment:** leadership asks for “two pages on roadmap and bets.” **Outcome:** a bounded memo anchored in `context.md` priorities, Linear when linked, and pasted product/org context.
 
-- **[`brag-doc`](brag-doc/SKILL.md)**: **Moment:** you want weekly wins, self-review prep, or a promo narrative—for **you**, not a direct. **Outcome:** a dated `outputs/YYYY-MM-DD-brag-doc.md` from `sources.md`, optional `expectations.md`, and MCP when linked.
+- **[`brag-doc`](brag-doc/SKILL.md)**: **Moment:** you want weekly wins, self-review prep, or a promo narrative for yourself, not a direct. **Outcome:** a dated `outputs/YYYY-MM-DD-brag-doc.md` from `sources.md`, optional `expectations.md`, and MCP when linked.
 
 - **[`feedback-note`](feedback-note/SKILL.md)**: **Moment:** you need to give someone feedback and want it written clearly before the conversation. **Outcome:** a deliverable SBI note (praise, constructive, or upward) with Radical Candor stance — never invented incidents.
 
