@@ -30,7 +30,7 @@ Install symlinks: [../scripts/setup-skills.sh](../scripts/setup-skills.sh) into 
 
 - **[`strategy-brief`](strategy-brief/SKILL.md)**: **Moment:** leadership asks for “two pages on roadmap and bets.” **Outcome:** a bounded memo anchored in `context.md` priorities, Linear when linked, and pasted product/org context.
 
-- **[`brag-doc`](brag-doc/SKILL.md)**: **Moment:** you want weekly wins, self-review prep, or a promo narrative—for **you**, not a direct. **Outcome:** a dated `outputs/YYYY-MM-DD-brag-doc.md` from `sources.md` **`### Me`** scopes, optional `expectations.md`, and MCP when linked.
+- **[`brag-doc`](brag-doc/SKILL.md)**: **Moment:** you want weekly wins, self-review prep, or a promo narrative—for **you**, not a direct. **Outcome:** a dated `outputs/YYYY-MM-DD-brag-doc.md` from `sources.md`, optional `expectations.md`, and MCP when linked.
 
 ## 💬 Typical prompts
 
@@ -38,7 +38,7 @@ Install symlinks: [../scripts/setup-skills.sh](../scripts/setup-skills.sh) into 
 - **1:1:** “Prep my 1:1 with `<slug>`”. Add “include sensitive context” only if you want sensitive notes read.
 - **Hiring:** “Turn these interview notes into HR feedback” (position clarified first) / “Set up hiring rubric for [role]” + paste JD.
 - **Review:** “Prep performance review for `<slug>`”.
-- **Brag (self):** “Run my weekly brag doc for `2026-06-02..2026-06-08` (UTC)” / “Update my brag document”. Put an explicit **date range** in the prompt; fill **`### Me`** per [sources.template.md](home-os/sources.template.md). Gates and UTC default: [`brag-doc/SKILL.md`](brag-doc/SKILL.md).
+- **Brag (self):** “Run my weekly brag doc for `2026-06-02..2026-06-08` (UTC)” / “Update my brag document”. Put an explicit **date range** in the prompt
 
 ## ✅ Setup checklist (before 1:1 / review-prep feel good)
 
@@ -46,7 +46,6 @@ Install symlinks: [../scripts/setup-skills.sh](../scripts/setup-skills.sh) into 
 - `context.md`: team, priorities, review cycle.
 - At least one `directs/<slug>.md`: role, goals, projects.
 - Optional: meeting / Linear / GitHub / Slack links in `sources.md` and on the direct. That improves `1on1` / `review-prep` grounding. Slack needs MCP configured in the host; never put tokens in git.
-- **Brag-doc (self):** **`### Me`** in `sources.md` per [sources.template.md](home-os/sources.template.md); private `expectations.md` with real criteria **or** `## Status: declined` so automation does not stall; prompts need an explicit **date range** (UTC unless overridden).
 - Hiring: one filled rubric under `hiring/rubrics/` per open role (often created via `hiring-feedback`).
 
 If something required for the artifact is missing, the skill pauses and asks.
@@ -73,11 +72,11 @@ outputs/YYYY-MM-DD-workflow-slug.md   # briefs and brag-doc; never commit filled
 - [hiring-feedback/hr-feedback.template.md](hiring-feedback/hr-feedback.template.md), [rubric.template.md](hiring-feedback/rubric.template.md)
 - [review-prep/evidence-brief.template.md](review-prep/evidence-brief.template.md)
 - [strategy-brief/strategy-roadmap.template.md](strategy-brief/strategy-roadmap.template.md)
-- [brag-doc/expectations.template.md](brag-doc/expectations.template.md) (copy to private root as `expectations.md` when using criteria; `brag-doc` may create declined sentinel)
+- [brag-doc/expectations.template.md](brag-doc/expectations.template.md)
 
 ## 🔒 Output and privacy (short)
 
-Briefs: short paragraphs, facts over spin; tag sources in prose per each `SKILL.md` (e.g. `[meeting]`, `[Linear]`, `[GitHub]`, `[Slack]` where that skill pulls Slack). **`brag-doc`** uses **`Week in brief`**, numeric cites, and **`## References`** only; it does not read `context.md` (see [`brag-doc/SKILL.md`](brag-doc/SKILL.md)). Never commit filled profiles, sensitive notes, outputs, HR feedback, or live source URLs. Sensitive notes: `1on1` skips unless asked; `review-prep` asks before reading.
+Briefs: short paragraphs, facts over spin; tag sources in prose per each `SKILL.md` (e.g. `[meeting]`, `[Linear]`, `[GitHub]`, `[Slack]` where that skill pulls Slack). Never commit filled profiles, sensitive notes, outputs, HR feedback, or live source URLs. Sensitive notes: `1on1` skips unless asked; `review-prep` asks before reading.
 
 ## 🔗 Dependency order
 
