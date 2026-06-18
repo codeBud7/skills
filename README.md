@@ -14,7 +14,7 @@ You are staring at an ambiguous scope change mid-sprint. Instead of coding strai
 
 **Manager or EM: people and planning**
 
-Your notes live in five tools and your calendar says the 1:1 is tomorrow. You run **`home-os`** once, fill **`context.md`** and a **`directs/<slug>.md`**, and link sources when you can. Then **`1on1`**, **`review-prep`**, **`brag-doc`** (self-only wins doc), **`strategy-brief`**, or **`hiring-feedback`** can turn that into a short brief or artifact with tagged evidence instead of a Sunday-night re-read of everything. Impact: calmer prep, clearer follow-ups, feedback that cites reality.
+Your notes live in five tools and your calendar says the 1:1 is tomorrow. You run **`home-os`** once, fill **`context.md`** and a **`directs/<slug>.md`**, and link sources when you can. Then **`1on1`**, **`1on1-log`**, **`review-prep`**, **`brag-doc`** (self-only wins doc), **`strategy-brief`**, or **`hiring-feedback`** can turn that into a short brief or artifact with tagged evidence instead of a Sunday-night re-read of everything. Impact: calmer prep, clearer follow-ups, feedback that cites reality.
 
 **Anyone: stress-test a plan before you build**
 

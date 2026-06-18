@@ -36,10 +36,9 @@ Approved plan file = runbook: harvest tracks todos in the file (default: each to
 - [`docs-sync`](docs-sync/SKILL.md): **Onboarding wins:** docs match the change (or you explicitly waive); fewer “where is this documented?” threads.
 - [`draft-pr`](draft-pr/SKILL.md): **Visibility:** scoped commits, push, draft PR. Stakeholders see progress without a messy branch story.
 - [`ci-green`](ci-green/SKILL.md): **Unblock:** iterate checks until green instead of hand-waving flakes.
-- [`create-agent-docs`](create-agent-docs/SKILL.md): **New repo smell:** scaffold `AGENTS.md` + `docs/` so the _next_ agent session starts smarter.
 - [`dep-upgrade`](dep-upgrade/SKILL.md): **Safe bumps:** assess changelog/breaking changes, upgrade incrementally, verify via local gate + CI. Standalone — not part of `harvest`.
 
-`seed`, `harvest`, `create-agent-docs`, `tdd-cycle`, and `repo-safety` require explicit mention (e.g. `@harvest`, `@tdd-cycle`). The other steps (`local-quality-gate`, `ci-green`, `docs-sync`, `draft-pr`, `cultivate`, `dep-upgrade`) can also auto-trigger from natural language.
+`seed`, `harvest`, `tdd-cycle`, and `repo-safety` require explicit mention (e.g. `@harvest`, `@tdd-cycle`). The other steps (`local-quality-gate`, `ci-green`, `docs-sync`, `draft-pr`, `cultivate`, `dep-upgrade`) can also auto-trigger from natural language.
 
 ## 💬 Typical prompts
 
@@ -47,7 +46,6 @@ Approved plan file = runbook: harvest tracks todos in the file (default: each to
 - **Ship:** “Harvest the plan at `.cursor/plans/…`” / “Ship it” / “Get CI green” / “One pass harvest for this plan”.
 - **Single step:** “Run local quality gate” / “Deslop this branch” / “Sync docs with this diff” / “Fix CI on this PR”.
 - **Deps:** “Upgrade react to 19” / “Is it safe to bump dependencies?” / “Bump lodash”.
-- **Agent docs:** “Set up agent docs for this repo” / `@create-agent-docs`.
 
 ## 🤝 Subagents
 

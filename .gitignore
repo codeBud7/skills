@@ -1,7 +1,6 @@
 # Flat install symlinks (when repo is also the tool home)
 /ci-green
 /cultivate
-/create-agent-docs
 /docs-sync
 /draft-pr
 /harvest

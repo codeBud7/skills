@@ -40,6 +40,7 @@ Long-term career goals:
 
 ## Source Links
 
+Notion 1:1s DB:
 Meeting notes:
 Career/growth docs:
 Linear projects:

@@ -41,7 +41,9 @@ Read the last meeting note plus unresolved follow-ups by default.
 
 Read the direct profile first.
 
-Fetch meeting notes from explicit profile links.
+Read the **previous local** `outputs/YYYY-MM-DD-1on1-<slug>.md` when it exists — **first** for follow-ups: prioritize `Carry-forward follow-ups` and the post-meeting log from the latest prior brief. Keep Notion 1:1s DB / meeting notes as a **secondary** source for the same topics.
+
+Fetch meeting notes from explicit profile links (Notion 1:1s DB under Source Links).
 
 Fetch Linear project/team links plus assigned or owned issues when a Linear user id exists.
 

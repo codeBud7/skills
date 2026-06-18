@@ -10,6 +10,8 @@ You context-switch all day (calendar blocks, Slack threads, “quick” escalati
 
 - **[`1on1`](1on1/SKILL.md)**: **Moment:** the 1:1 is in twenty minutes and your brain is still in the last incident. **Outcome:** a tight brief (wins, blockers, follow-ups) grounded in `sources.md` / the direct profile when meeting notes, Linear, GitHub, or Slack are linked.
 
+- **[`1on1-log`](1on1-log/SKILL.md)**: **Moment:** the 1:1 just ended and Granola captured it. **Outcome:** a deep post-meeting log (threads, commitments, signals, loop closure, carry-forward) appended to the same `outputs/YYYY-MM-DD-1on1-<slug>.md` as the prep brief — optional Notion write.
+
 - **[`review-prep`](review-prep/SKILL.md)**: **Moment:** you need to write growth feedback and not rely on “how I felt last week.” **Outcome:** evidence-style bullets with less recency bias when you add last review / growth docs plus the same sources as 1:1.
 
 - **[`hiring-feedback`](hiring-feedback/SKILL.md)**: **Moment:** the debrief ended and HR needs text tonight. **Outcome:** paste-ready HR-shaped feedback from panel notes aligned to the rubric for that role (private root + rubric per role; pasted notes unless Source Rules say otherwise).
@@ -28,6 +30,7 @@ You context-switch all day (calendar blocks, Slack threads, “quick” escalati
 
 - **Setup:** “Set up my management Home OS” / “Add a direct profile for …” / “Update source links for my team” / “Set up career ladder”.
 - **1:1:** “Prep my 1:1 with `<slug>`”. Add “include sensitive context” only if you want sensitive notes read.
+- **1:1 log:** “Log my 1:1 with `<slug>`” / “Debrief the 1:1 with …” / “Post-meeting notes for `<slug>`”. Add “save to Notion” only if you want a Notion page written.
 - **Feedback:** “Help me give feedback to `<slug>`” / “Write an SBI note for …” / paste the situation.
 - **Team:** “How is the team doing for `2026-06-02..2026-06-08`” / “Summarize the team's week”. Put an explicit **timeframe** in the prompt.
 - **Hiring:** “Turn these interview notes into HR feedback” (position clarified first) / “Set up hiring rubric for [role]” + paste JD.
