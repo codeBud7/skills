@@ -1,6 +1,6 @@
 ---
 name: strategy-brief
-description: Create a concise combined tech strategy and roadmap brief from Home OS priorities, Linear context, pasted product/org context, constraints, risks, and deadlines. Use for strategy planning, roadmap planning, or decision memos. Triggers: "draft a strategy brief", "two pages on roadmap and bets", "write a decision memo".
+description: Strategy brief creates a concise tech strategy and roadmap memo from Home OS priorities, Linear context, pasted product/org context, constraints, risks, and deadlines. Use for strategy planning, roadmap planning, or decision memos.
 ---
 
 # Strategy brief
@@ -13,11 +13,9 @@ Confirm **audience + decision + constraints** (not Linear-only). Read `context.m
 
 **You need:** Strategy question or audience; `context.md` priorities; pasted org/product constraints; linked Linear for status signals — not Linear alone.
 
-**Done when:** One clear recommendation (or explicit open decisions if facts are insufficient); three to five named roadmap bets tied to constraints; artifact within ~two pages equivalent with explicit `Sources checked`.
+**Done when:** One clear recommendation (or explicit open decisions if facts are insufficient); three to five named roadmap bets tied to constraints; `Sources checked` explicit; each major section is capped at 3 short paragraphs or 5 bullets.
 
 **Templates:** [`strategy-roadmap.template.md`](strategy-roadmap.template.md)
-
-Create a combined tech strategy and roadmap brief. Keep it bounded: max two pages equivalent, one recommendation, three to five roadmap bets.
 
 ## Inputs
 
@@ -68,16 +66,6 @@ Use short paragraphs under these headings:
 Keep to one recommendation and three to five roadmap bets.
 
 In prose, use lightweight tags like `[Linear]` where a fact came from Linear. List concrete URLs or doc links under `Sources checked`.
-
-## Rules
-
-Do not pretend uncertainty is alignment.
-
-Do not turn weak ideas into a roadmap without naming bets and constraints.
-
-Do not hide missing constraints.
-
-If the roadmap is not tied to facts, risks, or constraints, rewrite it as open decisions.
 
 ## Saving
 

@@ -1,6 +1,6 @@
 ---
 name: ci-green
-description: Watch PR CI, triage failures, fix, and push until checks are green or blocked. Use when getting CI green, when PR checks fail, or after pushing a branch with required checks. Triggers: "get CI green", "fix the failing checks", "why is CI red". Referenced by harvest.
+description: CI green watches PR checks, triages failures, fixes, and pushes until required checks are green or clearly blocked. Use when PR checks fail or after pushing a branch with required checks.
 ---
 
 # CI green
@@ -23,8 +23,6 @@ gh pr checks --watch
 gh pr view --json statusCheckRollup,url
 ```
 
-Until required checks green.
-
 ## On fail
 
 1. inspect checks + logs
@@ -39,7 +37,7 @@ Missing coverage from CI → see `tdd-cycle` (failing test first). No blind patc
 
 ## Flaky
 
-Gather evidence, selective rerun, document instability. Don't hide real failures.
+Gather evidence, selectively rerun, and report real failures or instability in blocked status.
 
 ## Stop
 

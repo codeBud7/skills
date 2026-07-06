@@ -1,6 +1,6 @@
 ---
 name: 1on1
-description: Prepare a short manager-readable 1:1 brief from private Home OS context, meeting notes, Linear work, GitHub activity, optional delivery metrics (PR open→merge, issue lead times), and Slack when linked. Use when prepping for a one-on-one, when the user asks to prep for a direct report, or when the user wants follow-ups, wins, career prompts, or feedback check-in questions for a 1:1. Triggers: "prep my 1:1", "prep for a direct report", "1:1 brief".
+description: 1on1 prepares a short manager-readable brief from Home OS context, meeting notes, Linear, GitHub, optional metrics, and Slack when linked. Use when prepping a direct-report 1:1 or generating follow-ups, wins, career prompts, and feedback check-in questions.
 ---
 
 # 1on1
@@ -16,8 +16,6 @@ Resolve direct slug + private root → read `directs/<slug>.md` → pull linked 
 **Done when:** Headings through `Sources checked` are filled from profile + linked sources within the time window; `Delivery pulse (metrics)` is filled, explicitly skipped with a one-line reason, or marked thin sample; gaps are explicit in `Missing context`; no invented performance claims; brief matches [reference.md](reference.md) heading and evidence rules; numeric delivery lines labeled with N and method, never peer comparison.
 
 **Templates:** [`brief.template.md`](brief.template.md)
-
-Prepare a concise 1:1 brief. Use private Home OS context first, then fetch recent facts from linked sources.
 
 ## Inputs
 
@@ -51,19 +49,7 @@ Fetch GitHub authored PRs, reviews, and comments within linked repos and the tim
 
 ### Metrics snapshot (optional)
 
-Per-direct, in-window **signals for conversation** — not evaluative scores. Prefer **GitHub MCP** when the host exposes it; otherwise read-only **`gh search prs`** / **`gh search issues`** (see **`home-os`** GitHub fallback).
-
-**Prerequisites:** GitHub username from `directs/<slug>.md` (**Identity**); searchable scope from **Source Links** (repos, org, or search hints) plus `sources.md` **GitHub** section when the profile is thin. Without username + scope, skip this subsection and note the gap under `Missing context` or in `Delivery pulse (metrics)`.
-
-**PR time (default definition):** For **merged** PRs **authored** by the direct in the brief window, duration = **`createdAt` → `mergedAt`**. Other definitions (e.g. first review to merge) only if the user explicitly asks.
-
-**Issues (GitHub):** Closed issues **assigned to** the direct in window; duration = **`createdAt` → `closedAt`**. If assignee-based search returns nothing relevant, do not substitute a different filter without noting the limitation.
-
-**Linear:** If Linear is linked and MCP exposes cycle or lead-time fields for their issues in window, add a short tagged line under `Delivery pulse (metrics)` (`[Linear]`). If unavailable, omit — do not block the brief.
-
-**Execution:** Cap raw rows (e.g. 50–100). In the brief, state **sample N** and **method** (e.g. GitHub search, date range). Compute a simple summary (counts + median or typical range in human-readable units).
-
-**When to omit:** No `gh`/MCP auth, empty results, or N so small that summaries mislead — then one line (“thin sample” / “skipped”) is enough.
+Use the metrics definitions in [reference.md](reference.md). Keep metrics as conversation signals, not ratings.
 
 Fetch Slack **inside the same time window** as this brief when scope is listed under `sources.md` or the direct profile.
 
@@ -79,11 +65,7 @@ If context is useful but incomplete, continue and add a short missing-context pa
 
 ## Sensitive Notes
 
-Do not read sensitive notes by default.
-
-Read sensitive-marked sections in `directs/<slug>.md` only when the user explicitly asks for difficult or sensitive 1:1 prep.
-
-If sensitive notes are used, display the brief only by default. Save only on explicit request.
+Use the shared sensitive-notes boundary in `home-os` [reference.md](../home-os/reference.md).
 
 ## Output
 
@@ -97,12 +79,10 @@ Include generated timestamp, time window, and sources checked.
 
 ## Kill criteria
 
-Do not infer sentiment or diagnose performance from weak evidence.
+Weak evidence becomes questions and labeled gaps, not sentiment or performance diagnosis.
 
-Do not make performance claims when a question would be more accurate.
+Ambiguous person → ask before fetching private Home OS or MCP data.
 
-Do not fetch private Home OS or MCP data for an ambiguous person.
+Sensitive-derived output follows the `home-os` shared boundary.
 
-Do not store sensitive-derived output unless explicitly requested.
-
-Do not diagnose performance, rank against peers, or imply team standing from metrics alone; pair thin numbers with questions, not verdicts.
+Metrics become conversation signals; thin numbers pair with questions, not verdicts or peer comparison.

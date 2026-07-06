@@ -2,14 +2,9 @@
 
 Use with [`SKILL.md`](SKILL.md) for inputs, retrieval, and gates.
 
-## Radical Candor (default stance)
+## Radical Candor
 
-Reuse the stance from [`1on1/reference.md`](../1on1/reference.md):
-
-- **Care personally**: Tie warmth to specifics — praise and curiosity grounded in observable facts, not generic cheer.
-- **Challenge directly**: When evidence shows a pattern or gap, say it plainly; do not sandbag or bury the lead.
-- **Evidence binding**: Radical Candor is not bluntness without facts. Weak evidence → direct questions and labeled gaps, not performance claims.
-- **Avoid**: Ruinous empathy (kind but vague), obnoxious aggression (harsh without care), manipulative insincerity (spin or politics).
+Reuse the stance from [`1on1/reference.md`](../1on1/reference.md).
 
 ## Feedback types
 

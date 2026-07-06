@@ -1,6 +1,6 @@
 ---
 name: local-quality-gate
-description: Discover and run repo lint, format, typecheck, build, and test until green or blocked. Use before opening a PR, after code changes, or when verifying local checks pass. Triggers: "run the quality gate", "run lint and tests", "check that this builds". Referenced by harvest and docs-sync.
+description: Local quality gate discovers and runs repo lint, format, typecheck, build, and test until green or blocked. Use before opening a PR, after code changes, or when verifying local checks pass.
 ---
 
 # Local quality gate
@@ -13,26 +13,22 @@ Discover repo checks from `package.json`, CI, `AGENTS.md` → run in order → g
 
 **You need:** A repo with discoverable check commands; code changes to verify.
 
-**Done when:** All relevant checks pass; new tests pass isolated + in-suite; skipped checks have reason + risk stated.
+**Done when:** All relevant checks pass; new tests pass isolated + in-suite; skipped checks have reason + risk stated. Relevant = changed surface plus repo-required CI parity.
 
 ## Discover
 
 From `package.json`, CI workflows, `AGENTS.md`, `README`, repo scripts — lint, format, typecheck, test, build. Prefer repo-native commands.
 
-## Order
+## Phases
 
-1. targeted tests (changed behavior)
-2. affected suite
-3. lint
-4. format check
-5. typecheck
-6. build (if applicable)
-7. full suite (if feasible)
+1. Phase 1: targeted tests (changed behavior), then affected suite.
+2. Phase 2: lint, format check, typecheck, and build (if applicable) in parallel when independent.
+3. Phase 3: full suite when feasible.
 
 ## Parallel subagent
 
-Steps 3–6 independent of targeted tests → run parallel (terminals or subagent) while 1–2 run. Main thread merges results, fixes failures.
+Phase 2 checks may run in terminals or subagents. Main thread merges results and fixes failures.
 
 ## On fail
 
-Root cause → minimal fix → rerun affected → rerun impacted surface. Don't ignore lint/typecheck/new flakiness.
+Root cause → minimal fix → rerun affected → rerun impacted surface. Report lint/typecheck failures and new flakiness as blockers until fixed.

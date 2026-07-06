@@ -28,9 +28,9 @@
 ## Rollout / follow-ups
 ```
 
-## Cost estimate (workspace Plan Cost Estimation rule)
+## Cost estimate
 
-After H1: identify model → rates per 1M tokens → classify per todo + 20% overhead → two blockquotes (Current + Auto; min–max = calc × 1.5).
+Follow the workspace **Plan Cost Estimation** rule after the H1.
 
 ## Frontmatter todos
 

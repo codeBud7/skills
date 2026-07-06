@@ -1,6 +1,6 @@
 ---
 name: team-pulse
-description: Produce a weekly, action-oriented team pulse report from Home OS context plus delivery signals (GitHub, Linear, optional Slack/incidents). EM-facing brief with optional deltas vs prior saved pulse, dependencies, plan risk, and named unblock contacts—never peer ranking. Requires a timeframe. Triggers: "how is the team doing", "summarize the team's week", "team pulse".
+description: Team pulse produces an action-oriented team report from Home OS context plus delivery signals, dependencies, plan risk, and named unblock contacts. Requires a timeframe.
 ---
 
 # Team pulse
@@ -13,11 +13,9 @@ Confirm timeframe → resolve Home OS root → read `context.md` and all `direct
 
 **You need:** A timeframe (required — ask if not given); private Home OS with `context.md` and `directs/*.md`; optional links in `sources.md` for GitHub, Linear, Slack, observability, meeting notes.
 
-**Done when:** Report matches [reference.md](reference.md) heading order and tone; `Window` is explicit; **full sample N, filters, CLI/API detail** appear only under **Sources and methodology**, not cluttering **Delivery flow (metrics)**; optional `##` sections are **omitted** when empty (gaps noted in `Missing context`); **Risks and blockers** include accountable names/handles or honest Unassigned; no per-person ranking; after the report is shown, you **asked** whether to persist to Home OS `outputs/`.
+**Done when:** Report matches [reference.md](reference.md) heading order and tone; `Window` is explicit; **full sample N, filters, CLI/API detail** appear only under **Sources and methodology**, not cluttering **Delivery flow (metrics)**; optional `##` sections are **omitted** when empty (gaps noted in `Missing context`); **Risks and blockers** include accountable names/handles or honest Unassigned; no per-person ranking; report is written to Home OS `outputs/` or the user declined saving.
 
 **Templates:** [`pulse.template.md`](pulse.template.md)
-
-Aggregate signals across all directs; team totals and trends, not individual standings.
 
 ## Inputs
 
@@ -45,23 +43,7 @@ Optional source links in `sources.md` and per-direct **Source Links**.
 
 ### Delivery flow metrics (team aggregate)
 
-Reuse definitions from **`1on1`** **Metrics snapshot** — aggregate across all directs with GitHub username + searchable scope. Report **team-level** totals and medians/typical ranges only.
-
-**PR throughput:** Count of merged PRs authored by team members in window.
-
-**PR cycle time (open→merge):** For merged PRs in window, duration = `createdAt` → `mergedAt`. Report team median or typical range.
-
-**Review latency:** Time from PR open to first review comment, when GitHub data exposes it. Team median or typical range; skip with one line if unavailable.
-
-**Issue lead time:** Closed issues assigned to team members in window; duration = `createdAt` → `closedAt`. Team totals and median.
-
-**WIP / in-progress:** Open PRs and in-progress Linear issues at snapshot time. Count only — no per-person breakdown in **Delivery flow (metrics)**.
-
-**Linear:** If Linear is linked and MCP exposes cycle or lead-time fields, add team-level lines in **Delivery flow** without inline source-tag noise. If unavailable, omit—do not block the pulse.
-
-**Execution:** Cap raw rows per source (e.g. 50–100). Prefer **GitHub MCP** when available; otherwise read-only `gh` per **`home-os`** GitHub fallback. Record **sample N**, caps, filters, and commands under **Methodology** in **Sources and methodology**—not repeated under each metric in the body.
-
-**When to omit:** No auth, empty results, or N so small that summaries mislead — one line ("thin sample" / "skipped") is enough in **Delivery flow**; elaborate under **Methodology** if useful.
+Reuse definitions from **`1on1`** **Metrics snapshot** and [reference.md](reference.md). Aggregate across all directs with GitHub username + searchable scope; report team-level totals and medians/typical ranges only.
 
 ## Output
 

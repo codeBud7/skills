@@ -1,6 +1,6 @@
 ---
 name: 1on1-log
-description: After a 1:1, synthesize a deep post-meeting log from the Granola transcript and append it to the existing 1:1 brief doc. Closes the loop against the prep brief and any feedback note (topics covered, commitments, carry-forward). Optional Notion write. Use when debriefing a 1:1, logging meeting notes, or summarizing what was discussed. Triggers: "log my 1:1", "debrief the 1:1 with", "post-meeting notes", "summarize my 1:1".
+description: 1on1-log synthesizes a post-meeting Granola transcript into the existing 1:1 brief doc, closing the loop on prep, feedback, commitments, and carry-forward.
 ---
 
 # 1on1-log
@@ -13,11 +13,9 @@ Resolve direct slug + private root → match today's Granola meeting → read tr
 
 **You need:** Direct slug or name; Granola MCP for transcript; same-day brief at `outputs/YYYY-MM-DD-1on1-<slug>.md` when available; optional same-day `outputs/YYYY-MM-DD-feedback-note-<slug>.md` for loop closure.
 
-**Done when:** Post-meeting block matches [reference.md](reference.md); every claim grounded in transcript (or Granola summary with depth gap flagged); loop closure checked against brief and feedback note when present; log appended or replaced in place without touching pre-meeting sections; Notion written only when explicitly requested; no invented quotes, sentiment, or verdicts.
+**Done when:** Post-meeting block matches [reference.md](reference.md); every claim grounded in transcript (or Granola summary with depth gap flagged); loop closure checked against brief and feedback note when present; `Carry-forward follow-ups` filled or explicitly empty; log appended or replaced in place without touching pre-meeting sections; Notion written only when explicitly requested; no invented quotes, sentiment, or verdicts.
 
 **Templates:** [`post-meeting-log.template.md`](post-meeting-log.template.md)
-
-After a 1:1, synthesize a post-meeting log from Granola and append it to the existing brief doc. One file per 1:1 — no separate `-granola-summary.md` or `-log.md`.
 
 ## Inputs
 
@@ -53,7 +51,7 @@ Locate the same-day feedback note `outputs/YYYY-MM-DD-feedback-note-<slug>.md` w
 
 Pull the Granola **transcript** via `get_meeting_transcript` as the primary substance source. Fall back to Granola's own summary only if the transcript is unavailable; flag the depth gap in the log.
 
-Do not read sensitive-marked sections in `directs/<slug>.md` unless the user explicitly asks.
+Use the shared sensitive-notes boundary in `home-os` [reference.md](../home-os/reference.md).
 
 ## Output
 

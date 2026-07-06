@@ -1,6 +1,6 @@
 ---
 name: dep-upgrade
-description: Plan and execute a dependency upgrade safely — assess changelog/breaking changes, upgrade incrementally, verify via local quality gate and CI. Use when upgrading a dependency, bumping dependencies, or asking if an upgrade is safe. Triggers: "upgrade <dependency>", "bump dependencies", "is this safe to upgrade". Routes risky upgrades through seed for a plan first. Referenced by local-quality-gate, ci-green, optionally seed.
+description: Dep upgrade assesses changelog and breakage risk, upgrades incrementally, and verifies through local quality gate and CI. Use when upgrading a dependency, bumping dependencies, or asking if an upgrade is safe.
 ---
 
 # Dep upgrade
@@ -13,7 +13,7 @@ Assess current vs target → route trivial inline or risky via `seed` → bump �
 
 **You need:** Target dependency and version (or assessment ask); package manager access.
 
-**Done when:** Target version installed and lockfile updated; breakages fixed; `local-quality-gate` green (or CI green after push); risky upgrades planned via `seed`; blockers reported with clear user-visible status.
+**Done when:** Target version installed; lockfile updated by the package manager; breakages fixed; `local-quality-gate` green; pushed branches pass `ci-green`; risky upgrades used an approved `seed` plan; blockers have clear user-visible status.
 
 ## Assess
 
@@ -40,9 +40,9 @@ Assessment-only ("is this safe?") → report findings; don't upgrade unless user
 
 ## Verify
 
-1. Run `local-quality-gate` — lint, format, typecheck, test, build.
+1. Run `local-quality-gate`.
 2. Fix failures; rerun affected checks.
-3. After push: run `ci-green` until required checks pass.
+3. After push: run `ci-green`.
 
 ## Stop
 

@@ -1,6 +1,6 @@
 ---
 name: draft-pr
-description: Create scoped commits, push the branch, and open a draft PR with summary and test plan. Use when opening a draft PR, preparing changes for review, or finalizing a branch. Triggers: "open a draft PR", "push and open a PR", "prep this for review". Referenced by harvest.
+description: Draft PR creates scoped commits, pushes the branch, and opens a draft PR with summary and test plan. Use when changes are ready to push into a draft PR.
 ---
 
 # Draft PR
@@ -13,7 +13,7 @@ Pre-flight `repo-safety` → inspect diff → scoped commits → push → `gh pr
 
 **You need:** Changes ready to push; `docs-sync` gate passed (updates or waiver).
 
-**Done when:** Draft PR exists with honest body (summary, test plan, doc waiver if any); checklist satisfied; `repo-safety` and `docs-sync` gates respected.
+**Done when:** Draft PR exists with honest body (summary, test plan, docs changes or waiver, risks); lint/typecheck/relevant tests are reported; `repo-safety` and `docs-sync` gates are satisfied.
 
 ## Inspect
 
@@ -37,16 +37,13 @@ git push -u origin HEAD
 gh pr create --draft
 ```
 
-Body: summary | rationale | impl notes | test plan | TDD evidence | **documentation** (changes or `Docs: no change — <reason>`) | risks/rollout.
+Body: summary | rationale | impl notes | test plan | TDD evidence per `tdd-cycle` when tests changed | **documentation** per `docs-sync` | risks/rollout.
 
 ## Checklist
 
-- [ ] Tests added/updated first
-- [ ] New tests fail before impl
-- [ ] New tests pass after impl
-- [ ] Lint + typecheck + relevant tests pass
-- [ ] No unrelated files (`repo-safety`)
-- [ ] No secrets (`repo-safety`)
+- [ ] Lint + typecheck + relevant tests pass, or skips documented with risk
+- [ ] `tdd-cycle` evidence included when tests changed
+- [ ] No unrelated files or secrets (`repo-safety`)
 - [ ] `docs-sync` gate passed (updates committed or waiver documented)
 
 ## Report

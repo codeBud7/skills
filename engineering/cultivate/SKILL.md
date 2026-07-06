@@ -1,6 +1,6 @@
 ---
 name: cultivate
-description: Deslop AI code — trim noise, match file style, honest TS, merge dup tests; same behavior. Use when deslopping code or as the harvest post-impl cleanup step after code is complete and local checks are green. Triggers: "deslop", "clean up this code", "remove the AI slop".
+description: Cultivate deslops AI code after implementation: trim noise, match file style, keep honest TypeScript, merge duplicate tests, preserve behavior. Use when code needs deslop cleanup after local checks are green.
 ---
 
 # Cultivate
@@ -9,27 +9,21 @@ description: Deslop AI code — trim noise, match file style, honest TS, merge d
 
 After code complete and local checks green: locate smells in touched files → minimal edits preserving behavior → re-run targeted tests/lint.
 
-Trigger: deslop. **Same behavior** unless user says else. Minimal diff; no repo-wide style pass.
+**Same behavior** unless user says else. Minimal diff; no repo-wide style pass.
 
 **You get:** Cleaner touched code with same behavior — noise down, style matched, no `any` silencing.
 
 **You need:** Code complete and local checks green on touched files.
 
-**Done when:** Noise down; behavior unchanged; no `any` silencing; tests meaningful; risky skips named.
-
-## Subagents
-
-- **Locate** — read-only subagent: smell map per file (comment | defense | test dup | TS | control flow | dead).
-- **Review** (optional) — subagent verify diff: behavior preserved, no stripped boundaries.
-
-Main thread: edits + project checks.
+**Done when:** Touched files have obvious noise removed; behavior-preserving diff only; no new `any` or skipped tests; targeted tests/lint re-run or skipped with reason; risky cleanup left in place is named.
 
 ## Workflow
 
-1. Skim whole target file — set local norm (comments, guards, errors, TS).
+1. Skim whole target file — set local norm (comments, guards, errors, TS); optional read-only subagent returns smell map per file.
 2. Classify smells; **default keep** when not obvious.
 3. Apply rules; run tests/lint/typecheck for touched code.
-4. Summarize: removed/simplified + skipped (risky).
+4. Optional review subagent verifies behavior preserved and no boundaries stripped.
+5. Summarize: removed/simplified + skipped (risky).
 
 ## Scope
 

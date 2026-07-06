@@ -26,12 +26,9 @@ Use short paragraphs under these headings:
 
 Only include `Optional outline` when evidence is sufficient.
 
-## Rules — Radical Candor (default stance)
+## Radical Candor
 
-- **Care personally**: Acknowledge impact and context; keep praise specific and evidence-backed.
-- **Challenge directly**: Name gaps or risks the evidence supports; do not soften mixed evidence into false harmony.
-- **Evidence binding**: Candor without citations is opinion — state gaps and questions instead of evaluative claims when evidence is thin.
-- **Avoid**: Ruinous empathy (vague positivity), obnoxious aggression (harsh labels), manipulative insincerity (strategic ambiguity).
+Reuse the stance from [`1on1/reference.md`](../1on1/reference.md).
 
 Do not write final evaluative claims without cited evidence.
 

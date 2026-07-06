@@ -1,6 +1,6 @@
 ---
 name: seed
-description: User-in-the-loop plan before coding — goals, trade-offs, risks, test and rollout — written to one approved plan file. Use when planning before implementation. Triggers: "/seed", "plan before implementation", "scope a change", "design an approach", "weigh options before building", "plan mode".
+description: Seed creates a user-approved plan file before coding.
 disable-model-invocation: true
 ---
 
@@ -14,15 +14,15 @@ Read-only planning → Cadence → one plan file on disk → user approval befor
 
 **You need:** A scoped task or design question; user available for approval gate.
 
-**Done when:** One plan file on disk with valid YAML todos and body per [reference.md](reference.md); no implementation started; user approval recorded per **Gate** below.
+**Done when:** One plan file on disk with valid YAML todos and body per [reference.md](reference.md); implementation has not started; approval gate below is recorded.
 
 ## Gate
 
-No impl until plan approved (host UI, exit-plan tool, or `approved` / `execute` / `LGTM on plan`). Spikes = user OK, read-only only.
+Implementation starts only after plan approval (host UI, exit-plan tool, or `approved` / `execute` / `LGTM on plan`). Spikes require user OK and stay read-only.
 
 ## Deliver
 
-Read-only planning → **Cadence** → **one plan file** on disk (not full plan in chat; summary + path only). Amend = edit same file. After approval → implement; file = source of truth; **harvest** to ship.
+Read-only planning → **Cadence** → **one plan file** on disk (summary + path in chat). Amend = edit same file. After approval → implement; file = source of truth; **harvest** to ship.
 
 **File:** YAML frontmatter (`name`, `overview`, `todos[{id, content}]` with done criteria) + markdown body. Path: host tool path | Claude `plan.md` or `.claude/plans/<slug>.md` | else `plans/<slug>.md`. Body: H1 first; no tables. Skeleton + cost rule: [reference.md](reference.md).
 

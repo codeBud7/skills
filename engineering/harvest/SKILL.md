@@ -1,6 +1,6 @@
 ---
 name: harvest
-description: Ship fixed-scope work end-to-end — TDD, local gates, deslop, docs sync, draft PR, CI green — from an approved seed plan. Use when shipping an approved plan end-to-end. Triggers: "ship it", "build the plan", "execute the plan", "run the todos", "finalize", "prepare for review", "open a draft PR", "get CI green", "@harvest".
+description: Harvest orchestrates an approved seed plan through the ship pipeline.
 disable-model-invocation: true
 ---
 
@@ -8,9 +8,7 @@ disable-model-invocation: true
 
 ## Fast path
 
-Plan file approved per `seed` → read todos → mode A (per todo) or B (one pass) per [Subagent rule](#subagent-rule) below → update plan file at each boundary. Preconditions and mapping:
-
-Triggers: ship it | open draft PR | get CI green | finalize | prepare for review | build the plan | execute plan | run todos from … | `@harvest` + plan path.
+Plan file approved per `seed` → read todos → mode A (per todo) or B (one pass) per [Subagent rule](#subagent-rule) below → update plan file at each boundary. Invoke explicitly as `@harvest`.
 
 Orchestrate sub-skills in order. **No merge** unless user says so.
 
@@ -18,7 +16,7 @@ Orchestrate sub-skills in order. **No merge** unless user says so.
 
 **You need:** Approved plan file per `seed` (path or discoverable default).
 
-**Done when:** Impl complete; tests-first when feasible; local green; deslop applied (cultivate), behavior unchanged; docs synced or waived; draft PR; CI green; scoped diff; limits documented; all todos `done`; draft PR URL in plan body or final summary.
+**Done when:** All plan todos are `done`; `tdd-cycle`, `local-quality-gate`, `cultivate`, `docs-sync`, `draft-pr`, and `ci-green` gates pass or have explicit blocked/waived status; scoped diff and limits documented; draft PR URL in plan body or final summary.
 
 ## From approved plan (Build)
 
@@ -35,13 +33,13 @@ Parity with Cursor **Build** / Agent after plan approval: same plan file on disk
 | Mode | When | Per todo | After last impl todo |
 |------|------|----------|----------------------|
 | **A** — todos = slices | default | `repo-safety` continuous; `tdd-cycle` + `local-quality-gate` for that slice | `cultivate` (deslop, re-green) + `docs-sync` + `draft-pr` + `ci-green` once (unless plan splits PR/CI/docs todos) |
-| **B** — one ship | user says "one pass harvest" | full pipeline once | mark todos `done` when each section's acceptance criteria met |
+| **B** — one ship | user says "one pass harvest" | full pipeline once | mark todos `done` only when each todo `content` done criteria are met |
 
 **Loop (mode A):** for each todo — scope per `repo-safety`; run pipeline subset; only then set todo `done`, next `in_progress`. On failure: stop; set `blocked_reason` on todo if blocked.
 
 **Progress:** plan file is source of truth. Optional `TodoWrite` may mirror Cursor session UI; still update plan file at every todo boundary.
 
-**End:** **Done when** criteria met; all todos `done`; draft PR URL in plan body or final summary.
+**End:** **Done when** criteria met.
 
 ## Subagent rule
 
@@ -51,13 +49,13 @@ Read-only or independent stage → delegate subagent(s). Main thread: scope deci
 
 | # | Skill | Done gate |
 |---|-------|-----------|
-| 0 | `repo-safety` | continuous — see skill |
-| 1 | `tdd-cycle` | red → green → refactor |
-| 2 | `local-quality-gate` | lint/format/type/test/build green |
-| 3 | `cultivate` | deslop after code complete: noise down, behavior unchanged, `local-quality-gate` re-green |
-| 4 | `docs-sync` | docs aligned or explicit waiver — see skill |
-| 5 | `draft-pr` | draft PR URL + scoped commits |
-| 6 | `ci-green` | required checks green or blocked |
+| 0 | `repo-safety` | scoped diff; no secrets; no forbidden git ops |
+| 1 | `tdd-cycle` | red → green → refactor complete, or no-test rationale recorded |
+| 2 | `local-quality-gate` | relevant checks pass, or skips have reason + risk |
+| 3 | `cultivate` | noise down, behavior preserved, re-greened |
+| 4 | `docs-sync` | docs fixed or explicit waiver recorded |
+| 5 | `draft-pr` | draft PR URL, honest body, scoped commits |
+| 6 | `ci-green` | required checks green or blocked status reported |
 
 Independent stages (1–6) may run delegated; orchestrator verifies gates before next step. **`cultivate` runs once after code complete; re-run `local-quality-gate` after its edits and keep `ci-green` passing — deslop must not break behavior or checks. `docs-sync` must pass before `draft-pr`.**
 

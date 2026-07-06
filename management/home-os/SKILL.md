@@ -1,6 +1,6 @@
 ---
 name: home-os
-description: Set up or update a private management Home OS with EM context, source links (meeting notes, Linear, GitHub, Slack pointers), direct profiles, and optional career ladder. Use when the user wants to create manager/team context, add or update a direct profile, configure management source links, seed expectations/ladder.md, or prepare shared context for 1:1, review prep, growth plan, hiring feedback, strategy skills, or brag-doc (Me subsections in sources.md and optional expectations.md). Triggers: "set up my Home OS", "add a direct profile for ...", "update my source links", "set up career ladder".
+description: Home OS sets up or updates private management context: team context, source links, direct profiles, and optional career ladder. Use when creating manager/team context, adding a direct profile, configuring source links, or seeding `expectations/ladder.md`.
 ---
 
 # Home OS
@@ -13,11 +13,9 @@ Create private root → seed `context.md`, `sources.md`, `directs/<slug>.md` fro
 
 **You need:** Rough team and direct notes; optional source links (never secrets in git).
 
-**Done when:** Private root exists with `context.md`, `sources.md`, at least one `directs/<slug>.md` sufficient for **`1on1`**, and canonical `Path:` recorded; unknown root is never written without confirmation; checklist in [reference.md](reference.md) satisfied.
+**Done when:** Private root exists with `context.md`, `sources.md`, at least one `directs/<slug>.md` with enough identity + source links for **`1on1`**, and canonical `Path:` recorded; unknown root is never written without confirmation; workflow and required identity fields in [reference.md](reference.md) are satisfied.
 
 **Templates:** [`context.template.md`](context.template.md), [`direct.template.md`](direct.template.md), [`sources.template.md`](sources.template.md), [`ladder.template.md`](ladder.template.md)
-
-Create and maintain private manager/team context. Public repo files are only skill instructions and blank templates. Real people data, source links, generated briefs, and sensitive notes stay outside git.
 
 Private Home OS data lives at one shared root outside git, default `~/.agents/management/home-os`. Use the same root from Cursor, Claude, or any other host.
 

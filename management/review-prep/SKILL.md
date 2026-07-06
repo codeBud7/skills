@@ -1,6 +1,6 @@
 ---
 name: review-prep
-description: Prepare performance review evidence briefs from private Home OS context, last review, growth docs, meeting notes, Linear work, GitHub activity, and Slack when linked. Use when starting performance review prep, gathering review evidence, or creating a review outline for a direct report. Triggers: "performance review prep", "gather review evidence", "review outline for".
+description: Review prep prepares performance evidence briefs from Home OS context, last review, growth docs, meetings, Linear, GitHub, and Slack when linked. Use when starting performance review prep for a direct report.
 ---
 
 # Review prep
@@ -13,11 +13,9 @@ Direct slug + review window â†’ read profile + last review/growth links if any â
 
 **You need:** Direct slug; private Home OS with `directs/<slug>.md`; review cycle or dates; optional last review / growth doc links.
 
-**Done when:** Evidence sections cite observable work; `Open questions` and `Missing context` are honest where data is thin; no final ratings prose without an explicit separate ask; packet matches [reference.md](reference.md).
+**Done when:** Evidence sections cite observable work; ladder criteria are used when `expectations/ladder.md` and Current level exist; `Open questions` and `Missing context` are honest where data is thin; no final ratings prose without an explicit separate ask; packet matches [reference.md](reference.md).
 
 **Templates:** [`evidence-brief.template.md`](evidence-brief.template.md)
-
-Prepare a factual performance review packet. Evidence brief first. Optional outline second. Do not write final review prose by default.
 
 ## Inputs
 
@@ -61,9 +59,7 @@ Fetch Slack inside the review window when `sources.md` or the direct profile lis
 
 ## Sensitive Notes
 
-Ask before reading sensitive-marked sections in `directs/<slug>.md`.
-
-If sensitive notes are used, display output only by default. Save only on explicit request.
+Use the shared sensitive-notes boundary in `home-os` [reference.md](../home-os/reference.md).
 
 ## Output
 
@@ -80,8 +76,6 @@ Include generated timestamp, time window, and sources checked.
 If the direct cannot be identified, ask before fetching context.
 
 If no direct profile exists, route to `home-os`.
-
-If sensitive notes are needed, ask before reading them.
 
 If evidence is too thin for an outline, produce evidence brief only.
 

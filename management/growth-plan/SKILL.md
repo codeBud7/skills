@@ -1,6 +1,6 @@
 ---
 name: growth-plan
-description: Turn review-prep evidence and the leveling rubric into a forward-looking growth / development plan for a direct. Use when writing a growth or career development plan for a direct. Triggers: "write a growth plan", "what should <name> work on next", "career development plan". Builds on review evidence; flags where data is thin instead of inventing goals.
+description: Growth plan turns review-prep evidence and the leveling rubric into a forward-looking development plan for a direct. Use when writing a growth plan or deciding what a direct should work on next.
 ---
 
 # Growth plan
@@ -13,11 +13,9 @@ Direct slug → read profile + `expectations/ladder.md` for target level → gat
 
 **You need:** Direct slug; private Home OS with `directs/<slug>.md`; `expectations/ladder.md` for target-level criteria (or flag gap); optional review window for evidence.
 
-**Done when:** Goals map to ladder criteria for target level; evidence is cited or gaps are explicit; no invented goals when data is thin; plan matches [reference.md](reference.md); goals cite evidence or state thin-data gaps.
+**Done when:** Two to four goals map to ladder criteria for target level; evidence is cited or gaps are explicit; no invented goals when data is thin; plan matches [reference.md](reference.md); goals cite evidence or state thin-data gaps.
 
 **Templates:** [`growth-plan.template.md`](growth-plan.template.md)
-
-Turn review evidence and the leveling rubric into a development plan. Evidence first; goals second. Flag thin data instead of inventing aspirations.
 
 ## Inputs
 
@@ -35,7 +33,7 @@ Optional links to last review, growth docs, meeting notes, Linear, GitHub, Slack
 
 ## Evidence Gathering
 
-Run the evidence pass per **`review-prep`** — same MCP conduct, windows, and sensitive-note gates. Produce or reuse an evidence summary; do not write final review prose.
+Run the evidence pass per **`review-prep`** — same MCP conduct, windows, and sensitive-note gates. Reuse a same-day `review-prep` evidence brief for the same direct/window; otherwise run the evidence pass. Do not write final review prose.
 
 **Shared conduct:** Private Home OS root, Slack, GitHub, and MCP usage — see **`home-os`** (**Path resolution order** and **MCP and source retrieval boundaries**).
 
@@ -45,9 +43,7 @@ Map evidence to ladder dimensions: scope/impact, technical, leadership/collabora
 
 ## Sensitive Notes
 
-Ask before reading sensitive-marked sections in `directs/<slug>.md`.
-
-If sensitive notes are used, display output only by default. Save only on explicit request.
+Use the shared sensitive-notes boundary in `home-os` [reference.md](../home-os/reference.md).
 
 ## Output
 

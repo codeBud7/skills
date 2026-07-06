@@ -1,6 +1,6 @@
 ---
 name: hiring-feedback
-description: Convert pasted interview notes into paste-ready HR feedback. Always resolve which position first; persist a shaped rubric if unknown. Use after candidate calls, interview debriefs, or rubric setup. Triggers: "turn interview notes into HR feedback", "hiring rubric", "interview debrief".
+description: Hiring feedback converts pasted interview notes into paste-ready HR feedback after resolving the position and private rubric. Use for interview debriefs or rubric setup.
 ---
 
 # Hiring feedback
@@ -13,11 +13,9 @@ Resolve **position** and private **rubric** on disk (Phase 1). Paste **interview
 
 **You need:** Position slug or title; pasted notes (and JD or notes for new rubrics). Private Home OS root per **`home-os`** (**Path resolution order**).
 
-**Done when:** Phase 1 resolves a rubric on disk (or confirms existing); Phase 2 output matches [`hr-feedback.template.md`](hr-feedback.template.md); unsupported dimensions say insufficient evidence; no invented signal; output matches [reference.md](reference.md) bias rules.
+**Done when:** Phase 1 resolves a rubric on disk (or confirms existing); private `sources.md` Hiring section records the active role and rubric path when a rubric is created; Phase 2 output matches [`hr-feedback.template.md`](hr-feedback.template.md); unsupported dimensions say insufficient evidence; no invented signal; output matches [reference.md](reference.md) bias rules.
 
 **Templates:** [`hr-feedback.template.md`](hr-feedback.template.md), [`rubric.template.md`](rubric.template.md)
-
-Two-phase workflow: resolve position and rubric first, then score candidate notes into HR-ready output.
 
 Git holds blank templates only. Filled rubrics live in private Home OS storage.
 
@@ -66,20 +64,10 @@ If the rubric is missing or the user names a new opening, run **position setup**
 
 Run only after Phase 1 resolves a rubric. Steps and rules: [reference.md](reference.md).
 
-## Kill criteria
+## Completion checks
 
-If position is unknown, ask before rating.
-
-If no rubric exists for the named position, run position setup or ask for position details before rating.
-
-If the user declines position setup and no rubric exists, ask before rating.
-
-If notes do not support a dimension, write insufficient evidence.
-
-If the template requires a field that notes cannot support, ask or mark insufficient evidence.
-
-If a rubric red flag is not supported by notes, do not treat it as confirmed.
-
-If the output cannot be pasted into the HR tool, revise to match the stored template.
-
-Do not fall back to filling the git rubric skeleton with role content.
+- Position resolved before rating.
+- Rubric exists in private storage before scoring; new role setup completes before candidate scoring.
+- Unsupported dimensions, required template fields, and red flags are marked insufficient evidence unless notes support them.
+- Output is paste-ready for the HR tool and uses the stored template.
+- Filled role content stays in private storage, not the git rubric skeleton.

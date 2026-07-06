@@ -1,6 +1,6 @@
 ---
 name: tdd-cycle
-description: Implement a fixed-scope change via strict red, green, refactor TDD. Use when driving a feature, bugfix, or refactor test-first, or when CI reveals missing coverage. Triggers: "@tdd-cycle". Orchestrated step — invoke explicitly or via harvest/ci-green.
+description: TDD cycle runs strict red, green, refactor for a fixed-scope change.
 disable-model-invocation: true
 ---
 
@@ -16,17 +16,15 @@ Red → green → refactor for a fixed-scope change; failing test first.
 
 **Done when:** Red → green → refactor cycle complete; tests pass; handoff criteria in **Handoff** met.
 
-Referenced by `harvest`, `ci-green`.
-
 ## Before red
 
-Know: expected behavior, modules touched, test patterns/fixtures/mocks, level (unit | integration | e2e). Ambiguous → stop, clarify.
+Know all **You need** inputs plus test level (unit | integration | e2e). Ambiguous → stop, clarify.
 
 ## Red
 
 Add/modify tests → run → confirm fail for **right reason**. Meaningful failure; deterministic; no over-mock; keep coverage. Bugfix = repro test; feature = behavior test; refactor = characterization test first.
 
-No impl before failing tests — unless automation impossible (say why).
+Implement only after a confirmed failing test. If automation is impossible, say why before implementation.
 
 ## Green
 

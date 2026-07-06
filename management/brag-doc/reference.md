@@ -96,3 +96,11 @@ Single numbered list for the **entire** file (main + addendum). Every `[n]` in t
 **Names:** keep collaborator names as they appear in evidence (private file). Add one line: sanitize before external paste.
 
 **Tone:** Evidence binding—if the week was light, say so. Optional “so what” only where `[n]` citations exist.
+
+## Loop / automation example prompt
+
+```text
+Run brag-doc. Window: 2026-06-02..2026-06-08 (UTC). Private root already has expectations.md (criteria or ## Status: declined). Pull per sources.md Me links only.
+```
+
+Adjust dates and paths to your setup.

@@ -1,6 +1,6 @@
 ---
 name: feedback-note
-description: Turn a specific situation into a written, deliverable feedback note using Situation-Behavior-Impact and a Radical Candor stance (care personally, challenge directly). Use when drafting praise, constructive, or upward feedback for a specific situation. Triggers: "help me give feedback", "write an SBI note", "draft feedback for <name>", "how do I tell them ...". Pulls the direct profile and recent evidence from Home OS when available; never invents incidents.
+description: Feedback note turns a specific situation into a deliverable SBI note with Radical Candor stance. Use when drafting praise, constructive, or upward feedback for a specific incident.
 ---
 
 # Feedback note
@@ -13,11 +13,9 @@ Confirm situation + feedback type → optional direct slug + Home OS profile →
 
 **You need:** A concrete situation (required — pasted or described by the user); optional direct slug for profile context; feedback type (praise / constructive / upward).
 
-**Done when:** Note follows SBI structure with RC stance; incidents come from user input or cited sources only; gaps are explicit when evidence is thin; no invented performance claims; note matches [reference.md](reference.md) structure and RC rules.
+**Done when:** Note follows SBI structure with RC stance; incidents come from user input or cited sources only; gaps are explicit when evidence is thin; no invented performance claims; note matches [reference.md](reference.md) structure and RC rules; saved only when requested and allowed by sensitive-notes boundary.
 
 **Templates:** [`feedback-note.template.md`](feedback-note.template.md)
-
-Turn a specific situation into a written feedback note. Use the user's stated facts first; enrich from Home OS only when a direct slug is given and evidence exists.
 
 ## Inputs
 
@@ -39,7 +37,7 @@ When a direct slug is given, read `directs/<slug>.md` for goals, strengths, grow
 
 Do not fetch meeting notes, Linear, GitHub, or Slack unless the user asks for evidence enrichment or the situation clearly references a linked source.
 
-Do not read sensitive-marked sections unless the user explicitly asks.
+Use the shared sensitive-notes boundary in `home-os` [reference.md](../home-os/reference.md).
 
 ## Output
 
@@ -61,6 +59,6 @@ If evidence is thin, write the note from what the user stated and flag gaps unde
 
 Do not fetch private Home OS data for an ambiguous person.
 
-Do not store sensitive-derived output unless explicitly requested.
+Sensitive-derived output follows the `home-os` shared boundary.
 
-Do not diagnose performance or rank against peers.
+Write observed behavior and impact, not performance diagnosis or peer ranking.

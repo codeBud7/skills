@@ -1,6 +1,6 @@
 ---
 name: grill-with-docs
-description: Grilling session that challenges your plan against the existing domain model, sharpens terminology, and updates documentation (CONTEXT.md, ADRs) inline as decisions crystallise. Use when the user wants to stress-test a plan against their project's language and documented decisions. Triggers: "grill me with docs", "stress-test this against the domain model", "challenge my plan and update the docs".
+description: Grill with docs challenges the user's plan against the existing domain model, sharpens terminology, and updates `CONTEXT.md` or ADRs as decisions crystallise. Use when the user asks for docs, domain language, glossary, or documented decisions while grilling a plan.
 ---
 
 # Grill with docs
@@ -13,55 +13,19 @@ One question at a time → challenge plan against domain model and `CONTEXT.md` 
 
 **You need:** A plan to stress-test; repo with discoverable code and optional existing `CONTEXT.md` / ADRs.
 
-**Done when:** Shared understanding reached; terminology conflicts surfaced; `CONTEXT.md` updated inline as terms resolve; ADRs offered only when the three criteria hold.
+**Done when:** Plan branches are resolved or explicitly deferred; terminology conflicts are resolved or logged; `CONTEXT.md` edits match resolved terms per [CONTEXT-FORMAT.md](CONTEXT-FORMAT.md); ADRs offered only when [ADR-FORMAT.md](ADR-FORMAT.md) criteria hold.
 
 **References:** [CONTEXT-FORMAT.md](CONTEXT-FORMAT.md), [ADR-FORMAT.md](ADR-FORMAT.md)
 
-## What to do
+## During
 
-Interview me relentlessly about every aspect of this plan until we reach a shared understanding. Walk down each branch of the design tree, resolving dependencies between decisions one-by-one. For each question, provide your recommended answer.
-
-Ask the questions one at a time, waiting for feedback on each question before continuing.
-
-If a question can be answered by exploring the codebase, explore the codebase instead.
+Follow the `grill-me` session loop: one question at a time, recommended answer included, codebase consulted where it can answer. Add the doc-specific checks below before ending.
 
 ## Supporting info
 
 ### Domain awareness
 
-During codebase exploration, also look for existing documentation:
-
-#### File structure
-
-Most repos have a single context:
-
-```
-/
-├── CONTEXT.md
-├── docs/
-│   └── adr/
-│       ├── 0001-event-sourced-orders.md
-│       └── 0002-postgres-for-write-model.md
-└── src/
-```
-
-If a `CONTEXT-MAP.md` exists at the root, the repo has multiple contexts. The map points to where each one lives:
-
-```
-/
-├── CONTEXT-MAP.md
-├── docs/
-│   └── adr/                          ← system-wide decisions
-├── src/
-│   ├── ordering/
-│   │   ├── CONTEXT.md
-│   │   └── docs/adr/                 ← context-specific decisions
-│   └── billing/
-│       ├── CONTEXT.md
-│       └── docs/adr/
-```
-
-Create files lazily — only when you have something to write. If no `CONTEXT.md` exists, create one when the first term is resolved. If no `docs/adr/` exists, create it when the first ADR is needed.
+During codebase exploration, also look for existing documentation. File layout and lazy-create rules live in [CONTEXT-FORMAT.md](CONTEXT-FORMAT.md) and [ADR-FORMAT.md](ADR-FORMAT.md).
 
 ### During the session
 
@@ -83,16 +47,10 @@ When the user states how something works, check whether the code agrees. If you 
 
 #### Update CONTEXT.md inline
 
-When a term is resolved, update `CONTEXT.md` right there. Don't batch these up — capture them as they happen. Use the format in [CONTEXT-FORMAT.md](./CONTEXT-FORMAT.md).
+When a term is resolved, update `CONTEXT.md` right there. Capture resolved terms as they happen. Use the format in [CONTEXT-FORMAT.md](./CONTEXT-FORMAT.md).
 
-`CONTEXT.md` should be totally devoid of implementation details. Do not treat `CONTEXT.md` as a spec, a scratch pad, or a repository for implementation decisions. It is a glossary and nothing else.
+`CONTEXT.md` is glossary-only: project terms, canonical names, and avoided synonyms; implementation decisions belong in ADRs.
 
 #### Offer ADRs sparingly
 
-Only offer to create an ADR when all three are true:
-
-1. **Hard to reverse** — the cost of changing your mind later is meaningful
-2. **Surprising without context** — a future reader will wonder "why did they do it this way?"
-3. **The result of a real trade-off** — there were genuine alternatives and you picked one for specific reasons
-
-If any of the three is missing, skip the ADR. Use the format in [ADR-FORMAT.md](./ADR-FORMAT.md).
+Offer ADRs only per [ADR-FORMAT.md](./ADR-FORMAT.md).

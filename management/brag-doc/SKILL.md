@@ -1,6 +1,6 @@
 ---
 name: brag-doc
-description: Build a first-person weekly or on-demand brag document for the person invoking the skill only (not for directs). Summary-first artifact with numbered references from sources.md Me-scoped links (Notion, Linear, GitHub, Slack, meetings when linked), optional private expectations.md; writes outputs/YYYY-MM-DD-brag-doc.md under the Home OS private root. Use for weekly brag doc, career wins, or self performance review prep. Triggers: "weekly brag doc", "career wins", "update my brag document".
+description: Brag doc builds a first-person summary-first brag document for the operator only, using Home OS Me-scoped sources and optional expectations.
 disable-model-invocation: true
 ---
 
@@ -14,7 +14,7 @@ Private root resolved; `expectations.md` is real criteria **or** `## Status: dec
 
 **You need:** Stated **time window**; private Home OS with `sources.md` **`### Me`** pointers (or accept a sparse stub); `expectations.md` with real criteria **or** `## Status: declined` so the expectations gate does not block.
 
-**Done when:** `outputs/YYYY-MM-DD-brag-doc.md` exists with `Window`, `Week in brief`, other applicable sections, `## References` (if any `[n]` cites), and `Sources checked`; narrative has no inline evidence URLs; file matches [reference.md](reference.md) cite and URL rules.
+**Done when:** `outputs/YYYY-MM-DD-brag-doc.md` exists with `Window`, `Week in brief`, applicable optional sections (`Shipped and impact`, `Against my stated expectations`, `Leadership and collaboration`, `Learning and craft`, `Visibility`, `Possible improvements`, `Carry into next week`, `Missing context`, `Addendum`), `## References` if any `[n]` cites, and `Sources checked`; narrative has no inline evidence URLs; file matches [reference.md](reference.md) cite and URL rules.
 
 **Templates:** [`expectations.template.md`](expectations.template.md) (optional private file at Home OS root; not required in git)
 
@@ -104,11 +104,3 @@ If the week had **zero** tagged cross-system evidence, **still write** the file 
 - Blocking gates unresolved → do not start MCP pulls.
 - No usable **Me** pointers → stub + `Missing context`.
 - Never use `directs/<slug>.md` as the brag subject.
-
-## Loop / automation example prompt
-
-```text
-Run brag-doc. Window: 2026-06-02..2026-06-08 (UTC). Private root already has expectations.md (criteria or ## Status: declined). Pull per sources.md Me links only.
-```
-
-Adjust dates and paths to your setup.
