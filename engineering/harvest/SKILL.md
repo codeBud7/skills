@@ -12,11 +12,11 @@ Plan file approved per `seed` → read todos → mode A (per todo) or B (one pas
 
 Orchestrate sub-skills in order. **No merge** unless user says so.
 
-**You get:** Fixed-scope work shipped end-to-end: tests, local green, deslop, docs, draft PR, CI green.
+**You get:** Fixed-scope work shipped end-to-end: tests, local green, deslop, code review, docs, draft PR, CI green.
 
 **You need:** Approved plan file per `seed` (path or discoverable default).
 
-**Done when:** All plan todos are `done`; `tdd-cycle`, `local-quality-gate`, `cultivate`, `docs-sync`, `draft-pr`, and `ci-green` gates pass or have explicit blocked/waived status; scoped diff and limits documented; draft PR URL in plan body or final summary.
+**Done when:** All plan todos are `done`; `tdd-cycle`, `local-quality-gate`, `cultivate`, `code-review`, `docs-sync`, `draft-pr`, and `ci-green` gates pass or have explicit blocked/waived status; scoped diff and limits documented; draft PR URL in plan body or final summary.
 
 ## From approved plan (Build)
 
@@ -32,7 +32,7 @@ Parity with Cursor **Build** / Agent after plan approval: same plan file on disk
 
 | Mode | When | Per todo | After last impl todo |
 |------|------|----------|----------------------|
-| **A** — todos = slices | default | `repo-safety` continuous; `tdd-cycle` + `local-quality-gate` for that slice | `cultivate` (deslop, re-green) + `docs-sync` + `draft-pr` + `ci-green` once (unless plan splits PR/CI/docs todos) |
+| **A** — todos = slices | default | `repo-safety` continuous; `tdd-cycle` + `local-quality-gate` for that slice | `cultivate` (deslop, re-green) + `code-review` + `docs-sync` + `draft-pr` + `ci-green` once (unless plan splits PR/CI/docs todos) |
 | **B** — one ship | user says "one pass harvest" | full pipeline once | mark todos `done` only when each todo `content` done criteria are met |
 
 **Loop (mode A):** for each todo — scope per `repo-safety`; run pipeline subset; only then set todo `done`, next `in_progress`. On failure: stop; set `blocked_reason` on todo if blocked.
@@ -53,11 +53,12 @@ Read-only or independent stage → delegate subagent(s). Main thread: scope deci
 | 1 | `tdd-cycle` | red → green → refactor complete, or no-test rationale recorded |
 | 2 | `local-quality-gate` | relevant checks pass, or skips have reason + risk |
 | 3 | `cultivate` | noise down, behavior preserved, re-greened |
-| 4 | `docs-sync` | docs fixed or explicit waiver recorded |
-| 5 | `draft-pr` | draft PR URL, honest body, scoped commits |
-| 6 | `ci-green` | required checks green or blocked status reported |
+| 4 | `code-review` | two-axis report delivered; severe findings escalated to user or resolved |
+| 5 | `docs-sync` | docs fixed or explicit waiver recorded |
+| 6 | `draft-pr` | draft PR URL, honest body, scoped commits |
+| 7 | `ci-green` | required checks green or blocked status reported |
 
-Independent stages (1–6) may run delegated; orchestrator verifies gates before next step. **`cultivate` runs once after code complete; re-run `local-quality-gate` after its edits and keep `ci-green` passing — deslop must not break behavior or checks. `docs-sync` must pass before `draft-pr`.**
+Independent stages (1–7) may run delegated; orchestrator verifies gates before next step. **`cultivate` runs once after code complete; re-run `local-quality-gate` after its edits and keep `ci-green` passing — deslop must not break behavior or checks. `code-review` runs once after `cultivate` and before `docs-sync`; severe findings stop harvest until the user says fix, waive, or block. `docs-sync` must pass before `draft-pr`.**
 
 ## Stop
 
@@ -69,5 +70,6 @@ No force-push, no bypass required checks, no hide flaky/env failures — without
 |-----------|--------|
 | Plan path missing | Ask user or run `seed` first. |
 | Local gate fails | Fix or stop; do not skip to `draft-pr`. |
+| `code-review` severe finding | Stop harvest; ask user whether to fix, waive, or block before continuing. |
 | `docs-sync` blocked | Stop harvest until fixed or explicitly waived in plan. |
 | CI flaky | Document; do not silence without user agreement. |

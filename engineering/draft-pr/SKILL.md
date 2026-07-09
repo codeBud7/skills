@@ -11,9 +11,9 @@ Pre-flight `repo-safety` → inspect diff → scoped commits → push → `gh pr
 
 **You get:** A draft PR with honest summary, test plan, and scoped commits.
 
-**You need:** Changes ready to push; `docs-sync` gate passed (updates or waiver).
+**You need:** Changes ready to push; `code-review` gate passed, waived, or blocked status recorded; `docs-sync` gate passed (updates or waiver).
 
-**Done when:** Draft PR exists with honest body (summary, test plan, docs changes or waiver, risks); lint/typecheck/relevant tests are reported; `repo-safety` and `docs-sync` gates are satisfied.
+**Done when:** Draft PR exists with honest body (summary, test plan, code-review result, docs changes or waiver, risks); lint/typecheck/relevant tests are reported; `repo-safety`, `code-review`, and `docs-sync` gates are satisfied.
 
 ## Inspect
 
@@ -37,13 +37,14 @@ git push -u origin HEAD
 gh pr create --draft
 ```
 
-Body: summary | rationale | impl notes | test plan | TDD evidence per `tdd-cycle` when tests changed | **documentation** per `docs-sync` | risks/rollout.
+Body: summary | rationale | impl notes | test plan | TDD evidence per `tdd-cycle` when tests changed | **code review** per `code-review` | **documentation** per `docs-sync` | risks/rollout.
 
 ## Checklist
 
 - [ ] Lint + typecheck + relevant tests pass, or skips documented with risk
 - [ ] `tdd-cycle` evidence included when tests changed
 - [ ] No unrelated files or secrets (`repo-safety`)
+- [ ] `code-review` gate passed, or severe findings resolved/waived/blocked with user input
 - [ ] `docs-sync` gate passed (updates committed or waiver documented)
 
 ## Report
