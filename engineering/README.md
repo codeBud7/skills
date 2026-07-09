@@ -16,6 +16,7 @@ harvest
   tdd-cycle                                │
   local-quality-gate                       │ continuous
   cultivate                                │
+  code-review                              │
   docs-sync                                │
   draft-pr                                 │
   ci-green                                 ┘
@@ -33,18 +34,20 @@ Approved plan file = runbook: harvest tracks todos in the file (default: each to
 - [`tdd-cycle`](tdd-cycle/SKILL.md): **Proof:** red → green → refactor per slice so “it works” is not just a vibe.
 - [`local-quality-gate`](local-quality-gate/SKILL.md): **Team bar:** lint, format, types, tests, and build. Catch what CI would have yelled about, earlier.
 - [`cultivate`](cultivate/SKILL.md): **Reviewer respect:** trim AI slop; reviewers see intentional code, not noise.
+- [`code-review`](code-review/SKILL.md): **Two-axis review:** repo standards + smell baseline on one side, spec/plan fidelity on the other; severe findings stop harvest before docs/PR.
 - [`docs-sync`](docs-sync/SKILL.md): **Onboarding wins:** docs match the change (or you explicitly waive); fewer “where is this documented?” threads.
 - [`draft-pr`](draft-pr/SKILL.md): **Visibility:** scoped commits, push, draft PR. Stakeholders see progress without a messy branch story.
 - [`ci-green`](ci-green/SKILL.md): **Unblock:** iterate checks until green instead of hand-waving flakes.
 - [`dep-upgrade`](dep-upgrade/SKILL.md): **Safe bumps:** assess changelog/breaking changes, upgrade incrementally, verify via local gate + CI. Standalone — not part of `harvest`.
 
-`seed`, `harvest`, `tdd-cycle`, and `repo-safety` require explicit mention (e.g. `@harvest`, `@tdd-cycle`). The other steps (`local-quality-gate`, `ci-green`, `docs-sync`, `draft-pr`, `cultivate`, `dep-upgrade`) can also auto-trigger from natural language.
+`seed`, `harvest`, `tdd-cycle`, and `repo-safety` require explicit mention (e.g. `@harvest`, `@tdd-cycle`). The other steps (`local-quality-gate`, `ci-green`, `docs-sync`, `draft-pr`, `cultivate`, `code-review`, `dep-upgrade`) can also auto-trigger from natural language.
 
 ## 💬 Typical prompts
 
 - **Plan:** “Seed a plan for …” / `/seed` + scope.
 - **Ship:** “Harvest the plan at `.cursor/plans/…`” / “Ship it” / “Get CI green” / “One pass harvest for this plan”.
 - **Single step:** “Run local quality gate” / “Deslop this branch” / “Sync docs with this diff” / “Fix CI on this PR”.
+- **Review:** “Review this branch since `main`” / “Run code review on the harvest diff”.
 - **Deps:** “Upgrade react to 19” / “Is it safe to bump dependencies?” / “Bump lodash”.
 
 ## 🤝 Subagents
