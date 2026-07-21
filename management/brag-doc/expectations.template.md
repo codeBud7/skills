@@ -12,14 +12,4 @@ Paste role expectations, level rubric, success criteria, or a link the agent sho
 
 <!-- Notion / internal doc URLs for canonical rubric text. -->
 
----
-
-## Declined (sentinel example)
-
-If you choose not to store criteria, `brag-doc` may write this file containing only:
-
-```markdown
-## Status: declined
-```
-
-That stops repeated prompts. To add criteria later, say e.g. “relink expectations” and confirm overwrite.
+To opt out of criteria mapping, do **not** edit this template in git. Ask `brag-doc` to decline — it writes private `expectations.md` containing exactly `## Status: declined`. See [`SKILL.md`](SKILL.md) (**Expectations gate**).

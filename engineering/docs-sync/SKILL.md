@@ -13,9 +13,16 @@ Doc map → drift vs `git diff <base>...HEAD` → fix or waiver before `draft-pr
 
 **You need:** Code diff on branch; `local-quality-gate` green (or documented skip).
 
-**Done when:** Doc map covers touched areas; every stale/missing item is fixed or waived; repo doc CI passes or skip + risk is documented; doc changes and waivers are ready for `draft-pr`.
+**Done when:** Doc map covers touched areas; every stale/missing item is fixed, waived with user OK, or honestly blocked; repo doc CI passes from execution or skip + risk is documented; doc changes and waivers are ready for `draft-pr`.
 
-Pre-flight: `local-quality-gate` green, or skip + risk documented.
+Pre-flight: `local-quality-gate` `pass`, `waived`, or `not-applicable` — not upstream `blocked`.
+
+## Gate contract
+
+- **`pass`** — drift resolved or valid waiver recorded; doc generators/checks run when repo expects them, or skip + risk documented.
+- **`waived`** — user approved no doc change for identified drift; record `Docs: no change — <reason>` in plan or PR body.
+- **`blocked`** — stale/missing public contract without fix or waiver; stop harvest; set plan todo `blocked_reason`.
+- Do not advance to `draft-pr` on **`blocked`**. Waiver for public API/architecture drift requires explicit user OK.
 
 ## Discover
 

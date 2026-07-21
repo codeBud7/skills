@@ -13,9 +13,9 @@ Resolve direct slug + private root → match today's Granola meeting → read tr
 
 **You need:** Direct slug or name; Granola MCP for transcript; same-day brief at `outputs/YYYY-MM-DD-1on1-<slug>.md` when available; optional same-day `outputs/YYYY-MM-DD-feedback-note-<slug>.md` for loop closure.
 
-**Done when:** Post-meeting block matches [reference.md](reference.md); every claim grounded in transcript (or Granola summary with depth gap flagged); loop closure checked against brief and feedback note when present; `Carry-forward follow-ups` filled or explicitly empty; log appended or replaced in place without touching pre-meeting sections; Notion written only when explicitly requested; no invented quotes, sentiment, or verdicts.
+**Done when:** Post-meeting block matches [reference.md](reference.md); every claim grounded in transcript (or Granola summary with depth gap flagged); loop closure checked against brief and feedback note when present; `Carry-forward follow-ups` filled or explicitly empty; log appended or replaced in place without touching pre-meeting sections; **no unresolved template placeholders**; Notion written only when explicitly requested; no invented quotes, sentiment, or verdicts.
 
-**Templates:** [`post-meeting-log.template.md`](post-meeting-log.template.md)
+**Templates:** [`post-meeting-log.template.md`](post-meeting-log.template.md) — standalone shape; append mode adds `---` + `# Post-meeting log` above it per **Saving** below.
 
 ## Inputs
 
@@ -56,6 +56,21 @@ Use the shared sensitive-notes boundary in `home-os` [reference.md](../home-os/r
 ## Output
 
 Headings, RC stance, tags: **[reference.md](reference.md)**.
+
+### Rendering modes
+
+- **Append mode** (default when same-day brief exists): keep all pre-meeting sections unchanged. Insert `---` then `# Post-meeting log`, then the post-meeting block from [post-meeting-log.template.md](post-meeting-log.template.md) with every `{token}` replaced.
+- **Standalone mode** (brief missing): create `outputs/YYYY-MM-DD-1on1-<slug>.md` containing **only** the post-meeting block (same template, all tokens replaced) plus a one-line note that prep was absent.
+
+### Placeholder gate (before save)
+
+Output is **not done** if any of these remain:
+
+- Curly tokens from the template (`{generated_at}`, `{meeting_title}`, `{summary}`, `{granola_id}`, etc.)
+- Square-bracket instructional stubs like `[Manager action item]` or `[2–4 tight lines…]`
+- Angle-bracket slug placeholders like `<slug>`
+
+Empty sections: omit optional headings (e.g. `Decisions made`) or write an explicit empty line under required headings — never ship instructional filler.
 
 ## Saving
 

@@ -13,7 +13,14 @@ Pre-flight `repo-safety` → inspect diff → scoped commits → push → `gh pr
 
 **You need:** Changes ready to push; `code-review` gate passed, waived, or blocked status recorded; `docs-sync` gate passed (updates or waiver).
 
-**Done when:** Draft PR exists with honest body (summary, test plan, code-review result, docs changes or waiver, risks); lint/typecheck/relevant tests are reported; `repo-safety`, `code-review`, and `docs-sync` gates are satisfied.
+**Done when:** Draft PR exists with honest body (summary, test plan, code-review result, docs changes or waiver, risks); lint/typecheck/relevant tests are **reported from executed runs or documented skips with risk**; upstream gates (`repo-safety`, `code-review`, `docs-sync`, `local-quality-gate` when applicable) are `pass`, `waived`, or `not-applicable` — not silently `blocked`.
+
+## Gate contract
+
+- Upstream **`blocked`** → `draft-pr` is **blocked**. Do not open a PR implying green checks.
+- **`pass`** requires draft PR URL plus honest gate status for each upstream skill in the PR body.
+- Behavior-changing branches need at least one executed verification result in the test plan — not "skipped" for every check.
+- Documented skip + risk is allowed per upstream skill rules; skip-all is never `pass`.
 
 ## Inspect
 

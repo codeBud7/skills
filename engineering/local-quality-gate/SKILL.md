@@ -13,7 +13,15 @@ Discover repo checks from `package.json`, CI, `AGENTS.md` → run in order → g
 
 **You need:** A repo with discoverable check commands; code changes to verify.
 
-**Done when:** All relevant checks pass; new tests pass isolated + in-suite; skipped checks have reason + risk stated. Relevant = changed surface plus repo-required CI parity.
+**Done when:** All relevant checks **pass from execution** or have documented skip + risk; new tests pass isolated + in-suite when added; at least one meaningful check ran for behavior-changing edits. Relevant = changed surface plus repo-required CI parity.
+
+## Gate contract
+
+- **`pass`** — every relevant check executed and green, **or** skip + risk documented per check with at least one executed meaningful verification on the changed surface.
+- **`blocked`** — any relevant check failed, or behavior changed with zero executed checks.
+- **`not-applicable`** — no behavior change and no repo-required checks apply; state why.
+- **Never** report `pass` when every relevant check was skipped. Skip-all = `blocked` unless user explicitly waives with recorded risk.
+- Unavailable tooling (missing runner, broken env) → `blocked` with reason — not `pass`.
 
 ## Discover
 

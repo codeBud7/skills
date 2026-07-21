@@ -1,18 +1,27 @@
 # Flat install symlinks (when repo is also the tool home)
+/1on1
+/1on1-log
+/brag-doc
 /ci-green
+/code-review
 /cultivate
+/dep-upgrade
 /docs-sync
 /draft-pr
+/feedback-note
+/grill-me
+/grill-with-docs
+/growth-plan
 /harvest
-/local-quality-gate
-/repo-safety
-/seed
-/tdd-cycle
-/1on1
 /hiring-feedback
 /home-os
+/local-quality-gate
+/repo-safety
 /review-prep
+/seed
 /strategy-brief
+/tdd-cycle
+/team-pulse
 
 # Accidental private data
 **/directs/

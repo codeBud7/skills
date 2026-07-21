@@ -13,7 +13,7 @@ Direct slug → read profile + `expectations/ladder.md` for target level → gat
 
 **You need:** Direct slug; private Home OS with `directs/<slug>.md`; `expectations/ladder.md` for target-level criteria (or flag gap); optional review window for evidence.
 
-**Done when:** Two to four goals map to ladder criteria for target level; evidence is cited or gaps are explicit; no invented goals when data is thin; plan matches [reference.md](reference.md); goals cite evidence or state thin-data gaps.
+**Done when:** Evidence-backed plan matches [reference.md](reference.md): either **full plan** (2–4 goals mapping to ladder criteria with cited evidence or explicit thin-data gaps) **or** **assessment-only** (strengths + open questions + missing context; no fabricated goals). Never ship template placeholders.
 
 **Templates:** [`growth-plan.template.md`](growth-plan.template.md)
 
@@ -63,7 +63,7 @@ If no direct profile exists, route to `home-os`.
 
 If `expectations/ladder.md` is missing and target level is unset, flag the gap; do not invent level criteria.
 
-If evidence is too thin for concrete goals, produce strengths + open questions only — flag under `Missing context`.
+If evidence is too thin for concrete goals, produce **assessment-only** output: fill `Strengths to leverage`, `Open questions`, and `Missing context`; omit `Growth goals` and `Progress signals` **or** state under `Growth goals` that no goals were set due to thin evidence. Do not invent goals to satisfy a count.
 
 Do not invent goals, projects, or stretch assignments to fill a template.
 

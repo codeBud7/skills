@@ -43,11 +43,11 @@ Resolve private root first. Then:
 
 Inspect `expectations.md` at the private root.
 
-- **Real criteria present** (substantive content, not only `## Status: declined`) → read for alignment and improvement framing.
-- **`## Status: declined` sentinel** (and no other usable criteria) → skip `Against my stated expectations`; note in `Missing context` that criteria mapping is off by choice.
+- **Real criteria present** (substantive content under `## Criteria` or equivalent — not only the decline sentinel) → read for alignment and improvement framing.
+- **`## Status: declined` (exact decline state)** — file contains **only** this heading (optional blank lines; no other headings, criteria, or links). Treat as explicit opt-out: skip `Against my stated expectations`; note in `Missing context` that criteria mapping is off by choice. Do **not** treat partial criteria + decline sentinel as declined.
 - **File missing** OR user used explicit **relink** intent (see below) and you need a fresh decision → **ask once**: do they want to add job expectations / success criteria / level rubric as a lens for this brag doc?
   - **Yes** → intake (paste in chat, or fetch from a Notion URL they give) → write **only** to private `expectations.md`, never git.
-  - **No** → write `expectations.md` containing **only** `## Status: declined` (and nothing else required) so later runs do not re-prompt.
+  - **No** → write `expectations.md` containing **exactly** `## Status: declined` (nothing else) so later runs do not re-prompt.
 
 **Turn criteria back on after declined:** only when the user uses **explicit phrases** such as “relink expectations”, “update brag criteria”, or “replace expectations.md”. **Confirm** before overwriting the sentinel or old file, then replace `expectations.md` with new content.
 

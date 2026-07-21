@@ -38,17 +38,19 @@ Map to ladder dimensions when possible: scope/impact, technical, leadership/coll
 
 ## Growth goals
 
-2–4 concrete, forward-looking goals. Each goal should:
+2–4 concrete, forward-looking goals when evidence supports them. Each goal should:
 
 - Tie to a gap or strength from above
 - Be actionable within a reasonable horizon (quarter-scale unless user specifies otherwise)
 - Avoid inventing specific projects unless evidence or user input names them
 
-If evidence is too thin, write fewer goals and expand `Open questions` instead.
+**Thin evidence:** omit this section or write one line: `No goals set — assessment only (see Missing context).` Do **not** fabricate 2–4 placeholder goals.
 
 ## Progress signals
 
-For each goal, state how you would know progress — observable outcomes, behaviors, or deliverables. Not vanity metrics.
+For each goal above, state how you would know progress — observable outcomes, behaviors, or deliverables. Not vanity metrics.
+
+**Thin evidence / assessment-only:** omit this section when no goals were set.
 
 ## Rules
 

@@ -15,7 +15,14 @@ After code complete and local checks green: locate smells in touched files → m
 
 **You need:** Code complete and local checks green on touched files.
 
-**Done when:** Touched files have obvious noise removed; behavior-preserving diff only; no new `any` or skipped tests; targeted tests/lint re-run or skipped with reason; risky cleanup left in place is named.
+**Done when:** Touched files have obvious noise removed; behavior-preserving diff only; no new `any` or skipped tests; targeted tests/lint **re-executed** after edits (or skip + risk with at least one other executed check on touched code); risky cleanup left in place is named.
+
+## Gate contract
+
+- **`pass`** — deslop edits made (or legitimately none needed); post-edit verification executed on touched surface.
+- **`blocked`** — edits made but re-verification failed, or edits made with zero executed checks.
+- **`not-applicable`** — no cultivate edits needed; state why (already clean / no touched smells).
+- Skip re-run only with documented reason + risk; skip-all after behavior-touching edits = `blocked`.
 
 ## Workflow
 

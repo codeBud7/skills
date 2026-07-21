@@ -9,6 +9,7 @@ FORCE=0
 TOOL=""
 DEST=""
 INSTALL_ALL=0
+CONFLICT_COUNT=0
 
 usage() {
   cat <<'EOF'
@@ -35,6 +36,10 @@ Each skill is installed flat:
   <dest>/<skill-name> -> <repo>/<collection>/<skill-name>
 
 Only folders containing SKILL.md under engineering/, management/, and productivity/ are installed.
+
+Exit status:
+  0  success — all planned links installed or already correct; at least one skill discovered
+  1  usage/selector error, zero skills discovered, or unresolved conflicts (including --dry-run)
 EOF
 }
 
@@ -49,6 +54,10 @@ warn() {
 die() {
   printf 'error: %s\n' "$*" >&2
   exit 1
+}
+
+record_conflict() {
+  CONFLICT_COUNT=$((CONFLICT_COUNT + 1))
 }
 
 expand_home() {
@@ -102,7 +111,8 @@ prepare_destination() {
       fi
     elif (( DRY_RUN )); then
       warn "${dest} is a symlink (whole-repo link?); use --force to replace it with a directory"
-      return 0
+      record_conflict
+      return 1
     else
       die "${dest} is a symlink (whole-repo link?). Re-run with --force to replace it with a directory."
     fi
@@ -145,7 +155,8 @@ install_skill_link() {
       return 0
     fi
     warn "skip ${link_path}: symlink points elsewhere (${current})"
-    return 0
+    record_conflict
+    return 1
   fi
 
   if [[ -e "${link_path}" ]]; then
@@ -160,7 +171,8 @@ install_skill_link() {
       return 0
     fi
     warn "skip ${link_path}: path exists and is not the expected symlink"
-    return 0
+    record_conflict
+    return 1
   fi
 
   if (( DRY_RUN )); then
@@ -174,14 +186,33 @@ install_skill_link() {
 install_to_dest() {
   local dest="$1"
   local expanded
+  local skills skill_count=0
   expanded="$(expand_home "${dest}")"
+  CONFLICT_COUNT=0
 
   log "installing skills into ${expanded}"
-  prepare_destination "${expanded}"
+
+  skills="$(collect_skills)"
+  if [[ -z "${skills}" ]]; then
+    die "no skills discovered under engineering/, management/, or productivity/"
+  fi
+
+  prepare_destination "${expanded}" || true
 
   while IFS=$'\t' read -r collection skill; do
-    install_skill_link "${expanded}" "${collection}" "${skill}"
-  done < <(collect_skills)
+    [[ -n "${collection}" ]] || continue
+    skill_count=$((skill_count + 1))
+    install_skill_link "${expanded}" "${collection}" "${skill}" || true
+  done <<< "${skills}"
+
+  if (( skill_count == 0 )); then
+    die "no skills discovered under engineering/, management/, or productivity/"
+  fi
+
+  if (( CONFLICT_COUNT > 0 )); then
+    return 1
+  fi
+  return 0
 }
 
 while [[ $# -gt 0 ]]; do
@@ -218,15 +249,22 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-if (( INSTALL_ALL )); then
-  for preset in cursor claude agents; do
-    install_to_dest "$(tool_dest "${preset}")"
-  done
-  exit 0
+if (( INSTALL_ALL )) && [[ -n "${TOOL}" || -n "${DEST}" ]]; then
+  die "--all cannot be combined with --tool or --dest"
 fi
 
 if [[ -n "${TOOL}" && -n "${DEST}" ]]; then
   die "use either --tool or --dest, not both"
+fi
+
+if (( INSTALL_ALL )); then
+  exit_code=0
+  for preset in cursor claude agents; do
+    if ! install_to_dest "$(tool_dest "${preset}")"; then
+      exit_code=1
+    fi
+  done
+  exit "${exit_code}"
 fi
 
 if [[ -n "${TOOL}" ]]; then

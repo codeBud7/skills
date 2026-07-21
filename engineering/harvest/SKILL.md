@@ -16,7 +16,16 @@ Orchestrate sub-skills in order. **No merge** unless user says so.
 
 **You need:** Approved plan file per `seed` (path or discoverable default).
 
-**Done when:** All plan todos are `done`; `tdd-cycle`, `local-quality-gate`, `cultivate`, `code-review`, `docs-sync`, `draft-pr`, and `ci-green` gates pass or have explicit blocked/waived status; scoped diff and limits documented; draft PR URL in plan body or final summary.
+**Done when:** All plan todos are `done` with **no** unresolved `blocked_reason`; every pipeline gate is `pass`, `waived`, `not-applicable`, or honestly `blocked` (harvest stops — not done); scoped diff and limits documented; draft PR URL in plan body or final summary when `draft-pr` applies.
+
+## Gate contract
+
+A gate stays **blocked** until one of these is true: work completed and verified; demonstrated non-applicability with rationale; tooling unavailable (report blocked, do not fake pass); explicit user waiver recorded in plan or thread.
+
+- **Never** mark a plan todo `done` while `blocked_reason` is set. Per [seed/reference.md](../seed/reference.md) status invariants.
+- **Never** advance a pipeline stage on skip-all or rationale-only green. Each behavior-changing slice needs at least one executed, meaningful verification (`tdd-cycle` and/or `local-quality-gate`) before the slice todo is `done`.
+- Upstream `blocked` stops harvest. Downstream stages must not run until upstream is `pass`, `waived`, or `not-applicable`.
+- Final summary must name any `waived`, `not-applicable`, or `blocked` gate — never imply full green when checks were skipped or unresolved.
 
 ## From approved plan (Build)
 
@@ -35,7 +44,7 @@ Parity with Cursor **Build** / Agent after plan approval: same plan file on disk
 | **A** — todos = slices | default | `repo-safety` continuous; `tdd-cycle` + `local-quality-gate` for that slice | `cultivate` (deslop, re-green) + `code-review` + `docs-sync` + `draft-pr` + `ci-green` once (unless plan splits PR/CI/docs todos) |
 | **B** — one ship | user says "one pass harvest" | full pipeline once | mark todos `done` only when each todo `content` done criteria are met |
 
-**Loop (mode A):** for each todo — scope per `repo-safety`; run pipeline subset; only then set todo `done`, next `in_progress`. On failure: stop; set `blocked_reason` on todo if blocked.
+**Loop (mode A):** for each todo — scope per `repo-safety`; run pipeline subset; only then clear any resolved `blocked_reason`, set todo `done`, next `in_progress`. On failure: stop; set `blocked_reason` on todo; keep `status` `in_progress` or `pending` — never `done` while blocked.
 
 **Progress:** plan file is source of truth. Optional `TodoWrite` may mirror Cursor session UI; still update plan file at every todo boundary.
 

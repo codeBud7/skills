@@ -43,6 +43,13 @@ Optional fields (backward compatible — omit = `pending`):
 | `status`         | `pending` \| `in_progress` \| `done` | execution progress                        |
 | `blocked_reason` | string                               | why stopped (env, flake, scope, approval) |
 
+### Status invariants
+
+- `status: done` requires **no** unresolved `blocked_reason`. Clear `blocked_reason` before marking `done`.
+- `status: done` with a non-empty `blocked_reason` is invalid — treat as still blocked.
+- When blocked, set `blocked_reason` and keep `status` as `pending` or `in_progress`; do not mark `done` until the blocker is resolved, waived with user input, or shown non-applicable.
+- Clearing `blocked_reason` without resolving the underlying gate is not allowed.
+
 Example:
 
 ```yaml

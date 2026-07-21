@@ -13,7 +13,15 @@ Pin fixed point -> identify spec -> identify standards -> run Standards and Spec
 
 **You need:** A non-empty diff against a fixed point, and either a spec source or an explicit "no spec" decision.
 
-**Done when:** Standards and Spec reports are delivered; severe findings are fixed, waived by the user, or recorded as blocked before harvest continues.
+**Done when:** Standards and Spec reports are delivered; gate is `pass` (no severe findings), `waived` (user approved continuing with severe findings documented), or `blocked` (severe findings unresolved — harvest stops). Non-severe findings alone do not block.
+
+## Gate contract
+
+- **`pass`** — reports delivered; no severe findings (or Spec skipped with "no spec available" and no severe Standards findings).
+- **`waived`** — user explicitly approved continuing despite severe finding(s); list each waived item in plan or review output.
+- **`blocked`** — severe finding(s) unresolved; do not report `pass` or advance to `docs-sync`.
+- **`stop-user-input-needed`** — severe findings present; ask user before choosing `waived` or `blocked`.
+- Delivering reports without classifying severity is not completion. Empty diff is blocked — resolve fixed point first.
 
 ## Fixed point
 
@@ -99,6 +107,8 @@ Use:
 
 Summary: Standards: N findings, worst: X. Spec: N findings, worst: Y.
 Gate: pass | stop-user-input-needed | waived | blocked
+
+Use **`blocked`** when severe findings remain unresolved. Do not use **`pass`** as a synonym for "review ran."
 ```
 
 Do not merge or rerank the two axes. They answer different questions.

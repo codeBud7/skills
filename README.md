@@ -33,9 +33,24 @@ Flat symlinks: `<dest>/<skill-name>` → file in this repo. The script does not 
 ./scripts/setup-skills.sh --dry-run --tool agents   # print only
 ```
 
-- `--dry-run`: print planned links, change nothing.
+**Selectors (pick one):**
+
+- `--tool cursor|claude|agents` — install to one known tool home
+- `--dest PATH` — install to an arbitrary skills directory
+- `--all` — install to every known tool home (cannot combine with `--tool` or `--dest`)
+
+**Options:**
+
+- `--dry-run`: print planned links and conflicts; change nothing. Exit `1` when real install would fail (conflicts, zero skills).
 - `--force`: replace conflicting entries for managed skill names only.
 - If the destination is a single symlink to this whole repo (e.g. `~/.claude/skills` → here), use `--force` to replace it with a directory of per-skill links.
+
+**Exit status:**
+
+- `0` — success: at least one skill discovered; all links installed or already correct
+- `1` — usage/selector error, zero skills discovered, or unresolved conflicts (including under `--dry-run`)
+
+Correct existing symlinks are idempotent: re-run returns `0` without changes.
 
 If this repo is checked out at `~/.cursor/skills`, the `cursor` preset adds top-level links (e.g. `harvest` → `engineering/harvest`) next to the `engineering/` and `management/` trees.
 

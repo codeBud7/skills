@@ -13,7 +13,7 @@ Confirm **audience + decision + constraints** (not Linear-only). Read `context.m
 
 **You need:** Strategy question or audience; `context.md` priorities; pasted org/product constraints; linked Linear for status signals — not Linear alone.
 
-**Done when:** One clear recommendation (or explicit open decisions if facts are insufficient); three to five named roadmap bets tied to constraints; `Sources checked` explicit; each major section is capped at 3 short paragraphs or 5 bullets.
+**Done when:** One clear recommendation **or**, when facts are insufficient, explicit `Options` + `Open decisions` without fabricated bets; roadmap bets (3–5) appear **only** when facts support them; `Sources checked` explicit; each major section capped at 3 short paragraphs or 5 bullets; no unresolved template placeholders.
 
 **Templates:** [`strategy-roadmap.template.md`](strategy-roadmap.template.md)
 
@@ -63,7 +63,9 @@ Use short paragraphs under these headings:
 
 `Sources checked`
 
-Keep to one recommendation and three to five roadmap bets.
+Keep to one recommendation and three to five roadmap bets **when facts support them**.
+
+**Insufficient facts:** deliver `Options`, `Tradeoffs`, and `Open decisions`; state under `Recommendation` that facts do not support one yet; omit `Roadmap bets` or write `None — insufficient facts for named bets.` Do **not** invent bets to fill the template.
 
 In prose, use lightweight tags like `[Linear]` where a fact came from Linear. List concrete URLs or doc links under `Sources checked`.
 
@@ -81,4 +83,8 @@ If constraints are missing, name the missing constraints before recommending roa
 
 If the artifact exceeds two pages equivalent, compress to one recommendation and three to five bets.
 
-If facts do not support a recommendation, produce options and open decisions instead.
+If facts do not support a recommendation, produce options and open decisions instead — omit or explicitly empty `Roadmap bets`.
+
+## Placeholder gate (before save)
+
+Output is **not done** if any `{token}` from [strategy-roadmap.template.md](strategy-roadmap.template.md) or square-bracket instructional stubs remain unreplaced.

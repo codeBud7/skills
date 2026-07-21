@@ -1,41 +1,41 @@
 # Strategy Brief
 
-Generated at:
-Audience:
-Decision needed:
+Generated at: {generated_at}
+Audience: {audience}
+Decision needed: {decision_needed}
 
 ## Problem
 
-[Problem to solve.]
+{problem}
 
 ## Current facts
 
-[Relevant facts from Home OS, Linear, pasted context, or other sources.]
+{current_facts}
 
 ## Options
 
-[Viable options.]
+{options}
 
 ## Tradeoffs
 
-[Meaningful tradeoffs and constraints.]
+{tradeoffs}
 
 ## Recommendation
 
-[One recommendation, or state that facts do not support one yet.]
+{recommendation}
 
 ## Roadmap bets
 
-[Three to five bets tied to facts, risks, or constraints.]
+{roadmap_bets}
 
 ## Risks
 
-[Risks, dependencies, and unknowns.]
+{risks}
 
 ## Open decisions
 
-[Decisions still needed.]
+{open_decisions}
 
 ## Sources checked
 
-[Home OS, Linear, pasted docs, and other sources.]
+{sources_checked}
