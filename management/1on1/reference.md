@@ -5,7 +5,7 @@ Use with [`SKILL.md`](SKILL.md) for retrieval order and gates.
 ## Radical Candor (default stance)
 
 - **Care personally**: Tie warmth to specifics — praise and curiosity grounded in observable facts, not generic cheer.
-- **Challenge directly**: When evidence shows a pattern or gap, say it plainly with source tags; do not sandbag or bury the lead.
+- **Challenge directly**: When evidence shows a pattern or gap, say it plainly; do not sandbag or bury the lead. Bind claims to sources at the **end of the section**, not inline in the sentence.
 - **Evidence binding**: Radical Candor is not bluntness without facts. Weak evidence → direct questions and labeled gaps, not performance claims or diagnoses.
 - **Avoid**: Ruinous empathy (kind but vague), obnoxious aggression (harsh without care), manipulative insincerity (spin or politics).
 
@@ -31,7 +31,32 @@ Use short paragraphs under these headings:
 
 `Sources checked`
 
-Under **`Delivery pulse (metrics)`**, use **numeric facts only** (counts, durations, sample N, method). Tag lines with `[GitHub]` and, when used, `[Linear]`. These are conversation signals, not ratings. If N is tiny or data missing, say so in that section — do **not** stretch into `Feedback to consider`; add a grounded **question** under `Questions to ask` instead.
+### Source placement
+
+Keep narrative **readable**: facts first, sources last.
+
+**`Recent facts`** (required pattern)
+
+1. Short paragraphs with **no** inline `[meeting]`, `[GitHub]`, `[Linear]`, `[Slack]`, or `[prior brief]` tags.
+2. End the section with a single `Sources:` line listing every tag that backed a fact above (dedupe; order: `[meeting]`, `[Linear]`, `[GitHub]`, `[Slack]`, `[prior brief]`).
+
+```markdown
+## Recent facts
+
+They shipped the CRM fix and unblocked the payments rollout. Linear still shows two open bugs on the same epic.
+
+Sources: [meeting], [GitHub], [Linear]
+```
+
+**`Follow-ups`** — when stating facts (not bare action items), use the same pattern: prose then `Sources:` at section end. Bare carry-forward bullets without external claims need no `Sources:` line.
+
+**`Delivery pulse (metrics)`** — numeric body stays tag-free; put `Sample:`, `Method:`, and optional `Sources: [GitHub], [Linear]` after the numbers (and after **Trend vs prior 1:1** when present).
+
+**Prompt sections** (`Wins to celebrate`, `Questions to ask`, `Career check-in`, `Feedback to consider`) — no `Sources:` line unless a specific cited fact appears; ground thin evidence in goals/profile instead.
+
+**`Sources checked`** — always the **final** heading in the brief. Bullets with concrete links or paths (Notion DB, repo, prior `outputs/…` file, MCP fallbacks). Mirrors section-level tags but adds URLs where available.
+
+Under **`Delivery pulse (metrics)`**, use **numeric facts only** (counts, durations, sample N, method). These are conversation signals, not ratings. If N is tiny or data missing, say so in that section — do **not** stretch into `Feedback to consider`; add a grounded **question** under `Questions to ask` instead.
 
 When a prior brief exists, add a **`Trend vs prior 1:1`** subsection under `Delivery pulse (metrics)` per the rules below.
 
@@ -45,7 +70,7 @@ Per-direct, in-window metrics are **signals for conversation**. Prefer GitHub MC
 
 **Issues:** Closed GitHub issues assigned to the direct in window; duration = `createdAt` to `closedAt`. If assignee-based search returns nothing relevant, note the limitation before using another filter.
 
-**Linear:** If Linear is linked and MCP exposes cycle or lead-time fields for in-window issues, add a short tagged line under `Delivery pulse (metrics)`. If unavailable, omit.
+**Linear:** If Linear is linked and MCP exposes cycle or lead-time fields for in-window issues, add a short line under `Delivery pulse (metrics)` (source on the section `Sources:` line). If unavailable, omit.
 
 **Execution:** Cap raw rows (e.g. 50-100). In the brief, state sample N and method. Compute counts plus median or typical range in human-readable units. If auth is missing, results are empty, or N is too small, write one thin-sample or skipped line.
 
@@ -95,5 +120,3 @@ Always include a specific feedback check-in question. If evidence is thin, groun
 Always include a specific appreciation question. If recent evidence is thin, ground it in profile strengths or goals instead of making an unverified claim.
 
 In `Feedback to consider`, pair **specific appreciation** (when recent evidence supports it) with **specific challenge or growth nudge** when observable evidence supports it; if evidence is thin, use grounded questions only — never invent a critique to sound “candid.”
-
-Use lightweight source tags like `[meeting]`, `[Linear]`, `[GitHub]`, and `[Slack]` when Slack was checked. Keep links in `Sources checked`.

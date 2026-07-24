@@ -5,15 +5,19 @@ Window:
 
 ## Recent facts
 
-[Short paragraphs with source tags.]
+[Short paragraphs — no inline source tags.]
+
+Sources: [meeting], [GitHub], [Linear], [Slack], [prior brief] — list only tags used above.
 
 ## Delivery pulse (metrics)
 
-[Merged PRs in window: count; median or typical open→merge duration. Closed GitHub issues assigned to direct: count; typical lead time open→close. Optional one line from Linear cycle/lead if MCP had data — tag `[Linear]`.]
+[Merged PRs in window: count; median or typical open→merge duration. Closed GitHub issues assigned to direct: count; typical lead time open→close. Optional one line from Linear cycle/lead if MCP had data.]
 
 Sample: N (cap noted in skill)
 
 Method: [e.g. GitHub search / MCP, date window, author + assignee filters]
+
+Sources: [GitHub], [Linear] — when metrics were fetched
 
 ### Trend vs prior 1:1
 
@@ -30,7 +34,7 @@ Trend confidence: [solid | thin sample | windows differ | no prior snapshot]
 
 ## Follow-ups
 
-[Open follow-ups from last meeting or prior outputs.]
+[Open follow-ups from last meeting or prior outputs. Add `Sources:` at section end only when stating external facts.]
 
 ## Wins to celebrate
 
@@ -54,4 +58,4 @@ Trend confidence: [solid | thin sample | windows differ | no prior snapshot]
 
 ## Sources checked
 
-[Meeting notes, Linear, GitHub (including metrics snapshot if run), Home OS profile, and any fallbacks.]
+[Final section — always last. Bullets with links/paths: meeting notes, Linear, GitHub (metrics if run), prior brief `outputs/…`, Home OS profile, Slack, MCP fallbacks.]

@@ -7,13 +7,13 @@ description: 1on1 prepares a short manager-readable brief from Home OS context, 
 
 ## Fast path
 
-Resolve direct slug + private root → read `directs/<slug>.md` → pull linked sources in default window → emit tagged brief. Radical Candor stance and heading text: [reference.md](reference.md).
+Resolve direct slug + private root → read `directs/<slug>.md` → pull linked sources in default window → emit source-backed brief. Radical Candor stance, heading text, and citation layout: [reference.md](reference.md).
 
-**You get:** A concise, source-tagged 1:1 brief (recent facts, delivery pulse metrics with trend vs the prior 1:1 when a prior snapshot exists, follow-ups, questions, RC-aligned feedback prompts).
+**You get:** A concise 1:1 brief (recent facts, delivery pulse metrics with trend vs the prior 1:1 when a prior snapshot exists, follow-ups, questions, RC-aligned feedback prompts). Narrative sections stay tag-free; sources sit at each section end and links in `Sources checked`.
 
 **You need:** Direct slug or name; private Home OS with `directs/<slug>.md` and optional links in `sources.md` / profile.
 
-**Done when:** Headings through `Sources checked` are filled from profile + linked sources within the time window; `Delivery pulse (metrics)` is filled, explicitly skipped with a one-line reason, or marked thin sample; when a prior brief had a metrics snapshot, trend lines compare the same metrics or state why comparison was skipped; gaps are explicit in `Missing context`; no invented performance claims; brief matches [reference.md](reference.md) heading and evidence rules; numeric delivery lines labeled with N and method, never peer comparison.
+**Done when:** Headings through `Sources checked` are filled from profile + linked sources within the time window; `Sources checked` is the **last** heading with concrete links; narrative sections (`Recent facts`, factual `Follow-ups`) use end-of-section `Sources:` lines and **no** inline `[meeting]` / `[GitHub]` / `[Linear]` / `[Slack]` tags in prose; `Delivery pulse (metrics)` is filled, explicitly skipped with a one-line reason, or marked thin sample; when a prior brief had a metrics snapshot, trend lines compare the same metrics or state why comparison was skipped; gaps are explicit in `Missing context`; no invented performance claims; brief matches [reference.md](reference.md) heading and evidence rules; numeric delivery lines labeled with N and method, never peer comparison.
 
 **Templates:** [`brief.template.md`](brief.template.md)
 
@@ -71,7 +71,7 @@ Use the shared sensitive-notes boundary in `home-os` [reference.md](../home-os/r
 
 ## Output
 
-Headings, RC stance, tags: **[reference.md](reference.md)**.
+Headings, RC stance, citation layout: **[reference.md](reference.md)**.
 
 ## Saving
 
@@ -82,6 +82,8 @@ Include generated timestamp, time window, and sources checked.
 ## Kill criteria
 
 Weak evidence becomes questions and labeled gaps, not sentiment or performance diagnosis.
+
+No inline source tags in narrative prose — cite at section end per [reference.md](reference.md) (**Source placement**).
 
 Ambiguous person → ask before fetching private Home OS or MCP data.
 
