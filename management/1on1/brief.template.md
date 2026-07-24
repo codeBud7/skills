@@ -15,6 +15,19 @@ Sample: N (cap noted in skill)
 
 Method: [e.g. GitHub search / MCP, date window, author + assignee filters]
 
+### Trend vs prior 1:1
+
+Prior: [YYYY-MM-DD from prior brief header; prior N and method when parseable]
+
+- Merged PRs: [prior] → [current] ([delta])
+- PR median open→merge: [prior] → [current] ([delta])
+- Closed issues: [prior] → [current] ([delta])
+- Issue median lead time: [prior] → [current] ([delta])
+
+Trend confidence: [solid | thin sample | windows differ | no prior snapshot]
+
+[Omit metric rows missing on either side. One line only when no prior snapshot.]
+
 ## Follow-ups
 
 [Open follow-ups from last meeting or prior outputs.]

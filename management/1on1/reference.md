@@ -33,6 +33,8 @@ Use short paragraphs under these headings:
 
 Under **`Delivery pulse (metrics)`**, use **numeric facts only** (counts, durations, sample N, method). Tag lines with `[GitHub]` and, when used, `[Linear]`. These are conversation signals, not ratings. If N is tiny or data missing, say so in that section — do **not** stretch into `Feedback to consider`; add a grounded **question** under `Questions to ask` instead.
 
+When a prior brief exists, add a **`Trend vs prior 1:1`** subsection under `Delivery pulse (metrics)` per the rules below.
+
 ### Metrics snapshot definitions
 
 Per-direct, in-window metrics are **signals for conversation**. Prefer GitHub MCP when the host exposes it; otherwise use read-only `gh search prs` / `gh search issues` per `home-os` fallback.
@@ -46,6 +48,45 @@ Per-direct, in-window metrics are **signals for conversation**. Prefer GitHub MC
 **Linear:** If Linear is linked and MCP exposes cycle or lead-time fields for in-window issues, add a short tagged line under `Delivery pulse (metrics)`. If unavailable, omit.
 
 **Execution:** Cap raw rows (e.g. 50-100). In the brief, state sample N and method. Compute counts plus median or typical range in human-readable units. If auth is missing, results are empty, or N is too small, write one thin-sample or skipped line.
+
+### Trend vs prior 1:1
+
+Compare the **current snapshot** (this brief's window) to the **prior snapshot** parsed from the latest `outputs/YYYY-MM-DD-1on1-<slug>.md` that had a `Delivery pulse (metrics)` section.
+
+**Comparable metrics** (same definition in both periods):
+
+| Metric | Prior field | Current field |
+|--------|-------------|---------------|
+| Merged PRs | count in prior block | count in current block |
+| PR open→merge | median or typical duration | median or typical duration |
+| Closed issues (assigned) | count | count |
+| Issue open→close | median or typical lead time | median or typical lead time |
+| Linear cycle/lead | tagged line if present | tagged line if present |
+
+**Prior snapshot missing** — no prior brief, prior brief skipped metrics, or prior block unparseable: one line `Trend vs prior 1:1: no prior snapshot`.
+
+**Output shape** — under `Delivery pulse (metrics)`, after current numbers:
+
+```markdown
+### Trend vs prior 1:1
+
+Prior: YYYY-MM-DD (N=…, method: …)
+- Merged PRs: {prior} → {current} ({delta})
+- PR median open→merge: {prior} → {current} ({delta})
+- Closed issues: {prior} → {current} ({delta})
+- Issue median lead time: {prior} → {current} ({delta})
+Trend confidence: {solid | thin sample | windows differ}
+```
+
+Omit rows where either side lacks that metric. `delta` is absolute change with sign (`+2`, `−1.2d`, `flat`). Counts: `flat` when unchanged. Durations: `flat` when change under 10% or under 0.5 day.
+
+**Confidence labels**
+
+- `solid` — both sides N ≥ 3 for that row and comparable windows
+- `thin sample` — either side N under 3 or current/prior marked thin
+- `windows differ` — prior and current window lengths differ by more than ~3 days; still show deltas but do not treat as like-for-like
+
+**Conversation use** — trends are signals, not grades. State the delta plainly; if a thin or divergent window might mislead, add one grounded question under `Questions to ask`. Do not auto-label faster/slower as good or bad.
 
 Always include career expectations.
 

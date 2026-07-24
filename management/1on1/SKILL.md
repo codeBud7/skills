@@ -1,6 +1,6 @@
 ---
 name: 1on1
-description: 1on1 prepares a short manager-readable brief from Home OS context, meeting notes, Linear, GitHub, optional metrics, and Slack when linked. Use when prepping a direct-report 1:1 or generating follow-ups, wins, career prompts, and feedback check-in questions.
+description: 1on1 prepares a short manager-readable brief from Home OS context, meeting notes, Linear, GitHub, delivery pulse metrics with trend vs the prior 1:1, and Slack when linked. Use when prepping a direct-report 1:1 or generating follow-ups, wins, career prompts, and feedback check-in questions.
 ---
 
 # 1on1
@@ -9,11 +9,11 @@ description: 1on1 prepares a short manager-readable brief from Home OS context, 
 
 Resolve direct slug + private root → read `directs/<slug>.md` → pull linked sources in default window → emit tagged brief. Radical Candor stance and heading text: [reference.md](reference.md).
 
-**You get:** A concise, source-tagged 1:1 brief (recent facts, optional delivery pulse metrics, follow-ups, questions, RC-aligned feedback prompts).
+**You get:** A concise, source-tagged 1:1 brief (recent facts, delivery pulse metrics with trend vs the prior 1:1 when a prior snapshot exists, follow-ups, questions, RC-aligned feedback prompts).
 
 **You need:** Direct slug or name; private Home OS with `directs/<slug>.md` and optional links in `sources.md` / profile.
 
-**Done when:** Headings through `Sources checked` are filled from profile + linked sources within the time window; `Delivery pulse (metrics)` is filled, explicitly skipped with a one-line reason, or marked thin sample; gaps are explicit in `Missing context`; no invented performance claims; brief matches [reference.md](reference.md) heading and evidence rules; numeric delivery lines labeled with N and method, never peer comparison.
+**Done when:** Headings through `Sources checked` are filled from profile + linked sources within the time window; `Delivery pulse (metrics)` is filled, explicitly skipped with a one-line reason, or marked thin sample; when a prior brief had a metrics snapshot, trend lines compare the same metrics or state why comparison was skipped; gaps are explicit in `Missing context`; no invented performance claims; brief matches [reference.md](reference.md) heading and evidence rules; numeric delivery lines labeled with N and method, never peer comparison.
 
 **Templates:** [`brief.template.md`](brief.template.md)
 
@@ -39,7 +39,7 @@ Read the last meeting note plus unresolved follow-ups by default.
 
 Read the direct profile first.
 
-Read the **previous local** `outputs/YYYY-MM-DD-1on1-<slug>.md` when it exists — **first** for follow-ups: prioritize `Carry-forward follow-ups` and the post-meeting log from the latest prior brief. Keep Notion 1:1s DB / meeting notes as a **secondary** source for the same topics.
+Read the **previous local** `outputs/YYYY-MM-DD-1on1-<slug>.md` when it exists — **first** for follow-ups: prioritize `Carry-forward follow-ups` and the post-meeting log from the latest prior brief. From the same file, extract the prior `Delivery pulse (metrics)` block (counts, medians, sample N, method, and brief `Window` / `Generated at` from the header) as the **prior snapshot** for trend comparison. Keep Notion 1:1s DB / meeting notes as a **secondary** source for the same topics.
 
 Fetch meeting notes from explicit profile links (Notion 1:1s DB under Source Links).
 
@@ -50,6 +50,8 @@ Fetch GitHub authored PRs, reviews, and comments within linked repos and the tim
 ### Metrics snapshot (optional)
 
 Use the metrics definitions in [reference.md](reference.md). Keep metrics as conversation signals, not ratings.
+
+Compute the **current snapshot**, then compare to the **prior snapshot** from the latest prior brief when one exists. Trend rules: [reference.md](reference.md) (**Trend vs prior 1:1**).
 
 Fetch Slack **inside the same time window** as this brief when scope is listed under `sources.md` or the direct profile.
 
@@ -86,3 +88,5 @@ Ambiguous person → ask before fetching private Home OS or MCP data.
 Sensitive-derived output follows the `home-os` shared boundary.
 
 Metrics become conversation signals; thin numbers pair with questions, not verdicts or peer comparison.
+
+Trend deltas describe change over time for the same direct only — never rank against peers or label good/bad without grounded context.
