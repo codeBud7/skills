@@ -4,6 +4,25 @@ You context-switch all day (calendar blocks, Slack threads, “quick” escalati
 
 **Stable privacy and MCP rules** live in [`home-os/SKILL.md`](home-os/SKILL.md) (Path resolution, MCP and source retrieval boundaries) and each skill's own `SKILL.md`. This git repo holds **skills and blank templates only**. Filled profiles, source URLs, briefs, and HR text stay in private storage and never belong in git.
 
+## 🚪 management-mode (router)
+
+Use **[`management-mode`](management-mode/SKILL.md)** when you want the agent to **classify** people-work, apply shared evidence and privacy contracts, and **invoke the right leaf** — without naming `@1on1` or `@review-prep` yourself.
+
+- **Invoke:** `/management-mode`, `@management-mode`, or "use management-mode". Sticky for the session until you stop it or switch to engineering.
+- **You get:** route + leaf + principles banner, then a sourced artifact or honest `needs-input` / `blocked`.
+- **Leaves:** `home-os`, `1on1`, `1on1-log`, `feedback-note`, `review-prep`, `growth-plan`, `team-pulse`, `strategy-brief`, `hiring-feedback`, `brag-doc`.
+- **Engineering:** refused — use `kmode` instead.
+
+**Typical management-mode prompts**
+
+- "Prep my 1:1 with `<slug>`" → routes to `1on1`
+- "Log the 1:1 with `<slug>`" → routes to `1on1-log`
+- "How is the team doing last 7 days" → routes to `team-pulse`
+- "Review then growth plan for `<slug>`" → `review-prep` then `growth-plan`
+- "How do I delegate without micromanaging?" → advice route (no source fetch by default)
+
+Details: [contracts](management-mode/contracts.md), [principles](management-mode/principles.md), [scenarios](management-mode/scenarios.md).
+
 ## 🧰 Skills
 
 - **[`home-os`](home-os/SKILL.md)**: **Moment:** a new direct joins or your team map changes. **Outcome:** one place for profile + pointers (meeting notes, Linear, GitHub, Slack) so downstream skills stop re-asking basics. No MCP inside the skill itself; linked sources let other skills pull context when MCP is configured.
@@ -28,6 +47,7 @@ You context-switch all day (calendar blocks, Slack threads, “quick” escalati
 
 ## 💬 Typical prompts
 
+- **Router:** “Use management-mode” then any people-work prompt; or name a leaf explicitly (`@1on1`, `@review-prep`, …) — shared privacy and save contracts still apply.
 - **Setup:** “Set up my management Home OS” / “Add a direct profile for …” / “Update source links for my team” / “Set up career ladder”.
 - **1:1:** “Prep my 1:1 with `<slug>`”. Add “include sensitive context” only if you want sensitive notes read.
 - **1:1 log:** “Log my 1:1 with `<slug>`” / “Debrief the 1:1 with …” / “Post-meeting notes for `<slug>`”. Add “save to Notion” only if you want a Notion page written.
