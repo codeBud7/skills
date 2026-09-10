@@ -23,7 +23,7 @@ Orchestrate sub-skills in order. **No merge** unless user says so.
 A gate stays **blocked** until one of these is true: work completed and verified; demonstrated non-applicability with rationale; tooling unavailable (report blocked, do not fake pass); explicit user waiver recorded in plan or thread.
 
 - **Never** mark a plan todo `done` while `blocked_reason` is set. Per [seed/reference.md](../seed/reference.md) status invariants.
-- **Never** advance a pipeline stage on skip-all or rationale-only green. Each behavior-changing slice needs at least one executed, meaningful verification (`tdd-cycle` and/or `local-quality-gate`) before the slice todo is `done`.
+- **Never** advance a pipeline stage on skip-all or rationale-only green. Each behavior-changing slice needs a user-path `verify` receipt before the slice todo is `done`, unless an executed test already drove that exact path and `verify` is recorded `not-applicable` with the command.
 - Upstream `blocked` stops harvest. Downstream stages must not run until upstream is `pass`, `waived`, or `not-applicable`.
 - Final summary must name any `waived`, `not-applicable`, or `blocked` gate — never imply full green when checks were skipped or unresolved.
 
@@ -41,7 +41,7 @@ Parity with hosted **Build** after plan approval: same plan file on disk is the 
 
 | Mode | When | Per todo | After last impl todo |
 |------|------|----------|----------------------|
-| **A** — todos = slices | default | `repo-safety` continuous; `tdd-cycle` + `local-quality-gate` for that slice | `cultivate` (deslop, re-green) + `code-review` + `docs-sync` + `draft-pr` + `ci-green` once (unless plan splits PR/CI/docs todos) |
+| **A** — todos = slices | default | `repo-safety` continuous; `tdd-cycle` + `local-quality-gate` + `verify` (or named `not-applicable`) for that slice | `cultivate` (deslop, re-green) + `code-review` + `docs-sync` + `draft-pr` + `ci-green` once (unless plan splits PR/CI/docs todos) |
 | **B** — one ship | user says "one pass harvest" | full pipeline once | mark todos `done` only when each todo `content` done criteria are met |
 
 **Loop (mode A):** for each todo — scope per `repo-safety`; run pipeline subset; only then clear any resolved `blocked_reason`, set todo `done`, next `in_progress`. On failure: stop; set `blocked_reason` on todo; keep `status` `in_progress` or `pending` — never `done` while blocked.
@@ -61,13 +61,14 @@ Read-only or independent stage → delegate subagent(s). Main thread: scope deci
 | 0 | `repo-safety` | scoped diff; no secrets; no forbidden git ops |
 | 1 | `tdd-cycle` | red → green → refactor complete, or no-test rationale recorded |
 | 2 | `local-quality-gate` | relevant checks pass, or skips have reason + risk |
+| 2b | `verify` | user-path receipt when tests do not cover the observable path; else `not-applicable` with why |
 | 3 | `cultivate` | noise down, behavior preserved, re-greened |
 | 4 | `code-review` | two-axis report delivered; severe findings escalated to user or resolved |
 | 5 | `docs-sync` | docs fixed or explicit waiver recorded |
 | 6 | `draft-pr` | draft PR URL, honest body, scoped commits |
 | 7 | `ci-green` | required checks green or blocked status reported |
 
-Independent stages (1–7) may run delegated; orchestrator verifies gates before next step. **`cultivate` runs once after code complete; re-run `local-quality-gate` after its edits and keep `ci-green` passing — deslop must not break behavior or checks. `code-review` runs once after `cultivate` and before `docs-sync`; severe findings stop harvest until the user says fix, waive, or block. `docs-sync` must pass before `draft-pr`.**
+Independent stages (1–7) may run delegated; orchestrator verifies gates before next step. **`verify` runs after `local-quality-gate` when the change has a user-visible path the tests did not drive; compile-green is not that proof. `cultivate` runs once after code complete; re-run `local-quality-gate` after its edits and keep `ci-green` passing — deslop must not break behavior or checks. `code-review` runs once after `cultivate` and before `docs-sync`; severe findings stop harvest until the user says fix, waive, or block. `docs-sync` must pass before `draft-pr`.**
 
 ## Stop
 

@@ -1,0 +1,12 @@
+# Optional Codex skill metadata
+# Copy to a Codex project if you want implicit invocation hints.
+# Core SKILL.md files do not depend on this file.
+
+skills:
+  kmode:
+    description: Engineering front door — classify, apply principles, prove, dispatch.
+    implicit: false
+  harvest:
+    implicit: false
+  seed:
+    implicit: false

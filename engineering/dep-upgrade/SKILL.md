@@ -15,6 +15,13 @@ Assess current vs target → route trivial inline or risky via `seed` → bump �
 
 **Done when:** Target version installed; lockfile updated by the package manager; breakages fixed; `local-quality-gate` green; pushed branches pass `ci-green`; risky upgrades used an approved `seed` plan; blockers have clear user-visible status.
 
+## Gate contract
+
+- **`pass`** — target installed via package manager; lockfile updated by the tool; `local-quality-gate` executed green; runtime changes have a `verify` receipt or named `not-applicable`; `ci-green` green after push when a branch exists.
+- **`blocked`** — conflict, no migration path, engine bump unapproved, or a verification gate failed.
+- **`not-applicable`** — assessment-only; no upgrade performed.
+- **`waived`** — user skipped a named check with recorded risk. Skip-all is not `pass`.
+
 ## Assess
 
 1. Identify package manager + lockfile (npm/pnpm/yarn, pip/poetry, cargo, go mod, etc.).

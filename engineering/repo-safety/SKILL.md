@@ -16,6 +16,13 @@ Apply continuously during impl, test, commit, and PR prep; audit scope, secrets,
 
 **Done when:** `git diff` is scoped to approved work; staged files contain no secrets; no unrelated files are staged; forbidden git operations were used only after explicit user request.
 
+## Gate contract
+
+- **`pass`** — diff scoped to approved work; no secrets in staged files; no forbidden git ops unless user asked.
+- **`blocked`** — secret found, scope grew without ask, or forbidden git op attempted without request.
+- **`not-applicable`** — no git mutation this turn; state why.
+- Never treat a secret warning as `pass`.
+
 ## Scope
 
 - Touch only approved-scope files.

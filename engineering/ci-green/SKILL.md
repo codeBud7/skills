@@ -15,6 +15,14 @@ description: CI green watches PR checks, triages failures, fixes, and pushes unt
 
 **Done when:** Required PR checks green, or **Stop** conditions reported with clear user-visible status (blocked, not hidden).
 
+## Gate contract
+
+- **`pass`** — required checks executed green on the remote PR (watched or polled), not inferred from local tests alone.
+- **`blocked`** — required check red, infra/creds/outage, or cannot repro; status visible, not hidden.
+- **`waived`** — user accepted a named failing or skipped required check; record risk.
+- **`not-applicable`** — no open PR / no required checks; state why.
+- Skip-all or "looks fine locally" is not `pass`.
+
 ## Monitor
 
 ```bash

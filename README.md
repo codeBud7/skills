@@ -4,13 +4,15 @@ You already context-switch between shipping and leading. These folders are **rep
 
 ## 💡 Why this exists
 
-One afternoon the ticket is fuzzy but the deadline is not. Another morning you need review bullets that do not sound like vibes. **Engineering** skills bias toward plan → ship → green CI with less thrash. **Management** skills bias toward evidence-backed briefs (1:1s, reviews, hiring, strategy) once your private Home OS has enough signal. Same idea in both places: less reinventing the workflow every time.
+One afternoon the ticket is fuzzy but the deadline is not. Another morning you need review bullets that do not sound like vibes. **Engineering** skills bias toward **classify → principles → prove → ship** with less thrash. **Management** skills bias toward evidence-backed briefs (1:1s, reviews, hiring, strategy) once your private Home OS has enough signal. Same idea in both places: less reinventing the workflow every time.
 
 ## 🛤️ Pick your lane
 
 **IC or tech lead: shipping**
 
-You are staring at an ambiguous scope change mid-sprint. Instead of coding straight into a wall, you **name `seed`**, get a plan file approved, then **`harvest`** so TDD, local gates, doc sync, draft PR, and CI green happen in order. Impact: fewer “wait, wrong direction” rewrites and a PR reviewers can actually reason about.
+Name **`kmode`**. It classifies feature, bug, investigation, performance, refactor, plan, and ship work; applies named engineering principles; **does not mark mutating work done without a real-artifact receipt**; then hands approved plans to **`harvest`** for TDD, local gates, docs, draft PR, and CI. Impact: fewer silent patches, fewer “it compiles” false dones, a PR reviewers can reason about.
+
+Escape hatch: still `@seed` / `@harvest` / `@tdd-cycle` if you already know the step.
 
 **Manager or EM: people and planning**
 
@@ -22,7 +24,7 @@ The scope feels clear until the third edge case. Run **`grill-me`** for a one-qu
 
 ## ⚙️ Install
 
-Flat symlinks: `<dest>/<skill-name>` → file in this repo. The script does not create nested `engineering/` or `management/` under the destination.
+Flat symlinks: `<dest>/<skill-name>` → file in this repo. The script does not create nested `engineering/` or `management/` under the destination. After install, the engineering entry skill is **`kmode`**.
 
 ```bash
 ./scripts/setup-skills.sh --tool cursor
@@ -32,6 +34,7 @@ Flat symlinks: `<dest>/<skill-name>` → file in this repo. The script does not 
 ./scripts/setup-skills.sh --dest ~/.some-agent/skills
 ./scripts/setup-skills.sh --all
 ./scripts/setup-skills.sh --dry-run --tool agents   # print only
+./scripts/validate-kmode.sh                        # engineering dispatcher + proof contracts
 ```
 
 **Selectors (pick one):**
@@ -53,9 +56,9 @@ Flat symlinks: `<dest>/<skill-name>` → file in this repo. The script does not 
 
 Correct existing symlinks are idempotent: re-run returns `0` without changes.
 
-If this repo is checked out at `~/.cursor/skills`, the `cursor` preset adds top-level links (e.g. `harvest` → `engineering/harvest`) next to the `engineering/` and `management/` trees.
+If this repo is checked out at `~/.cursor/skills`, the `cursor` preset adds top-level links (e.g. `kmode` → `engineering/kmode`, `harvest` → `engineering/harvest`) next to the `engineering/` and `management/` trees.
 
-**Upgrade:** If you had an old layout with delivery skills at repo root, re-run `./scripts/setup-skills.sh --tool cursor` (or your home) so links target `engineering/`. Management skills live under `management/`. |
+**Upgrade:** If you had an old layout with delivery skills at repo root, re-run `./scripts/setup-skills.sh --tool cursor` (or your home) so links target `engineering/`. Management skills live under `management/`.
 
 ## 🔒 Privacy
 

@@ -20,6 +20,12 @@ Read-only planning → Cadence → one plan file on disk → user approval befor
 
 Implementation starts only after plan approval (host UI, exit-plan tool, or `approved` / `execute` / `LGTM on plan`). Spikes require user OK and stay read-only.
 
+## Gate contract
+
+- **`pass`** — one plan file on disk; todos have done criteria; approval recorded; implementation has not started.
+- **`blocked`** — scope ambiguous, user unavailable for the approval gate, or file missing required shape.
+- **`not-applicable`** — user asked for a spike only; stay read-only; no impl.
+
 ## Deliver
 
 Read-only planning → **Cadence** → **one plan file** on disk (summary + path in chat). Amend = edit same file. After approval → implement; file = source of truth; **harvest** to ship.
@@ -30,7 +36,7 @@ Read-only planning → **Cadence** → **one plan file** on disk (summary + path
 
 | Host | Plan | Approve | Run |
 |------|------|---------|-----|
-| IDE agent (plan mode) | `SwitchMode` plan → `CreatePlan`; revise = edit file | Plan UI | `SwitchMode` agent |
+| IDE agent (plan mode) | Plan-mode artifact; fallback `plans/<slug>.md` | Plan UI or text gate | Agent mode |
 | Claude Code | Plan mode; write canonical path | Exit plan tool | Implement mode |
 | Else | `plans/<slug>.md` | Text gate | User go |
 

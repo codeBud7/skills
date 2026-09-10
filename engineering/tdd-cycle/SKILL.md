@@ -16,6 +16,13 @@ Red → green → refactor for a fixed-scope change; failing test first.
 
 **Done when:** Red → green → refactor cycle complete; tests pass; handoff criteria in **Handoff** met.
 
+## Gate contract
+
+- **`pass`** — failing test confirmed for the right reason; then green; refactor rerun; tests executed, not assumed.
+- **`blocked`** — red never confirmed, green not executed, or tests skipped with no alternate proof.
+- **`not-applicable`** — no production behavior change; state why. Alternate verification must still be named.
+- **`waived`** — user recorded skip of TDD with risk. Skip-all with no executed check is not `pass`.
+
 ## Before red
 
 Know all **You need** inputs plus test level (unit | integration | e2e). Ambiguous → stop, clarify.
