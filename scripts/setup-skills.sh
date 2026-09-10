@@ -16,7 +16,7 @@ usage() {
 Install skills from this repo into agent tool homes via flat symlinks.
 
 Usage:
-  ./scripts/setup-skills.sh --tool cursor|claude|agents
+  ./scripts/setup-skills.sh --tool cursor|claude|codex|agents
   ./scripts/setup-skills.sh --dest PATH
   ./scripts/setup-skills.sh --all
   ./scripts/setup-skills.sh --help
@@ -25,6 +25,7 @@ Options:
   --tool TOOL   Install to a known tool home:
                   cursor -> ~/.cursor/skills
                   claude -> ~/.claude/skills
+                  codex  -> ~/.codex/skills
                   agents -> ~/.agents/skills
   --dest PATH   Install to an arbitrary skills directory
   --all         Install to all known tool homes
@@ -75,6 +76,7 @@ tool_dest() {
   case "$1" in
     cursor) expand_home "~/.cursor/skills" ;;
     claude) expand_home "~/.claude/skills" ;;
+    codex) expand_home "~/.codex/skills" ;;
     agents) expand_home "~/.agents/skills" ;;
     *) die "unknown tool: $1" ;;
   esac
@@ -259,7 +261,7 @@ fi
 
 if (( INSTALL_ALL )); then
   exit_code=0
-  for preset in cursor claude agents; do
+  for preset in cursor claude codex agents; do
     if ! install_to_dest "$(tool_dest "${preset}")"; then
       exit_code=1
     fi
@@ -269,8 +271,8 @@ fi
 
 if [[ -n "${TOOL}" ]]; then
   case "${TOOL}" in
-    cursor|claude|agents) ;;
-    *) die "unknown tool: ${TOOL} (expected cursor, claude, or agents)" ;;
+    cursor|claude|codex|agents) ;;
+    *) die "unknown tool: ${TOOL} (expected cursor, claude, codex, or agents)" ;;
   esac
   install_to_dest "$(tool_dest "${TOOL}")"
   exit 0

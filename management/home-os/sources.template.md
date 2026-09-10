@@ -44,7 +44,7 @@ Your GitHub username and repo list or org scope for authored PRs and reviews:
 ## Slack
 
 Workspace name (human-readable):
-MCP server label in Cursor (if known, e.g. plugin-slack-slack):
+MCP server label in your agent host (if known, e.g. plugin-slack-slack):
 Team or project channels (names or IDs, read scope only):
 Default search hints (keywords, initiative names — optional):
 Policy: DMs off by default unless listed; no tokens or secrets here — auth lives in MCP host config.
@@ -55,7 +55,7 @@ Channels and thread URLs the agent may read for **your** activity (brag-doc neve
 
 ## Notion
 
-MCP server label in Cursor (if known):
+MCP server label in your agent host (if known):
 
 ### Me (brag-doc / self)
 

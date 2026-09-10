@@ -29,11 +29,11 @@ A gate stays **blocked** until one of these is true: work completed and verified
 
 ## From approved plan (Build)
 
-Parity with Cursor **Build** / Agent after plan approval: same plan file on disk is the runbook. Agent cannot click UI — read file, execute todos, write progress back.
+Parity with hosted **Build** after plan approval: same plan file on disk is the runbook. Agent cannot click UI — read file, execute todos, write progress back.
 
 **Preconditions:** plan approved per [seed/SKILL.md](../seed/SKILL.md) (host UI, exit-plan tool, or `approved` / `execute` / `LGTM on plan`). Plan shape and paths: seed skill.
 
-**Resolve path:** user path if given → Cursor plan file user pasted or active in thread → `.claude/plans/<slug>.md` → `plans/<slug>.md`.
+**Resolve path:** user path if given → host plan file user pasted or active in thread → `.claude/plans/<slug>.md` → `plans/<slug>.md`.
 
 **Start:** read YAML frontmatter + body; list todos by `id`; set first todo `in_progress` in file (see [seed/reference.md](../seed/reference.md) for `status` fields).
 
@@ -46,7 +46,7 @@ Parity with Cursor **Build** / Agent after plan approval: same plan file on disk
 
 **Loop (mode A):** for each todo — scope per `repo-safety`; run pipeline subset; only then clear any resolved `blocked_reason`, set todo `done`, next `in_progress`. On failure: stop; set `blocked_reason` on todo; keep `status` `in_progress` or `pending` — never `done` while blocked.
 
-**Progress:** plan file is source of truth. Optional `TodoWrite` may mirror Cursor session UI; still update plan file at every todo boundary.
+**Progress:** plan file is source of truth. Optional `TodoWrite` may mirror the host session todo UI; still update plan file at every todo boundary.
 
 **End:** **Done when** criteria met.
 

@@ -17,7 +17,7 @@ Create private root → seed `context.md`, `sources.md`, `directs/<slug>.md` fro
 
 **Templates:** [`context.template.md`](context.template.md), [`direct.template.md`](direct.template.md), [`sources.template.md`](sources.template.md), [`ladder.template.md`](ladder.template.md)
 
-Private Home OS data lives at one shared root outside git, default `~/.agents/management/home-os`. Use the same root from Cursor, Claude, or any other host.
+Private Home OS data lives at one shared root outside git, default `~/.agents/management/home-os`. Use the same root from any agent host (Claude Code, Codex, etc.).
 
 Path resolution order for all management skills:
 

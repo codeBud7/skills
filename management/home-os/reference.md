@@ -4,9 +4,9 @@ Canonical path and MCP boundaries stay in [`SKILL.md`](SKILL.md). This file hold
 
 ## Agent Hosts and Private Storage (expanded)
 
-Skills are host-agnostic instructions in git. Install location depends on the agent host (`~/.cursor/skills`, `~/.claude/skills`, or `~/.agents/skills`). Never store filled profiles, briefs, or source links in skill install dirs.
+Skills are host-agnostic instructions in git. Install location depends on the agent host (e.g. `~/.claude/skills`, `~/.codex/skills`, `~/.agents/skills`). Never store filled profiles, briefs, or source links in skill install dirs.
 
-Private Home OS data lives at one shared root outside git, default `~/.agents/management/home-os`. Use the same root from Cursor, Claude, or any other host.
+Private Home OS data lives at one shared root outside git, default `~/.agents/management/home-os`. Use the same root from any agent host.
 
 ## Workflow
 

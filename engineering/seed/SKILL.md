@@ -30,7 +30,7 @@ Read-only planning → **Cadence** → **one plan file** on disk (summary + path
 
 | Host | Plan | Approve | Run |
 |------|------|---------|-----|
-| Cursor | `SwitchMode` plan → `CreatePlan`; revise = edit file | Plan UI | `SwitchMode` agent |
+| IDE agent (plan mode) | `SwitchMode` plan → `CreatePlan`; revise = edit file | Plan UI | `SwitchMode` agent |
 | Claude Code | Plan mode; write canonical path | Exit plan tool | Implement mode |
 | Else | `plans/<slug>.md` | Text gate | User go |
 

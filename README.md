@@ -27,6 +27,7 @@ Flat symlinks: `<dest>/<skill-name>` → file in this repo. The script does not 
 ```bash
 ./scripts/setup-skills.sh --tool cursor
 ./scripts/setup-skills.sh --tool claude
+./scripts/setup-skills.sh --tool codex
 ./scripts/setup-skills.sh --tool agents
 ./scripts/setup-skills.sh --dest ~/.some-agent/skills
 ./scripts/setup-skills.sh --all
@@ -35,7 +36,7 @@ Flat symlinks: `<dest>/<skill-name>` → file in this repo. The script does not 
 
 **Selectors (pick one):**
 
-- `--tool cursor|claude|agents` — install to one known tool home
+- `--tool cursor|claude|codex|agents` — install to one known tool home
 - `--dest PATH` — install to an arbitrary skills directory
 - `--all` — install to every known tool home (cannot combine with `--tool` or `--dest`)
 
